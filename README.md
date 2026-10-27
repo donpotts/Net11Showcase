@@ -2,6 +2,8 @@
 
 A comprehensive showcase platform and enterprise reference architecture demonstrating the latest capabilities of **.NET 11**, **ASP.NET Core**, **Blazor (Auto/WASM/Server)**, **MAUI Blazor Hybrid**, **EF Core 11**, **Native AOT**, **AI RAG Integrations**, and **Tailwind CSS**.
 
+![.NET 11 Showcase Platform Overview](docs/images/net11-showcase-suite.png)
+
 ---
 
 ## 🎯 Vision & Purpose
@@ -40,6 +42,7 @@ src/
 - **Forms & Validation**: Async validation simulation and dynamic schema binding.
 
 ### 2. 📱 MAUI Blazor Hybrid Lab
+![MAUI Blazor Hybrid Diagnostics & Sensors](docs/images/net11-showcase-maui.png)
 - **CoreCLR Diagnostics**: Startup time (84.2 ms), working set memory (38.6 MB), and Tiered PGO active telemetry.
 - **Hardware Sensor Bridges**:
   - **Live GPS & Geofencing**: Latitude/Longitude coordinate generator with geofence proximity tracking.
@@ -57,6 +60,7 @@ src/
 - **In-Memory Cosine Similarity Vector Search**: Nearest-neighbor semantic retrieval over high-dimensional vector embeddings with zero external vector DB dependencies.
 
 ### 5. 🚀 Native AOT & Multi-Version Benchmark Lab
+![Multi-Version Benchmarks .NET 8 to 11](docs/images/net11-showcase-benchmarks.png)
 Direct performance matrix across .NET releases:
 
 | Metric | .NET 8 (JIT) | .NET 9 (PGO) | .NET 10 (Opt) | .NET 11 (AOT+JIT) | .NET 11 (Native AOT) |
@@ -68,6 +72,7 @@ Direct performance matrix across .NET releases:
 | **WASM Load Time** | 820.0 ms | 540.0 ms | 380.0 ms | 210.0 ms | **95.0 ms** |
 
 ### 6. 🤖 AI Showcase & Prompt Studio
+![AI RAG & Prompt Studio](docs/images/net11-showcase-ai.png)
 - **RAG Semantic Grounding**: Search query matching against internal .NET 11 architecture document vectors.
 - **Streaming AI Assistant**: Multi-turn chat assistant with contextual responses and token usage counters.
 - **Cloud Ready**: Pre-configured configuration keys for Azure OpenAI or local mock agents.
