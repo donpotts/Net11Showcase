@@ -39,7 +39,7 @@ src/
 ### 1. ⚡ Blazor .NET 11 Showcase
 - **Rendering Modes Matrix**: Interactive switching between **Static SSR**, **Interactive Server (SignalR)**, **Interactive WASM**, **Auto Mode (SSR -> WASM)**, and **Streaming Rendering**.
 - **Enhanced QuickGrid**: Instant client-side search filtering, multi-column sorting, and interactive row click inspection.
-- **Forms & Validation**: Async validation simulation and dynamic schema binding.
+- **Forms & Validation**: Async validation simulation, dynamic schema binding, and integration with the companion **PDF Form Filler, Contract Signer & Flattening Engine** ([donpotts/BlazorTailwindUI](https://github.com/donpotts/BlazorTailwindUI)).
 
 ### 2. 📱 MAUI Blazor Hybrid Lab
 ![MAUI Blazor Hybrid Diagnostics & Sensors](docs/images/net11-showcase-maui.png)
