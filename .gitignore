@@ -18,3 +18,8 @@ desktop.ini
 
 ## Test Results
 TestResults/
+
+## Distribution & Published Binaries
+dist/
+*.exe
+

@@ -58,11 +58,26 @@ $targetUrl = "http://127.0.0.1:$allocatedPort"
 # 2. Start Web Host
 Write-Host "[2/3] Launching Net11Showcase.Web host on $targetUrl..." -ForegroundColor Gray
 $projectPath = Join-Path $ScriptDir "src\Net11Showcase.Web\Net11Showcase.Web\Net11Showcase.Web.csproj"
+$exePath = if (Test-Path (Join-Path $ScriptDir "Net11Showcase.Web.exe")) {
+    Join-Path $ScriptDir "Net11Showcase.Web.exe"
+} elseif (Test-Path (Join-Path $ScriptDir "dist\web\Net11Showcase.Web.exe")) {
+    Join-Path $ScriptDir "dist\web\Net11Showcase.Web.exe"
+} else {
+    $null
+}
 
 $psi = New-Object System.Diagnostics.ProcessStartInfo
-$psi.FileName = "dotnet"
-$psi.Arguments = "run --project `"$projectPath`" --urls `"$targetUrl`""
-$psi.WorkingDirectory = $ScriptDir
+if ($exePath) {
+    Write-Host "   -> Using standalone binary: $exePath" -ForegroundColor Green
+    $psi.FileName = $exePath
+    $psi.Arguments = "--urls `"$targetUrl`""
+    $psi.WorkingDirectory = Split-Path -Parent $exePath
+} else {
+    Write-Host "   -> Using dotnet run from source: $projectPath" -ForegroundColor Gray
+    $psi.FileName = "dotnet"
+    $psi.Arguments = "run --project `"$projectPath`" --urls `"$targetUrl`""
+    $psi.WorkingDirectory = $ScriptDir
+}
 $psi.UseShellExecute = $false
 $psi.CreateNoWindow = $true
 $serverProcess = [System.Diagnostics.Process]::Start($psi)

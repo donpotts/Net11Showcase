@@ -78,6 +78,10 @@
                 class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "ai" ? "bg-amber-600 text-white shadow-md shadow-amber-600/30" : "text-slate-400 hover:text-white")">
             <span>🤖 6. AI RAG & Prompt Studio</span>
         </button>
+        <button type="button" @onclick='() => _activeTab = "help"'
+                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "help" ? "bg-cyan-600 text-white shadow-md shadow-cyan-600/30" : "text-slate-400 hover:text-white")">
+            <span>❓ 7. Help & Guides</span>
+        </button>
     </div>
 
     <!-- ========================================================================= -->
@@ -525,6 +529,98 @@
                             class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition">
                         Send Prompt
                     </button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- ========================================================================= -->
+    <!-- MODULE 7: HELP, GUIDES & DOCUMENTATION                                    -->
+    <!-- ========================================================================= -->
+    @if (_activeTab == "help")
+    {
+        <div class="space-y-6">
+            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                            <span>❓</span> System Help, Architectural Guides & FAQ
+                        </h3>
+                        <p class="text-xs text-slate-400">
+                            Pre-flight launcher instructions, troubleshooting port conflicts, offline SQLite mode, and cloud deployment guides.
+                        </p>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 font-mono text-xs font-bold">100% Free Resources</span>
+                </div>
+
+                <!-- 4 Quick Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                        <div class="font-bold text-white text-sm flex items-center gap-2">
+                            <span class="text-cyan-400">⚡</span> Port Coordinator & Pre-Flight Probing
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">
+                            The launcher (<code class="text-cyan-300">launch-showcase.ps1</code> / <code class="text-cyan-300">launch-showcase.cmd</code>) automatically probes TCP ports from <code class="text-white">5150</code> to <code class="text-white">5250</code>, binds an unoccupied socket, and waits for <code class="text-emerald-400 font-mono">HTTP 200 OK</code> before launching your browser.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                        <div class="font-bold text-white text-sm flex items-center gap-2">
+                            <span class="text-purple-400">🌱</span> 100% Free Foundation
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">
+                            Requires zero paid API keys, zero subscription cloud licenses, and zero external database engines. Local SQLite file (<code class="text-purple-300">showcase_net11.db</code>) and high-performance in-memory vector cosine math provide complete functionality out of the box.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                        <div class="font-bold text-white text-sm flex items-center gap-2">
+                            <span class="text-emerald-400">☁️</span> Cloud Extension Points
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">
+                            Toggle Azure App Service (F1 $0 tier), Azure SQL, or Azure OpenAI anytime by updating standard connection strings in <code class="text-emerald-300">src/Net11Showcase.Api/appsettings.json</code>.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                        <div class="font-bold text-white text-sm flex items-center gap-2">
+                            <span class="text-pink-400">🖥️</span> Windows Installer
+                        </div>
+                        <p class="text-slate-400 leading-relaxed">
+                            Run <code class="text-pink-300">Install-Net11Showcase.cmd</code> to install the pre-compiled Release distribution to <code class="text-white">%LOCALAPPDATA%\Net11Showcase</code> with Desktop and Start Menu shortcuts and a clean one-click uninstaller.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CLI Cheat Sheet Table -->
+                <div class="space-y-2">
+                    <h4 class="text-xs font-mono font-bold text-slate-300 uppercase">CLI Command Quick Reference</h4>
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-300 space-y-2">
+                        <div class="flex justify-between border-b border-slate-800 pb-1.5 text-slate-500 text-[10px]">
+                            <span>OPERATION</span>
+                            <span>COMMAND</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-slate-400">Install Suite:</span>
+                            <span class="text-cyan-300">.\Install-Net11Showcase.cmd</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-slate-400">Launch with Port Coordinator:</span>
+                            <span class="text-emerald-300">.\launch-showcase.ps1 -StartPort 5150</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-slate-400">Run xUnit Tests:</span>
+                            <span class="text-indigo-300">dotnet test Net11Showcase.slnx</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-slate-400">Interactive E2E Test:</span>
+                            <span class="text-pink-300">python scratch/test_net11_showcase_e2e.py</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <span class="text-slate-400">OpenAPI Scalar Console:</span>
+                            <span class="text-amber-300">http://127.0.0.1:5150/scalar/v1</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -79,9 +79,28 @@ Direct performance matrix across .NET releases:
 
 ---
 
-## 🛠️ Quick Start & Launch
+## 📚 Documentation & Technical Guides
 
-### Option 1: Port-Guaranteed Double-Click Launcher (Recommended)
+| Guide | Description |
+|---|---|
+| [🏗️ **Architecture & Design**](docs/ARCHITECTURE.md) | In-depth breakdown of multi-project structure, Blazor Auto hydration, EF Core 11 JSON columns, and vector cosine math |
+| [🚀 **Quickstart Guide**](docs/QUICKSTART.md) | Step-by-step developer guide, prerequisites, installer usage, and Azure cloud configuration |
+| [📊 **Benchmark Lab**](docs/BENCHMARKS.md) | Detailed benchmark measurements comparing .NET 8, 9, 10, and 11 Native AOT (Startup, Throughput, RAM) |
+| [🧩 **Components Catalog**](docs/COMPONENTS.md) | Reference list of all reusable Tailwind UI components included in the suite |
+| [❓ **Help & FAQ**](docs/HELP.md) | Troubleshooting port bindings, firewall rules, PowerShell execution policies, and database reset |
+
+---
+
+## 🛠️ Quick Start & Installers
+
+### Option 1: Double-Click Desktop & Server Installer (Recommended)
+Double-click `Install-Net11Showcase.cmd`:
+- Installs the standalone optimized distribution to `%LOCALAPPDATA%\Net11Showcase`.
+- Automatically provisions **Windows Desktop** and **Start Menu** shortcuts.
+- Includes clean one-click uninstaller `Uninstall-Net11Showcase.cmd`.
+- Offers immediate launch with pre-flight port coordinator.
+
+### Option 2: Port-Guaranteed Double-Click Launcher
 Double-click `launch-showcase.cmd` (or run in PowerShell):
 ```powershell
 .\launch-showcase.ps1
@@ -90,13 +109,13 @@ Double-click `launch-showcase.cmd` (or run in PowerShell):
 - Executes pre-flight HTTP health probe until the host is verified online.
 - Launches the UI in your default browser.
 
-### Option 2: Build & Test via .NET CLI
+### Option 3: Build & Test via .NET CLI
 ```bash
 # 1. Build complete solution
-dotnet build
+dotnet build Net11Showcase.slnx
 
 # 2. Run unit & integration test suite
-dotnet test
+dotnet test Net11Showcase.slnx
 
 # 3. Launch Web Host directly
 dotnet run --project src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj
