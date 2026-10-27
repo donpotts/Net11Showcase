@@ -1,0 +1,20 @@
+## .NET & C# Artifacts
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+.vs/
+.vscode/
+*.user
+*.suo
+*.db
+*.db-shm
+*.db-wal
+
+## OS Generated
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Test Results
+TestResults/
