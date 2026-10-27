@@ -66,38 +66,55 @@ def run_tests():
             print("Hero Heading:", hero)
             assert ".NET 11 Showcase" in hero
 
-            # Module 1: Blazor .NET 11 interactions
-            print("Testing Module 1: Blazor Rendering & QuickGrid...")
+            # Module 1: Blazor .NET 11 interactions & Form Validation
+            print("Testing Module 1: Blazor Rendering, QuickGrid & Async Form...")
             page.locator("button:has-text('StreamingRendering')").click()
             time.sleep(0.3)
-            page.locator("input[placeholder*='Filter components']").fill("Enclave")
+            page.locator("button:has-text('+0.5 Score')").first.click()
             time.sleep(0.3)
-            page.locator("tr:has-text('PQC ML-KEM')").click()
+            page.locator("button:has-text('Cycle Status')").first.click()
+            time.sleep(0.3)
+            # Submit Enrollment Form
+            page.locator("input[placeholder='node-us-east-1a']").fill("node-e2e-cluster-99")
+            page.locator("button:has-text('Submit Enrollment')").click()
             time.sleep(0.3)
 
             # Module 2: MAUI Hybrid
             print("Testing Module 2: MAUI Hybrid...")
             page.locator("button:has-text('2. MAUI Hybrid Lab')").click()
             time.sleep(0.5)
-            page.locator("button:has-text('Refresh')").click()
-            page.locator("button:has-text('Shake')").click()
-            page.locator("button:has-text('+ Enqueue Action')").click()
+            page.locator("button:has-text('Run PGO JIT Profile')").click()
+            page.locator("button:has-text('Refresh Coordinates')").click()
+            page.locator("button:has-text('Shake Device')").click()
+            page.locator("button:has-text('Capture Snapshot')").click()
+            page.locator("button:has-text('Sync All to Cloud')").click()
             time.sleep(0.5)
             maui_ss = os.path.join(BASE_DIR, "docs", "images", "net11-showcase-maui.png")
             page.screenshot(path=maui_ss)
+
+            # Module 3: Minimal APIs
+            print("Testing Module 3: Minimal APIs & SignalR...")
+            page.locator("button:has-text('3. Minimal APIs & SignalR')").click()
+            time.sleep(0.5)
+            page.locator("button:has-text('Execute Probe')").first.click()
+            page.locator("button:has-text('+ Tick Stream')").click()
+            time.sleep(0.3)
 
             # Module 4: EF Core & Vector Search
             print("Testing Module 4: EF Core 11 & Vector Search...")
             page.locator("button:has-text('4. EF Core 11 & Vectors')").click()
             time.sleep(0.5)
-            page.locator("input[placeholder*='semantic query']").fill("post-quantum cryptography encryption")
-            page.locator("button:has-text('Vector Search')").click()
-            time.sleep(0.5)
+            page.get_by_role("button", name="Native AOT", exact=True).click()
+            time.sleep(0.3)
+            page.get_by_role("button", name="Security", exact=True).click()
+            time.sleep(0.3)
 
             # Module 5: Benchmarks
             print("Testing Module 5: Native AOT Benchmarks...")
             page.locator("button:has-text('5. Native AOT & Benchmarks')").click()
             time.sleep(0.5)
+            page.locator("button:has-text('Run Benchmark Now')").click()
+            time.sleep(0.8)
             bench_ss = os.path.join(BASE_DIR, "docs", "images", "net11-showcase-benchmarks.png")
             page.screenshot(path=bench_ss)
 
@@ -105,11 +122,15 @@ def run_tests():
             print("Testing Module 6: AI RAG & Prompt Studio...")
             page.locator("button:has-text('6. AI RAG & Prompt Studio')").click()
             time.sleep(0.5)
-            page.locator("input[placeholder*='Ask about']").fill("How does Native AOT in .NET 11 improve memory?")
-            page.locator("button:has-text('Send Prompt')").click()
+            page.locator("button:has-text('AOT Warmup')").click()
             time.sleep(0.5)
             ai_ss = os.path.join(BASE_DIR, "docs", "images", "net11-showcase-ai.png")
             page.screenshot(path=ai_ss)
+
+            # Module 7: Help & Guides
+            print("Testing Module 7: Help & Guides...")
+            page.locator("button:has-text('7. Help & Guides')").click()
+            time.sleep(0.5)
 
             # Return to overview tab for final screenshot
             page.locator("button:has-text('1. Blazor .NET 11')").click()
