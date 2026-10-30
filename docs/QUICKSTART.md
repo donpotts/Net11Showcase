@@ -7,7 +7,7 @@ This guide will help you install, build, run, and explore the **Net11 Showcase S
 ## 📋 Prerequisites
 
 1. **Operating System**: Windows 10/11, macOS, or Linux (Ubuntu 22.04+).
-2. **.NET SDK**: .NET 11.0 Preview / RC SDK (tested with `11.0.100-rc.3.26522.148` or higher).
+2. **.NET SDK**: .NET 11+ SDK (11.0 preview or RC at the time of writing) (tested with `11.0.100-rc.3.26522.148` or higher).
 3. **PowerShell 7+ or Windows PowerShell 5.1** (for pre-flight launcher and installer scripts).
 4. **Browser**: Edge, Chrome, Firefox, or Safari.
 

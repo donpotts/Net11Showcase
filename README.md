@@ -1,8 +1,8 @@
 # ⚡ Net11 Showcase Suite
 
-A comprehensive showcase platform and enterprise reference architecture demonstrating the latest capabilities of **.NET 11**, **ASP.NET Core**, **Blazor (Auto/WASM/Server)**, **MAUI Blazor Hybrid**, **EF Core 11**, **Native AOT**, **AI RAG Integrations**, and **Tailwind CSS**.
+A comprehensive showcase platform and enterprise reference architecture demonstrating the latest capabilities of **.NET 11+**, **ASP.NET Core**, **Blazor (Auto/WASM/Server)**, **MAUI Blazor Hybrid**, **EF Core 11**, **Native AOT**, **AI RAG Integrations**, and **Tailwind CSS**.
 
-![.NET 11 Showcase Platform Overview](docs/images/net11-showcase-suite.png)
+![.NET 11+ Showcase Platform Overview](docs/images/net11-showcase-suite.png)
 
 ---
 
@@ -36,7 +36,7 @@ src/
 
 ## 🚀 The 7 Showcase Modules
 
-### 1. ⚡ Blazor .NET 11 Showcase
+### 1. ⚡ Blazor .NET 11+ Showcase
 - **Rendering Modes Matrix**: Interactive switching between **Static SSR**, **Interactive Server (SignalR)**, **Interactive WASM**, **Auto Mode (SSR -> WASM)**, and **Streaming Rendering**.
 - **Enhanced QuickGrid**: Instant client-side search filtering, multi-column sorting, and interactive row click inspection.
 - **Forms & Validation**: Async validation simulation, dynamic schema binding, and integration with the companion **PDF Form Filler, Contract Signer & Flattening Engine** ([donpotts/BlazorTailwindUI](https://github.com/donpotts/BlazorTailwindUI)).
