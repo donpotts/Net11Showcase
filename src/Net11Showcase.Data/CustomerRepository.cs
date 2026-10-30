@@ -21,6 +21,20 @@ public sealed class CustomerRepository
         return await _db.Customers.AsNoTracking().ToListAsync();
     }
 
+    /// <summary>Filters on a member inside the JSON column; EF translates it to SQL JSON access, not a client-side scan.</summary>
+    public Task<List<CustomerEntity>> GetByRegionAsync(string region) =>
+        RegionQuery(region).ToListAsync();
+
+    public IQueryable<CustomerEntity> RegionQuery(string region) =>
+        _db.Customers.AsNoTracking().Where(c => c.Profile!.Region == region);
+
+    /// <summary>Groups by a JSON member and counts in the database.</summary>
+    public async Task<Dictionary<string, int>> GetIndustryBreakdownAsync() =>
+        await _db.Customers.AsNoTracking()
+            .GroupBy(c => c.Profile!.Industry)
+            .Select(g => new { Industry = g.Key, Count = g.Count() })
+            .ToDictionaryAsync(x => x.Industry, x => x.Count);
+
     public async Task<CustomerEntity?> GetHighestTierCustomerAsync()
     {
         // Modern LINQ MaxBy

@@ -22,6 +22,10 @@ public class AppDbContext : DbContext
             entity.Property(e => e.Email).IsRequired().HasMaxLength(150);
             entity.Property(e => e.Tier).HasMaxLength(50);
             entity.Property(e => e.MetadataJson).HasDefaultValue("{}");
+
+            // EF Core JSON column: the profile is one JSON document in the row, but its members are
+            // still queryable in LINQ and translated to SQL JSON functions.
+            entity.ComplexProperty(e => e.Profile, profile => profile.ToJson());
             
             // Serialize float[] vector embeddings to comma-separated string for universal SQLite/SQL compatibility
             entity.Property(e => e.EmbeddingVector)

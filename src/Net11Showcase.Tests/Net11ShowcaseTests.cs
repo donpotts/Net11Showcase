@@ -40,11 +40,15 @@ public class Net11ShowcaseTests
     [Fact]
     public async Task CustomerRepository_Queries_Json_And_Vectors()
     {
-        var options = new DbContextOptionsBuilder<AppDbContext>()
-            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
-            .Options;
+        // Real SQLite instead of the EF in-memory provider: the model maps Profile as a JSON column, which the
+        // in-memory provider cannot materialize. EnsureCreated seeds three demo rows; this test wants only its own.
+        using var connection = new Microsoft.Data.Sqlite.SqliteConnection("Data Source=:memory:");
+        connection.Open();
+        var options = new DbContextOptionsBuilder<AppDbContext>().UseSqlite(connection).Options;
 
         using var db = new AppDbContext(options);
+        db.Database.EnsureCreated();
+        await db.Customers.ExecuteDeleteAsync();
         db.Customers.AddRange(
             new CustomerEntity
             {

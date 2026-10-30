@@ -100,6 +100,14 @@ public sealed class SignalRTelemetryMetric
 #endregion
 
 #region 4. EF Core 11 Models
+/// <summary>Stored as a single JSON column on the customer row (EF Core complex property + ToJson).</summary>
+public sealed class CustomerProfile
+{
+    public string Industry { get; set; } = string.Empty;
+    public string Region { get; set; } = string.Empty;
+    public int? Seats { get; set; }
+}
+
 public sealed class CustomerEntity
 {
     public int Id { get; set; }
@@ -107,6 +115,7 @@ public sealed class CustomerEntity
     public string Email { get; set; } = string.Empty;
     public string Tier { get; set; } = "Enterprise Tier 1";
     public string MetadataJson { get; set; } = "{}";
+    public CustomerProfile? Profile { get; set; }
     public float[] EmbeddingVector { get; set; } = Array.Empty<float>();
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }

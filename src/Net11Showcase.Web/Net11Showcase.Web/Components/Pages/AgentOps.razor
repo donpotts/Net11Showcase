@@ -1,0 +1,18 @@
+@page "/agent-ops"
+@rendermode InteractiveServer
+@using Net11Showcase.Components.AgentOps
+
+<PageTitle>Agent Ops</PageTitle>
+
+@* `dark` opts the Tailwind dark: variants on for this page; the shell is already a dark theme. *@
+<div class="dark">
+    <div class="mb-6">
+        <h1 class="text-2xl font-black text-white">Agent Ops: approvals, takeover &amp; audit</h1>
+        <p class="text-sm text-slate-400 mt-1 max-w-3xl">
+            A refund-desk agent proposes a high-risk action. It does not run until you approve it. Take over to pause the agent and
+            edit what it knows; hand back and it carries on with your change. Every step lands in the audit trail.
+        </p>
+    </div>
+
+    <TwAgentConsole />
+</div>

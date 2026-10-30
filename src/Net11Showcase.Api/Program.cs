@@ -12,6 +12,8 @@ using Net11Showcase.Data;
 using Net11Showcase.Shared.Models;
 using Net11Showcase.Shared.Services;
 using Scalar.AspNetCore;
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,16 +35,34 @@ builder.Services.AddCors(options =>
 // 3. OpenAPI 3.1 & Scalar Documentation UI
 builder.Services.AddOpenApi();
 
+// 4. Real health checks (probes the database, not just the process) and rate limiting for the AI endpoint
+builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>("database");
+
+var aiPermits = builder.Configuration.GetValue("RateLimiting:AiPermitLimit", 5);
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("ai", httpContext => RateLimitPartition.GetFixedWindowLimiter(
+        httpContext.Connection.RemoteIpAddress?.ToString() ?? "anonymous",
+        _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = aiPermits,
+            Window = TimeSpan.FromSeconds(10),
+            QueueLimit = 0
+        }));
+});
+
 var app = builder.Build();
 
 // Ensure DB is created & seeded
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.EnsureCreated();
+    DatabaseInitializer.Initialize(db);
 }
 
 app.UseCors("AllowAll");
+app.UseRateLimiter();
 
 // Configure Scalar Interactive Documentation
 app.MapOpenApi();
@@ -52,7 +72,10 @@ app.MapScalarApiReference(); // Accessible at /scalar/v1
 // Minimal API Endpoints (.NET 11 Showcase)
 // -------------------------------------------------------------
 
-// Health Probe
+// Liveness + readiness: /health runs the registered checks (including a real database probe)
+app.MapHealthChecks("/health");
+
+// Health Probe (kept for the port coordinator)
 app.MapGet("/api/health", () => Results.Ok(new
 {
     status = "Healthy",
@@ -84,7 +107,7 @@ customersGroup.MapGet("/top-tier", async (CustomerRepository repo) =>
 // AI Vector Search Endpoint
 app.MapGet("/api/ai/vector-search", async (string? query, CustomerRepository repo) =>
 {
-    var queryVec = new float[] { 0.25f, 0.75f, 0.50f, 0.80f };
+    var queryVec = HashingEmbedder.Embed(query ?? ".NET 11 architecture");
     var results = await repo.SearchSimilarAsync(queryVec, topK: 3);
     return Results.Ok(new
     {
@@ -94,7 +117,8 @@ app.MapGet("/api/ai/vector-search", async (string? query, CustomerRepository rep
     });
 })
 .WithTags("AI Services")
-.WithSummary("Performs vector embedding cosine similarity search.");
+.RequireRateLimiting("ai")
+.WithSummary("Performs vector embedding cosine similarity search. Rate limited per client.");
 
 // Benchmark Metrics Endpoint
 app.MapGet("/api/benchmarks", (ShowcaseDataService data) =>
@@ -108,6 +132,12 @@ app.MapGet("/api/benchmarks", (ShowcaseDataService data) =>
 app.MapGet("/api/stream/telemetry", StreamTelemetry)
 .WithTags("Streaming")
 .WithSummary("Demonstrates .NET 11 Server-Sent IAsyncEnumerable response streaming.");
+
+// Same stream as real Server-Sent Events (text/event-stream): browsers consume it with EventSource.
+app.MapGet("/api/stream/telemetry/sse", (CancellationToken ct) =>
+    TypedResults.ServerSentEvents(StreamTelemetry(ct), eventType: "telemetry"))
+.WithTags("Streaming")
+.WithSummary("Server-Sent Events via TypedResults.ServerSentEvents.");
 
 static async IAsyncEnumerable<SignalRTelemetryMetric> StreamTelemetry([EnumeratorCancellation] CancellationToken ct)
 {
@@ -129,3 +159,6 @@ static async IAsyncEnumerable<SignalRTelemetryMetric> StreamTelemetry([Enumerato
 }
 
 app.Run();
+
+// Exposed so WebApplicationFactory<Program> can host the real app in integration tests.
+public partial class Program { }

@@ -24,17 +24,17 @@ Net11Showcase.sln
 
 src/
 ├── Net11Showcase.Shared/         # Domain models, DTOs, contracts, and benchmark data services
-├── Net11Showcase.Components/     # Reusable Tailwind UI components, Layouts, AppShell, and grids
+├── Net11Showcase.Components/     # Reusable Tailwind UI components, Layouts, AppShell, grids, and the Agent Ops module
 ├── Net11Showcase.Data/           # EF Core 11 DbContext (SQLite), JSON columns, vector cosine math
 ├── Net11Showcase.Api/            # Minimal APIs, Scalar OpenAPI UI (/scalar/v1), response streaming
 ├── Net11Showcase.Web/            # Blazor Web App with Auto Render Mode (Server + Client WASM)
 ├── Net11Showcase.Maui/           # MAUI Blazor Hybrid reference (Windows, Android, iOS, MacCatalyst)
-└── Net11Showcase.Tests/          # xUnit unit and integration test suite
+└── Net11Showcase.Tests/          # xUnit: unit, SQLite (JSON column) and real-host API integration tests
 ```
 
 ---
 
-## 🚀 The 6 Showcase Modules
+## 🚀 The 7 Showcase Modules
 
 ### 1. ⚡ Blazor .NET 11 Showcase
 - **Rendering Modes Matrix**: Interactive switching between **Static SSR**, **Interactive Server (SignalR)**, **Interactive WASM**, **Auto Mode (SSR -> WASM)**, and **Streaming Rendering**.
@@ -53,9 +53,13 @@ src/
 - **Minimal API Route Groups**: CRUD endpoints with endpoint filters and OpenAPI 3.1 documentation.
 - **Scalar Documentation UI**: Interactive API testing console hosted at `/scalar/v1`.
 - **Response Streaming**: Demonstrates .NET 11 `IAsyncEnumerable` server-sent telemetry streaming at 28,000+ RPS.
+- **Server-Sent Events**: `/api/stream/telemetry/sse` serves the same stream as a real `text/event-stream` via `TypedResults.ServerSentEvents` (consume with `EventSource`).
+- **Real Health Checks**: `/health` runs `AddHealthChecks().AddDbContextCheck<AppDbContext>()`, so it probes the database, not just the process.
+- **Rate Limiting**: the AI endpoint uses a per-client fixed-window limiter (`RateLimiting:AiPermitLimit`, default 5 per 10 s) and answers `429` when exceeded.
 
 ### 4. 🗄️ EF Core 11 & Vector Search
-- **Nested JSON Columns**: Complex querying and grouping over nested JSON document columns (`MetadataJson`).
+- **JSON Columns (EF Core complex property + `ToJson()`)**: `CustomerEntity.Profile` is stored as one JSON document in the row, yet `Where(c => c.Profile!.Region == ...)` and `GroupBy(c => c.Profile!.Industry)` are translated to SQL JSON access and run in the database. EF cannot seed complex properties ([dotnet/efcore#31254](https://github.com/dotnet/efcore/issues/31254)), so `DatabaseInitializer` backfills `Profile` from the legacy `MetadataJson` column. `EnsureCreated` does not alter existing tables: if you have a `showcase_net11.db` from before this change, delete it once and it is recreated (see [Help](docs/HELP.md) for the database reset).
+- **Query-driven vector search**: `/api/ai/vector-search?query=...` embeds the query with a deterministic `HashingEmbedder` (signed feature hashing) before the cosine ranking. Swap in a real embedding model for production.
 - **Modern LINQ**: High-performance operators including `MaxBy`, `MinBy`, and compiled queries.
 - **In-Memory Cosine Similarity Vector Search**: Nearest-neighbor semantic retrieval over high-dimensional vector embeddings with zero external vector DB dependencies.
 
@@ -76,6 +80,18 @@ Direct performance matrix across .NET releases:
 - **RAG Semantic Grounding**: Search query matching against internal .NET 11 architecture document vectors.
 - **Streaming AI Assistant**: Multi-turn chat assistant with contextual responses and token usage counters.
 - **Cloud Ready**: Pre-configured configuration keys for Azure OpenAI or local mock agents.
+
+### 7. 🛡️ Agent Ops: Approvals, Takeover & Audit
+Open **/agent-ops** for a human-in-the-loop agent workspace (ported from [BlazorTailwindUI](https://github.com/donpotts/BlazorTailwindUI)).
+
+| Approval gate | Rejected, agent escalated | Takeover |
+| :---: | :---: | :---: |
+| ![Approval gate](docs/images/net11-showcase-agent-ops-2-approval-gate.png) | ![Rejected](docs/images/net11-showcase-agent-ops-4-rejected.png) | ![Takeover](docs/images/net11-showcase-agent-ops-5-takeover.png) |
+
+- **Approval gates block**: a refund-desk agent proposes `issue_refund`; it does not run until a human approves (optionally with edited, validated JSON arguments) or rejects with a reason, which reroutes the agent to open a ticket.
+- **Takeover pauses the agent**: edit the shared state while it is paused; the edit changes the agent's next tool call. Hand back to resume.
+- **Audit trail**: every human, agent and system step, filterable and exportable as JSON.
+- **Bring your own agent**: implement `IAgentTransport` (an `IAsyncEnumerable<AgUiEvent>` modelled on the [AG-UI](https://github.com/ag-ui-protocol/ag-ui) event stream) and register it in place of `SimulatedAgentTransport`. Components live in `Net11Showcase.Components/AgentOps`.
 
 ---
 
@@ -120,6 +136,20 @@ dotnet test Net11Showcase.slnx
 # 3. Launch Web Host directly
 dotnet run --project src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj
 ```
+
+> **.NET 11 RC note:** on `11.0.0-rc.3` a plain `dotnet run` of the web project can answer `500` for `_framework/blazor.web.js` and the scoped CSS bundle (the development static-asset handler looks for files that are not on disk), which leaves pages unstyled and non-interactive. This also happens on the original commit. Run the published build instead, as the installer does:
+> ```bash
+> dotnet publish src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj -c Release -o dist-web
+> dotnet dist-web/Net11Showcase.Web.dll --urls http://127.0.0.1:5290
+> ```
+
+### Browser E2E (Agent Ops)
+```bash
+npm install
+npm run build:agentops-css          # only needed after changing Agent Ops markup
+python tests/e2e/agent_ops_e2e.py http://127.0.0.1:5290
+```
+Drives the real page (approve with edited arguments, reject, takeover and state edit, audit export, RTL), runs an axe-core WCAG 2.x A/AA audit, fails on any console error, and writes screenshots to `docs/images/`.
 
 ---
 

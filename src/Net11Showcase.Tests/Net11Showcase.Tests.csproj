@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="11.0.0-rc.3.26522.148" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="11.0.0-rc.3.26522.148" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="xunit" Version="2.9.3" />
@@ -22,6 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Net11Showcase.Shared\Net11Showcase.Shared.csproj" />
     <ProjectReference Include="..\Net11Showcase.Data\Net11Showcase.Data.csproj" />
+    <ProjectReference Include="..\Net11Showcase.Api\Net11Showcase.Api.csproj" />
+    <ProjectReference Include="..\Net11Showcase.Components\Net11Showcase.Components.csproj" />
   </ItemGroup>
 
 </Project>
