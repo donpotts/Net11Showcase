@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The **Net11 Showcase Suite** includes benchmark measurements evaluating runtime performance across major .NET LTS and preview releases: **.NET 8**, **.NET 9**, **.NET 10**, and **.NET 11 (Tiered PGO & Native AOT)**.
+The **Net11 Showcase Suite** includes benchmark measurements evaluating runtime performance across major .NET LTS and STS releases: **.NET 8**, **.NET 9**, **.NET 10**, and **.NET 11 (Tiered PGO & Native AOT)**.
 
 ---
 
