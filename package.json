@@ -1,9 +1,11 @@
 {
   "name": "net11-showcase",
   "private": true,
-  "description": "Tooling for the Agent Ops module's Tailwind stylesheet and browser tests",
+  "description": "Tooling for the Net11 Showcase Tailwind stylesheet and browser tests",
   "scripts": {
-    "build:agentops-css": "tailwindcss -c tailwind.agentops.config.js -i src/Net11Showcase.Web/Net11Showcase.Web/Styles/agent-ops.input.css -o src/Net11Showcase.Web/Net11Showcase.Web/wwwroot/css/agent-ops.css --minify"
+    "build:css": "tailwindcss -c tailwind.config.js -i src/Net11Showcase.Web/Net11Showcase.Web/Styles/app.input.css -o src/Net11Showcase.Web/Net11Showcase.Web/wwwroot/css/tailwind.min.css --minify",
+    "build:agentops-css": "tailwindcss -c tailwind.agentops.config.js -i src/Net11Showcase.Web/Net11Showcase.Web/Styles/agent-ops.input.css -o src/Net11Showcase.Web/Net11Showcase.Web/wwwroot/css/agent-ops.css --minify",
+    "build:all-css": "npm run build:css && npm run build:agentops-css"
   },
   "devDependencies": {
     "axe-core": "^4.10.0",
