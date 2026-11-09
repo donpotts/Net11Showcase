@@ -31,12 +31,12 @@ Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×21
 ### Video Chapter Breakdown
 | # | Time | Speaker | Scene & Topic | Core Technology Demonstrated |
 |---|---|---|---|---|
-| **1** | `00:00 - 00:26` | Ava | Architecture & Unified Stack | .NET 11 unified runtime, Blazor Web App auto rendering, 8.2ms boot time |
+| **1** | `00:00 - 00:26` | Ava | Orbital Rocket & Architecture | Triple Native AOT rocket thrusters, .NET 11 Swag Deck, 415k RPS thrust |
 | **2** | `00:26 - 00:53` | Andrew | Fintech & Cryptography Cockpit | EF Core 11 JSON columns, NACHA ACH wire generator, NIST FIPS 203 ML-KEM-768 vault |
 | **3** | `00:53 - 01:21` | Ava | Hardware Lab & Kinetic Sensors | 3-axis simulated Gyroscope & Accelerometer tilt physics, GPS proximity radar |
 | **4** | `01:21 - 01:44` | Andrew | RAG Semantic Radar & AI Studio | Signed feature hashing embedder, in-memory cosine vector ranking, streaming tokens |
 | **5** | `01:44 - 02:07` | Ava | Agent Ops & Human-in-the-Loop | Approval gates, state takeover, auditable JSON event stream |
-| **6** | `02:07 - 02:31` | Andrew | BlazorTwUI Component Suite | 268 pure Tailwind CSS components, zero CDN dependencies, TwMerge styling engine |
+| **6** | `02:07 - 02:31` | Andrew | Contract Signer & BlazorTwUI | Digital signature canvas, SHA-256 seal verification, stream flattening |
 | **7** | `02:31 - 02:52` | Ava | Conclusion & .NET 11 GA Era | Production-ready reference architecture summary |
 
 ---
@@ -71,41 +71,47 @@ src/
 
 ## 🚀 Interactive Showcase Applications & Modules
 
-### 1. 💳 Fintech & Cryptography Cockpit (`/fintech-cockpit`)
+### 1. 📜 Enterprise Contract Signer & PDF Sealing Studio (`/contract-signer`)
+An enterprise digital agreements workstation featuring:
+- **Interactive Signature Canvas**: Real-time stylus and mouse drawing capture with high-precision stroke smoothing.
+- **SHA-256 Cryptographic Seal**: Dynamic mathematical hashing (`e3b0c442...`) guaranteeing document tamper-evidence.
+- **Tamper-Evident Stream Flattening**: Read-only document state locking with embedded metadata verification certificates.
+
+### 2. 💳 Fintech & Cryptography Cockpit (`/fintech-cockpit`)
 An enterprise-grade financial workstation running directly in Blazor WebAssembly:
 - **EF Core 11 JSON Column Queries**: Real-time filtering and projection over complex nested JSON payload columns.
 - **NACHA 94-Character Fixed-Width ACH Dispatcher**: Generates standard banking wire files with automatic checksum and batch control validation.
 - **Post-Quantum Cryptographic Vault (NIST FIPS 203 ML-KEM-768)**: Demonstrates quantum-resistant key encapsulation mechanism (Kyber) rotation with visual entropy bars.
 
-### 2. 🛰️ Hardware & Kinetic Sensor Lab (`/hardware-lab`)
+### 3. 🛰️ Hardware & Kinetic Sensor Lab (`/hardware-lab`)
 Interactive hardware diagnostics and kinetic sensor emulation:
 - **3-Axis Kinetic Tilt Physics**: Real-time simulated Accelerometer and Gyroscope sensor stream driving a 3D kinetic box transformation.
 - **Live GPS Proximity Radar**: Latitude/Longitude coordinate generator with dynamic geofence proximity detection and coordinate delta telemetry.
 - **Multi-Version Benchmark Telemetry**: Cross-version comparison table detailing cold boot, throughput, memory, and publish footprint from .NET 8 through .NET 11 GA.
 
-### 3. 🎯 RAG Semantic Radar & AI Vector Retrieval (`/rag-radar`)
+### 4. 🎯 RAG Semantic Radar & AI Vector Retrieval (`/rag-radar`)
 A zero-dependency semantic vector search lab:
 - **Deterministic Feature Hashing Embedder**: Signed feature hashing (`HashingEmbedder`) that projects natural language text into high-dimensional vector spaces without external models.
 - **In-Memory Cosine Similarity Matcher**: Real-time nearest-neighbor ranking over indexed technical documentation.
 - **Live Token Streaming Studio**: Interactive token streaming simulator with response latency, token count, and citation grounding metrics.
 
-### 4. ⚡ Blazor .NET 11 GA Core Showcase (`/`)
+### 5. ⚡ Blazor .NET 11 GA Core Showcase (`/`)
 - **Rendering Modes Matrix**: Interactive switching between **Static SSR**, **Interactive Server (SignalR)**, **Interactive WASM**, **Auto Mode (SSR -> WASM)**, and **Streaming Rendering**.
 - **Enhanced QuickGrid**: Instant client-side search filtering, multi-column sorting, and interactive row click inspection.
 - **Forms & Validation**: Async validation simulation and dynamic schema binding.
 
-### 5. 📱 MAUI Blazor Hybrid Lab (`/maui`)
+### 6. 📱 MAUI Blazor Hybrid Lab (`/maui`)
 - **CoreCLR Diagnostics**: Startup time (84.2 ms), working set memory (38.6 MB), and Tiered PGO active telemetry.
 - **Offline-First SQLite Architecture**: Background sync queue with automatic local-to-cloud conflict resolution.
 
-### 6. ⚙️ Backend Minimal APIs & SignalR (`/scalar/v1`)
+### 7. ⚙️ Backend Minimal APIs & SignalR (`/scalar/v1`)
 - **Minimal API Route Groups**: CRUD endpoints with endpoint filters and OpenAPI 3.1 documentation.
 - **Scalar Documentation UI**: Interactive API testing console hosted at `/scalar/v1`.
 - **Response Streaming**: Demonstrates .NET 11 `IAsyncEnumerable` server-sent telemetry streaming at 28,000+ RPS.
 - **Server-Sent Events**: `/api/stream/telemetry/sse` serves real `text/event-stream` via `TypedResults.ServerSentEvents`.
 - **Real Health Checks**: `/health` probes database connectivity and returns `.NET 11.0.0 (GA)`.
 
-### 7. 🛡️ Agent Ops: Approvals, Takeover & Audit (`/agent-ops`)
+### 8. 🛡️ Agent Ops: Approvals, Takeover & Audit (`/agent-ops`)
 Open **/agent-ops** for a human-in-the-loop agent workspace:
 - **Approval gates block**: High-risk tool calls are paused until approved or rejected with reasons.
 - **Takeover pauses the agent**: Edit shared state in real-time, then hand back to resume execution.
