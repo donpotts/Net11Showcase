@@ -9,30 +9,30 @@
 
 <div class="space-y-6 max-w-7xl mx-auto pb-12">
     <!-- Header Banner -->
-    <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 text-white shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div class="p-6 rounded-3xl bg-white border border-slate-200 text-slate-900 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div class="flex items-center gap-4">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 flex items-center justify-center text-2xl shadow-lg shrink-0">
                 📜
             </div>
             <div>
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
                         ⚡ .NET 11 REAL SAMPLE APP
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                         🔐 SHA-256 CRYPTOGRAPHIC SEAL
                     </span>
                     @if (_isSealed)
                     {
-                        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse">
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">
                             🛡️ FLATTENED &amp; SEALED
                         </span>
                     }
                 </div>
-                <h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight mt-1">
+                <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-1">
                     Enterprise SLA Contract Signer &amp; PDF Sealing Studio
                 </h1>
-                <p class="text-xs sm:text-sm text-slate-400">
+                <p class="text-xs sm:text-sm text-slate-600">
                     Demonstrating BlazorTwUI signature capture, cryptographic SHA-256 document hashing, and tamper-evident stream flattening.
                 </p>
             </div>
@@ -40,7 +40,7 @@
 
         <div class="flex items-center gap-3">
             <button type="button" @onclick="ResetDocument"
-                    class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition border border-slate-700">
+                    class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold transition border border-slate-300 shadow-xs">
                 🔄 Reset Form
             </button>
             <button type="button" @onclick="SealDocument" disabled="@(!CanSeal)"
@@ -56,38 +56,38 @@
         <!-- Left: Contract Document Workstation (7 cols) -->
         <div class="lg:col-span-7 space-y-6">
             <!-- Document Meta Details Card -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl space-y-5">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-5">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200">
                     <div class="flex items-center gap-2">
                         <span class="text-indigo-400 font-bold text-sm">SECTION 1:</span>
-                        <h2 class="text-base font-bold text-white">Party Identification &amp; Master Terms</h2>
+                        <h2 class="text-base font-bold text-slate-900">Party Identification &amp; Master Terms</h2>
                     </div>
                     <span class="text-xs font-mono text-slate-500">REF: MSA-2026-NET11</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1.5">Signatory Legal Name</label>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Signatory Legal Name</label>
                         <input type="text" @bind="_signerName" disabled="@_isSealed"
                                placeholder="e.g. Sarah Connor"
-                               class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
+                               class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1.5">Corporation / Organization</label>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Corporation / Organization</label>
                         <input type="text" @bind="_companyName" disabled="@_isSealed"
                                placeholder="e.g. Cyberdyne Systems Corp"
-                               class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
+                               class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1.5">Corporate Email Address</label>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Corporate Email Address</label>
                         <input type="email" @bind="_signerEmail" disabled="@_isSealed"
                                placeholder="sconnor@cyberdyne.io"
-                               class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
+                               class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1.5">Infrastructure SLA Tier</label>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Infrastructure SLA Tier</label>
                         <select @bind="_slaTier" disabled="@_isSealed"
-                                class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs font-bold focus:border-indigo-500 focus:outline-none transition disabled:opacity-60">
+                                class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-bold focus:border-indigo-500 focus:outline-none transition disabled:opacity-60">
                             <option value="Mission Critical (99.999% SLA)">Mission Critical (99.999% SLA) - 415k RPS</option>
                             <option value="Enterprise High-Availability (99.99% SLA)">Enterprise High-Availability (99.99% SLA)</option>
                             <option value="Standard Production (99.9% SLA)">Standard Production (99.9% SLA)</option>
@@ -96,43 +96,43 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-300 mb-1.5">Authorized Annual Cloud Budget Cap</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Authorized Annual Cloud Budget Cap</label>
                     <div class="relative">
                         <span class="absolute left-3.5 top-2.5 text-xs text-slate-500 font-bold">$</span>
                         <input type="number" @bind="_budgetCap" disabled="@_isSealed"
-                               class="w-full pl-8 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs font-mono font-bold focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
+                               class="w-full pl-8 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-mono font-bold focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
                     </div>
                 </div>
             </div>
 
             <!-- Agreement Terms & Acceptance Checklist -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl space-y-4">
-                <div class="flex items-center gap-2 pb-3 border-b border-slate-800">
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center gap-2 pb-3 border-b border-slate-200">
                     <span class="text-indigo-400 font-bold text-sm">SECTION 2:</span>
-                    <h2 class="text-base font-bold text-white">Legal Obligations &amp; Technical Compliance</h2>
+                    <h2 class="text-base font-bold text-slate-900">Legal Obligations &amp; Technical Compliance</h2>
                 </div>
 
                 <div class="space-y-3 text-xs">
-                    <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
+                    <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
                         <input type="checkbox" @bind="_acceptAotTerms" disabled="@_isSealed"
-                               class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-700 bg-slate-900" />
-                        <span class="text-slate-300 leading-relaxed">
+                               class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 bg-white" />
+                        <span class="text-slate-700 leading-relaxed font-normal">
                             <strong>1. Zero Cold-Boot Warmup:</strong> Subscriber acknowledges that services operate under .NET 11 Native AOT compilation with deterministic sub-10ms startup boundaries.
                         </span>
                     </label>
 
-                    <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
+                    <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
                         <input type="checkbox" @bind="_acceptCryptoTerms" disabled="@_isSealed"
-                               class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-700 bg-slate-900" />
-                        <span class="text-slate-300 leading-relaxed">
+                               class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 bg-white" />
+                        <span class="text-slate-700 leading-relaxed font-normal">
                             <strong>2. Post-Quantum Lattice Protocol:</strong> All API tokens and transmission payloads shall adhere to NIST FIPS 203 ML-KEM-768 lattice cryptography.
                         </span>
                     </label>
 
-                    <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
+                    <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
                         <input type="checkbox" @bind="_acceptTamperProof" disabled="@_isSealed"
-                               class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-700 bg-slate-900" />
-                        <span class="text-slate-300 leading-relaxed">
+                               class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 bg-white" />
+                        <span class="text-slate-700 leading-relaxed font-normal">
                             <strong>3. Tamper-Evident SHA-256 Flattening:</strong> Once sealed, this contract's byte hash is registered immutably in the local audit register.
                         </span>
                     </label>
@@ -140,11 +140,11 @@
             </div>
 
             <!-- Interactive Digital Signature Canvas -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl space-y-4">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200">
                     <div class="flex items-center gap-2">
                         <span class="text-indigo-400 font-bold text-sm">SECTION 3:</span>
-                        <h2 class="text-base font-bold text-white">Authorized Digital Signature</h2>
+                        <h2 class="text-base font-bold text-slate-900">Authorized Digital Signature</h2>
                     </div>
                     @if (!string.IsNullOrEmpty(_signatureData))
                     {
@@ -162,25 +162,25 @@
                     <!-- Quick Preset Signatures -->
                     <div class="flex flex-wrap items-center gap-2">
                         <button type="button" @onclick='() => ApplyPresetSignature("Executive Formal Signature")' disabled="@_isSealed"
-                                class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition border border-slate-700">
+                                class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-800 transition border border-slate-300">
                             ✍️ Formal Executive
                         </button>
                         <button type="button" @onclick='() => ApplyPresetSignature("Legal Counsel Signature")' disabled="@_isSealed"
-                                class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition border border-slate-700">
+                                class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-800 transition border border-slate-300">
                             🖋️ General Counsel
                         </button>
                         <button type="button" @onclick='() => ApplyPresetSignature("Chief Architect Seal")' disabled="@_isSealed"
-                                class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition border border-slate-700">
+                                class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-800 transition border border-slate-300">
                             ⚡ Chief Architect
                         </button>
                         <button type="button" @onclick="ClearSignature" disabled="@_isSealed"
-                                class="px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-xs font-semibold text-rose-300 transition border border-rose-500/30">
+                                class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-700 transition border border-rose-200">
                             ✕ Clear Signature
                         </button>
                     </div>
 
                     <!-- Signature Visual Box -->
-                    <div class="relative h-44 rounded-2xl bg-slate-950 border-2 border-dashed @(_isSealed ? "border-emerald-500/40" : "border-indigo-500/40") p-4 flex flex-col justify-between overflow-hidden">
+                    <div class="relative h-44 rounded-2xl bg-slate-50 border-2 border-dashed @(_isSealed ? "border-emerald-500/40" : "border-indigo-500/40") p-4 flex flex-col justify-between overflow-hidden">
                         <div class="flex items-center justify-between text-[11px] text-slate-500 font-mono">
                             <span>SIGNATURE CAPTURE PLANE</span>
                             <span>X: @(_hasDrawn ? "CAPTURE ACTIVE" : "AWAITING STROKE")</span>
@@ -191,7 +191,7 @@
                             @if (!string.IsNullOrEmpty(_signatureData))
                             {
                                 <div class="text-center space-y-1">
-                                    <div class="font-serif italic text-3xl sm:text-4xl text-indigo-300 tracking-wider">
+                                    <div class="font-serif italic text-3xl sm:text-4xl text-indigo-700 font-bold tracking-wider">
                                         @_signatureData
                                     </div>
                                     <div class="text-[10px] font-mono text-emerald-400">
@@ -201,14 +201,14 @@
                             }
                             else
                             {
-                                <div class="text-slate-600 text-xs flex flex-col items-center gap-1">
+                                <div class="text-slate-500 text-xs flex flex-col items-center gap-1 font-medium">
                                     <span class="text-2xl">✍️</span>
                                     <span>Click a preset signature stamp above to generate biometric stroke path</span>
                                 </div>
                             }
                         </div>
 
-                        <div class="border-t border-slate-800 pt-1 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                        <div class="border-t border-slate-200 pt-1 flex items-center justify-between text-[10px] text-slate-500 font-mono">
                             <span>SIGNATORY: @(_signerName.Length > 0 ? _signerName : "UNSPECIFIED")</span>
                             <span>DATE: @DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss") UTC</span>
                         </div>
@@ -220,11 +220,11 @@
         <!-- Right: Cryptographic Seal & Verification Pane (5 cols) -->
         <div class="lg:col-span-5 space-y-6">
             <!-- Cryptographic Verification Card -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl space-y-5">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-5">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200">
                     <div class="flex items-center gap-2">
                         <span class="text-xl">🔐</span>
-                        <h3 class="text-base font-bold text-white">SHA-256 Integrity Certificate</h3>
+                        <h3 class="text-base font-bold text-slate-900">SHA-256 Integrity Certificate</h3>
                     </div>
                     <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-purple-500/20 text-purple-300">
                         NIST CERTIFIED
@@ -232,9 +232,9 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs space-y-2">
-                        <div class="text-slate-400 text-[11px]">IMMUTABLE PAYLOAD DIGEST:</div>
-                        <div class="text-emerald-400 text-[11px] font-bold break-all leading-relaxed p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 font-mono text-xs space-y-2">
+                        <div class="text-slate-600 text-[11px] font-bold">IMMUTABLE PAYLOAD DIGEST:</div>
+                        <div class="text-emerald-800 text-[11px] font-mono font-bold break-all leading-relaxed p-2.5 rounded-xl bg-emerald-50 border border-emerald-200">
                             @_sha256Digest
                         </div>
                         <div class="flex items-center justify-between text-[10px] text-slate-500 pt-1">
@@ -246,31 +246,31 @@
                     <!-- Seal Status Timeline -->
                     <div class="space-y-2.5">
                         <div class="flex items-center gap-3 text-xs">
-                            <span class="w-2.5 h-2.5 rounded-full @(_signerName.Length > 0 ? "bg-emerald-400" : "bg-slate-700")"></span>
-                            <span class="@(_signerName.Length > 0 ? "text-slate-200" : "text-slate-500")">Signatory Identity Provided</span>
+                            <span class="w-2.5 h-2.5 rounded-full @(_signerName.Length > 0 ? "bg-emerald-600" : "bg-slate-300")"></span>
+                            <span class="@(_signerName.Length > 0 ? "text-slate-800 font-medium" : "text-slate-500")">Signatory Identity Provided</span>
                         </div>
                         <div class="flex items-center gap-3 text-xs">
-                            <span class="w-2.5 h-2.5 rounded-full @(AllTermsAccepted ? "bg-emerald-400" : "bg-slate-700")"></span>
-                            <span class="@(AllTermsAccepted ? "text-slate-200" : "text-slate-500")">3/3 Mandatory Legal Clauses Accepted</span>
+                            <span class="w-2.5 h-2.5 rounded-full @(AllTermsAccepted ? "bg-emerald-600" : "bg-slate-300")"></span>
+                            <span class="@(AllTermsAccepted ? "text-slate-800 font-medium" : "text-slate-500")">3/3 Mandatory Legal Clauses Accepted</span>
                         </div>
                         <div class="flex items-center gap-3 text-xs">
-                            <span class="w-2.5 h-2.5 rounded-full @(!string.IsNullOrEmpty(_signatureData) ? "bg-emerald-400" : "bg-slate-700")"></span>
-                            <span class="@(!string.IsNullOrEmpty(_signatureData) ? "text-slate-200" : "text-slate-500")">Digital Signature Stroke Captured</span>
+                            <span class="w-2.5 h-2.5 rounded-full @(!string.IsNullOrEmpty(_signatureData) ? "bg-emerald-600" : "bg-slate-300")"></span>
+                            <span class="@(!string.IsNullOrEmpty(_signatureData) ? "text-slate-800 font-medium" : "text-slate-500")">Digital Signature Stroke Captured</span>
                         </div>
                         <div class="flex items-center gap-3 text-xs">
-                            <span class="w-2.5 h-2.5 rounded-full @(_isSealed ? "bg-emerald-400 shadow-sm shadow-emerald-400/50" : "bg-slate-700")"></span>
-                            <span class="@(_isSealed ? "text-emerald-400 font-bold" : "text-slate-500")">Cryptographic Seal Finalized &amp; Flattened</span>
+                            <span class="w-2.5 h-2.5 rounded-full @(_isSealed ? "bg-emerald-600 shadow-sm shadow-emerald-400/50" : "bg-slate-300")"></span>
+                            <span class="@(_isSealed ? "text-emerald-700 font-bold" : "text-slate-500")">Cryptographic Seal Finalized &amp; Flattened</span>
                         </div>
                     </div>
 
                     @if (_isSealed)
                     {
-                        <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs space-y-2">
+                        <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs space-y-2">
                             <div class="flex items-center gap-2 font-bold text-sm">
                                 <span>✓</span>
                                 <span>Document Flattened &amp; Sealed</span>
                             </div>
-                            <p class="text-[11px] text-emerald-400/80 leading-relaxed">
+                            <p class="text-[11px] text-emerald-800 leading-relaxed">
                                 Form fields have been merged into an unalterable static stream. All edit boundaries locked.
                             </p>
                             <div class="pt-2 flex flex-wrap gap-2">
@@ -279,7 +279,7 @@
                                     📋 Copy Sealed Audit JSON
                                 </button>
                                 <button type="button" @onclick="SimulatePdfDownload"
-                                        class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition border border-slate-700">
+                                        class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-300 text-slate-200 font-bold text-xs transition border border-slate-700">
                                     📥 Download Flattened PDF
                                 </button>
                             </div>
@@ -289,8 +289,8 @@
             </div>
 
             <!-- Sealed Metadata Inspector -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl space-y-3 font-mono text-xs">
-                <div class="text-slate-400 text-xs font-bold font-sans">LIVE CONTRACT AUDIT TELEMETRY</div>
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-3 font-mono text-xs">
+                <div class="text-slate-600 text-xs font-bold font-sans">LIVE CONTRACT AUDIT TELEMETRY</div>
                 <div class="space-y-1.5 text-[11px]">
                     <div class="flex justify-between text-slate-400">
                         <span>RUNTIME:</span>
@@ -298,15 +298,15 @@
                     </div>
                     <div class="flex justify-between text-slate-400">
                         <span>COMPONENT:</span>
-                        <span class="text-slate-200">BlazorTwUI TwPdfFormFiller</span>
+                        <span class="text-slate-800 font-medium">BlazorTwUI TwPdfFormFiller</span>
                     </div>
                     <div class="flex justify-between text-slate-400">
                         <span>BYTES CONSUMED:</span>
-                        <span class="text-slate-200">@(_payloadBytes) bytes</span>
+                        <span class="text-slate-800 font-medium">@(_payloadBytes) bytes</span>
                     </div>
                     <div class="flex justify-between text-slate-400">
                         <span>SEAL STATUS:</span>
-                        <span class="@(_isSealed ? "text-emerald-400 font-bold" : "text-amber-400 font-bold")">
+                        <span class="@(_isSealed ? "text-emerald-700 font-bold" : "text-amber-400 font-bold")">
                             @(_isSealed ? "LOCKED & FLATTENED" : "DRAFT (MUTABLE)")
                         </span>
                     </div>

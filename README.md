@@ -14,7 +14,7 @@ A comprehensive showcase platform and enterprise reference architecture demonstr
 
 ## 🎬 4K Ultra-HD Video Tour & E2E Masterclass
 
-Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×2160)** featuring dual-voice neural narration (**Ava** - Lead Architecture & **Andrew** - Systems Lead) and on-screen telemetry overlays.
+Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×2160)** featuring dual-voice neural narration (**Ava** - Lead Architecture & **Andrew** - Systems Lead) showcasing the official .NET 11 orbital launch vehicle, real working sample applications, and Native AOT performance.
 
 <p align="center">
   <a href="docs/videos/net11-showcase-4k-masterclass.mp4">
@@ -23,9 +23,8 @@ Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×21
 </p>
 
 <p align="center">
-  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Watch Full 4K Video in GitHub Video Player</b></a> •
-  <a href="https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4"><b>📥 Direct MP4 Download (5.6 MB)</b></a> •
-  <a href="docs/videos/hyperframes_net11_showcase_4k.html"><b>⚡ Interactive Hyperframes Chapter Player (HTML)</b></a>
+  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Watch Full 4K Masterclass Video (MP4)</b></a> •
+  <a href="docs/videos/net11-showcase-4k-poster.png"><b>🖼️ High-Res 4K Frame Poster</b></a>
 </p>
 
 ### Video Chapter Breakdown

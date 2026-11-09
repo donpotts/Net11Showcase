@@ -11,24 +11,24 @@
 
 <div class="space-y-6">
     <!-- Header Banner -->
-    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950/60 to-slate-900 border border-slate-800 text-white shadow-xl">
+    <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 text-slate-900 shadow-sm">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div class="space-y-2 max-w-2xl">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
                         ⚡ .NET 11 GA FINTECH SUITE
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                         🛡️ PQC QUANTUM-SAFE SEALED
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200">
                         🗄️ EF CORE 11 JSON QUERIES
                     </span>
                 </div>
-                <h1 class="text-2xl sm:text-4xl font-black tracking-tight">
+                <h1 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-900">
                     Fintech &amp; PQC Payments Cockpit
                 </h1>
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     Full-featured enterprise treasury, ACH transaction streaming, and post-quantum cryptographic vault. Powered by pure utility Tailwind styling and zero-dependency native SVG charts.
                 </p>
             </div>
@@ -40,7 +40,7 @@
                     <span>⚡ Dispatch ACH Wire</span>
                 </button>
                 <button type="button" @onclick="RotateVaultKeys"
-                        class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition flex items-center gap-1.5">
+                        class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold border border-slate-300 transition flex items-center gap-1.5 shadow-xs">
                     <span>🔑 Rotate Kyber Keys</span>
                 </button>
             </div>
@@ -49,7 +49,7 @@
 
     <!-- 4 High-Impact KPI Stat Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
             <div class="flex items-center justify-between text-xs text-slate-400">
                 <span class="font-bold">Total Settled Volume</span>
                 <span class="text-emerald-400 font-mono font-bold">+24.5%</span>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
             <div class="flex items-center justify-between text-xs text-slate-400">
                 <span class="font-bold">PQC Vault Status</span>
                 <span class="text-emerald-400 font-mono font-bold">100% SECURE</span>
@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
             <div class="flex items-center justify-between text-xs text-slate-400">
                 <span class="font-bold">EF Core 11 JSON Latency</span>
                 <span class="text-indigo-400 font-mono font-bold">&lt; 1 ms</span>
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
             <div class="flex items-center justify-between text-xs text-slate-400">
                 <span class="font-bold">Batches in Flight</span>
                 <span class="text-amber-400 font-mono font-bold">@_batchesInFlight Active</span>
@@ -109,10 +109,10 @@
     <!-- Main Grid: Live Transactions & Vault Diagnostics -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Transactions Ledger -->
-        <div class="lg:col-span-2 p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+        <div class="lg:col-span-2 p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
                 <div>
-                    <h3 class="text-base font-bold text-white">Enterprise Settlement Ledger</h3>
+                    <h3 class="text-base font-bold text-slate-900">Enterprise Settlement Ledger</h3>
                     <p class="text-xs text-slate-400">Real-time EF Core 11 JSON document queries over corporate accounts</p>
                 </div>
                 <div class="flex items-center gap-2">
@@ -124,7 +124,7 @@
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs">
                     <thead>
-                        <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px] font-bold">
+                        <tr class="border-b border-slate-200 text-slate-400 uppercase text-[10px] font-bold">
                             <th class="py-2.5 px-3">Batch / Ref</th>
                             <th class="py-2.5 px-3">Corporate Customer</th>
                             <th class="py-2.5 px-3">Profile Region</th>
@@ -143,7 +143,7 @@
                                 <td class="py-3 px-3 text-white font-bold">$@tx.Amount.ToString("N2")</td>
                                 <td class="py-3 px-3 text-emerald-400 text-[11px]">@tx.CipherMode</td>
                                 <td class="py-3 px-3">
-                                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold @(tx.Status == "SETTLED" ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" : "bg-amber-500/20 text-amber-300 border border-amber-500/30")">
+                                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold @(tx.Status == "SETTLED" ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "bg-amber-50 text-amber-700 border border-amber-200")">
                                         @tx.Status
                                     </span>
                                 </td>
@@ -156,18 +156,18 @@
 
         <!-- PQC Cryptographic Vault Inspector -->
         <div class="space-y-4">
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
+            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Post-Quantum Vault Security</h4>
                 <div class="space-y-2 text-xs font-mono">
                     <div>
                         <span class="text-slate-500 block text-[10px] uppercase font-bold">Kyber-768 Public Key (Hex)</span>
-                        <div class="p-2.5 rounded-xl bg-slate-950 text-indigo-400 border border-slate-800 truncate text-[11px]">
+                        <div class="p-2.5 rounded-xl bg-indigo-50 text-indigo-800 border border-slate-200 truncate text-[11px]">
                             @_pqcPubKey
                         </div>
                     </div>
                     <div>
                         <span class="text-slate-500 block text-[10px] uppercase font-bold">Lattice Shared Secret (Hex)</span>
-                        <div class="p-2.5 rounded-xl bg-slate-950 text-emerald-400 border border-slate-800 truncate text-[11px]">
+                        <div class="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-slate-200 truncate text-[11px]">
                             @_pqcSecret
                         </div>
                     </div>
@@ -178,13 +178,13 @@
             </div>
 
             <!-- NACHA 94-Character Line Inspector -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
+            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">NACHA 94-Character Fixed-Width Record</h4>
                 <p class="text-xs text-slate-400">Simulated standard banking entry record:</p>
-                <div class="p-3 rounded-xl bg-slate-950 text-amber-300 font-mono text-[10px] break-all border border-slate-800">
+                <div class="p-3 rounded-xl bg-amber-50 text-amber-900 font-mono text-[10px] break-all border border-slate-200">
                     @_sampleNachaRecord
                 </div>
-                <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800">
+                <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-200">
                     <span>Length: <strong>94 chars</strong></span>
                     <span class="text-emerald-400 font-bold">✓ CRC-32 Valid</span>
                 </div>

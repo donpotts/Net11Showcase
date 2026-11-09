@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Focus ring removal for navigation headings */
+h1:focus, h2:focus, h3:focus, [tabindex="-1"]:focus {
+    outline: none !important;
+}
+
+/* Guaranteed Responsive Multi-Column Grids */
+.hero-grid-split {
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    gap: 32px;
+    align-items: center;
+}
+
+.sample-apps-5grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 1024px) {
+    .hero-grid-split {
+        grid-template-columns: 1fr;
+    }
+    .sample-apps-5grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .sample-apps-5grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -11,30 +11,30 @@
 
 <div class="space-y-6">
     <!-- Header Banner -->
-    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-amber-950/60 to-slate-900 border border-slate-800 text-white shadow-xl">
+    <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 text-slate-900 shadow-sm">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div class="space-y-2 max-w-2xl">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200">
                         🤖 AI RAG &amp; PROMPT STUDIO
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                         🔍 IN-MEMORY COSINE SIMILARITY
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
                         🌱 ZERO PAID APIS (100% OFFLINE)
                     </span>
                 </div>
-                <h1 class="text-2xl sm:text-4xl font-black tracking-tight">
+                <h1 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-900">
                     AI Semantic RAG &amp; Vector Radar
                 </h1>
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     Interactive semantic retrieval and streaming AI response studio. Embeds queries using deterministic feature hashing and evaluates cosine similarity over high-dimensional vectors with zero external vector DB overhead.
                 </p>
             </div>
 
-            <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-xs font-mono text-center shrink-0">
-                <span class="text-slate-400 block text-[10px]">VECTOR RETRIEVAL</span>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-mono text-center shrink-0">
+                <span class="text-slate-500 block text-[10px] font-bold">VECTOR RETRIEVAL</span>
                 <span class="text-amber-400 font-bold text-lg">1.2 ms</span>
                 <span class="text-slate-500 block text-[9px]">512-dim Cosine Rank</span>
             </div>
@@ -46,9 +46,9 @@
         <!-- Left: Prompt Composer & Chat Response Stream -->
         <div class="lg:col-span-2 space-y-4">
             <!-- Prompt Composer Card -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <h3 class="text-base font-bold text-white">Semantic Architecture Search &amp; Prompt</h3>
+            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                    <h3 class="text-base font-bold text-slate-900">Semantic Architecture Search &amp; Prompt</h3>
                     <span class="text-xs font-mono text-slate-400">Deterministic Hashing</span>
                 </div>
 
@@ -82,11 +82,11 @@
             </div>
 
             <!-- Assistant Output Stream -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div class="flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <h3 class="text-base font-bold text-white">Streaming AI Response</h3>
+                        <h3 class="text-base font-bold text-slate-900">Streaming AI Response</h3>
                     </div>
                     <div class="flex items-center gap-3 text-xs font-mono text-slate-400">
                         <span>Tokens: <strong class="text-white">@_tokenCount</strong></span>
@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans min-h-[140px]">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-600 leading-relaxed font-sans min-h-[140px]">
                     @if (string.IsNullOrWhiteSpace(_assistantReply))
                     {
                         <span class="text-slate-600 italic">Select a suggestion or type an architecture prompt above to trigger real-time semantic retrieval and response synthesis...</span>
@@ -110,7 +110,7 @@
                 <!-- Grounding Reference Citations -->
                 @if (_matchedDocs.Any())
                 {
-                    <div class="space-y-2 pt-2 border-t border-slate-800">
+                    <div class="space-y-2 pt-2 border-t border-slate-200">
                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Grounding Document Vectors</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             @foreach (var doc in _matchedDocs)
@@ -131,9 +131,9 @@
 
         <!-- Right Column: Vector Radar Canvas & Dimensional Insights -->
         <div class="space-y-4">
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
+            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Vector Embeddings Radar</h4>
-                <div class="h-48 w-full rounded-2xl bg-slate-950 p-2 relative overflow-hidden flex items-center justify-center border border-slate-800">
+                <div class="h-48 w-full rounded-2xl bg-slate-50 p-2 relative overflow-hidden flex items-center justify-center border border-slate-200">
                     <svg class="w-full h-full" viewBox="0 0 200 120">
                         <!-- Concentric Radar Rings -->
                         <circle cx="100" cy="60" r="50" fill="none" stroke="#334155" stroke-dasharray="2 2" />
@@ -158,18 +158,18 @@
                 </div>
             </div>
 
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
+            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Embedding Vector Specs</h4>
                 <div class="space-y-2 text-xs font-mono">
-                    <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                         <span class="text-slate-500 block text-[9px] uppercase">Dimensionality</span>
                         <span class="font-bold text-white">512 Elements (Float32)</span>
                     </div>
-                    <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                         <span class="text-slate-500 block text-[9px] uppercase">Cosine Similarity Formula</span>
                         <span class="text-emerald-400 text-[10px]">cos(θ) = (A · B) / (||A|| ||B||)</span>
                     </div>
-                    <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                         <span class="text-slate-500 block text-[9px] uppercase">Index Memory Footprint</span>
                         <span class="font-bold text-white">&lt; 128 KB (In-Memory)</span>
                     </div>

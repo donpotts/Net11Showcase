@@ -14,7 +14,7 @@
     <!-- ========================================================================= -->
     <!-- 🚀 OFFICIAL .NET 11 ORBITAL LAUNCH VEHICLE & CREATIVE SWAG BAY             -->
     <!-- ========================================================================= -->
-    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-purple-950/40 to-slate-950 border border-purple-900/60 p-6 sm:p-8 shadow-2xl space-y-6">
+    <div class="relative overflow-hidden rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
         <style>
             @@keyframes rocketFloat {
                 0%, 100% {
@@ -35,53 +35,53 @@
         </style>
 
         <!-- Top Header & Telemetry HUD -->
-        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 pb-4 border-b border-purple-900/40">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 pb-4 border-b border-slate-200">
             <div class="space-y-1.5">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40 flex items-center gap-1.5">
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-50 text-purple-700 border border-purple-200 flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
                         🚀 OFFICIAL .NET 11 ORBITAL MISSION
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                         🔥 @(_afterburnersActive ? "520,000 RPS THRUST" : "415,000 RPS THRUST")
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-sky-50 text-sky-700 border border-sky-200">
                         ⚡ 8.2ms INSTANT IGNITION
                     </span>
                 </div>
-                <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight outline-none focus:outline-none">
                     .NET 11 Showcase Platform &amp; Official Swag Bay
                 </h1>
-                <p class="text-xs sm:text-sm text-slate-300 max-w-2xl">
+                <p class="text-xs sm:text-sm text-slate-600 max-w-2xl font-medium">
                     Featuring the official .NET 11 3D orbital launch vehicle, twin .NET Bots, Native AOT vector propulsion, and enterprise sample applications.
                 </p>
             </div>
 
             <!-- Telemetry HUD -->
             <div class="flex flex-wrap items-center gap-2.5 font-mono shrink-0">
-                <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-center min-w-[90px]">
-                    <span class="text-slate-400 block text-[10px]">AOT BOOT</span>
-                    <span class="text-emerald-400 font-bold text-base sm:text-lg">8.2 ms</span>
+                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-center min-w-[95px] shadow-xs">
+                    <span class="text-slate-500 block text-[10px] font-bold">AOT BOOT</span>
+                    <span class="text-emerald-700 font-black text-base sm:text-lg">8.2 ms</span>
                 </div>
-                <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-center min-w-[90px]">
-                    <span class="text-slate-400 block text-[10px]">THROUGHPUT</span>
-                    <span class="text-indigo-400 font-bold text-base sm:text-lg">@(_afterburnersActive ? "520 kRPS" : "415 kRPS")</span>
+                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-center min-w-[95px] shadow-xs">
+                    <span class="text-slate-500 block text-[10px] font-bold">THROUGHPUT</span>
+                    <span class="text-indigo-700 font-black text-base sm:text-lg">@(_afterburnersActive ? "520 kRPS" : "415 kRPS")</span>
                 </div>
-                <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-center min-w-[90px]">
-                    <span class="text-slate-400 block text-[10px]">VELOCITY</span>
-                    <span class="text-cyan-400 font-bold text-base sm:text-lg">@(_afterburnersActive ? "MACH 15.4" : "MACH 11.0")</span>
+                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-center min-w-[95px] shadow-xs">
+                    <span class="text-slate-500 block text-[10px] font-bold">VELOCITY</span>
+                    <span class="text-sky-700 font-black text-base sm:text-lg">@(_afterburnersActive ? "MACH 15.4" : "MACH 11.0")</span>
                 </div>
             </div>
         </div>
 
         <!-- Center Content: Official 3D Rocket (Left) + Official Swag Deck (Right) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="hero-grid-split">
             
             <!-- Left: Official 3D Rocket Image with Dynamic Glow & Hover Physics -->
-            <div class="lg:col-span-5 flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-900/60 border border-purple-900/35 relative">
-                <div class="w-full flex items-center justify-between font-mono text-[11px] text-purple-300 mb-2 px-1">
+            <div class="flex flex-col items-center justify-center p-5 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 relative shadow-xs">
+                <div class="w-full flex items-center justify-between font-mono text-[11px] text-purple-700 font-bold mb-2 px-1">
                     <span>OFFICIAL MISSION ASSET</span>
-                    <span class="text-emerald-400">STATUS: FLIGHT READY</span>
+                    <span class="text-emerald-700 font-bold">STATUS: FLIGHT READY</span>
                 </div>
 
                 <div class="w-full h-[330px] flex items-center justify-center overflow-hidden">
@@ -91,12 +91,12 @@
                 <!-- Flight Controls -->
                 <div class="flex gap-2.5 mt-2 w-full">
                     <button type="button" @onclick="ToggleThrusters"
-                            class="flex-1 py-2 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-md @(_thrustersNominal ? "bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30" : "bg-slate-800 text-slate-300 border border-slate-700")">
+                            class="flex-1 py-2 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-md @(_thrustersNominal ? "bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30" : "bg-white text-slate-700 border border-slate-300 hover:bg-slate-50")">
                         <span>🔥</span>
                         <span>@(_thrustersNominal ? "Main Thrusters: ONLINE" : "Main Thrusters: IDLE")</span>
                     </button>
                     <button type="button" @onclick="ToggleAfterburners"
-                            class="flex-1 py-2 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-md @(_afterburnersActive ? "bg-amber-600 hover:bg-amber-500 text-white shadow-amber-600/30 animate-pulse" : "bg-slate-800 text-slate-300 border border-slate-700")">
+                            class="flex-1 py-2 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-md @(_afterburnersActive ? "bg-amber-600 hover:bg-amber-500 text-white shadow-amber-600/30 animate-pulse" : "bg-white text-slate-700 border border-slate-300 hover:bg-slate-50")">
                         <span>⚡</span>
                         <span>@(_afterburnersActive ? "Mach 15.4 Boost ON" : "Engage Afterburners")</span>
                     </button>
@@ -104,88 +104,88 @@
             </div>
 
             <!-- Right: Official .NET Conf 2026 Swag Deck -->
-            <div class="lg:col-span-7 space-y-2.5">
+            <div class="space-y-2.5">
                 <div class="flex items-center justify-between pb-1">
-                    <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">Official Mission Equipment Deck</span>
-                    <span class="text-xs font-mono text-purple-400">@(_equippedSwags.Count) / 4 ITEMS EQUIPPED</span>
+                    <span class="text-xs font-mono font-bold text-slate-600 uppercase tracking-wider">Official Mission Equipment Deck</span>
+                    <span class="text-xs font-mono text-purple-700 font-bold">@(_equippedSwags.Count) / 4 ITEMS EQUIPPED</span>
                 </div>
 
                 <!-- Swag Item 1: Official 4K Wallpapers -->
-                <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
+                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-purple-300 transition flex items-center justify-between gap-4 shadow-xs">
                     <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-xl bg-purple-950/80 border border-purple-700/60 flex items-center justify-center text-xl shrink-0">
+                        <div class="w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center text-xl shrink-0">
                             🖼️
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <h4 class="text-xs sm:text-sm font-bold text-white">Official .NET Conf 2026 4K Wallpaper Pack</h4>
-                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-500/20 text-purple-300">4K UHD</span>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Official .NET Conf 2026 4K Wallpaper Pack</h4>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-100 text-purple-800">4K UHD</span>
                             </div>
-                            <p class="text-[11px] text-slate-400">3840×2160 Ultra-HD Desktop wallpapers in official Blue &amp; Pink variants.</p>
+                            <p class="text-[11px] text-slate-600">3840×2160 Ultra-HD Desktop wallpapers in official Blue &amp; Pink variants.</p>
                         </div>
                     </div>
                     <button type="button" @onclick='() => ToggleSwagItem("wallpaper")'
-                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("wallpaper") ? "bg-purple-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
+                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("wallpaper") ? "bg-purple-600 text-white" : "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100")">
                         @(_equippedSwags.Contains("wallpaper") ? "✓ EQUIPPED" : "EQUIP")
                     </button>
                 </div>
 
                 <!-- Swag Item 2: Official 3D .NET Bot Crew -->
-                <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
+                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-purple-300 transition flex items-center justify-between gap-4 shadow-xs">
                     <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-xl overflow-hidden bg-purple-950/80 border border-purple-700/60 flex items-center justify-center shrink-0">
+                        <div class="w-11 h-11 rounded-xl overflow-hidden bg-purple-100 border border-purple-200 flex items-center justify-center shrink-0">
                             <img src="images/swag/dotnet-bot-astronaut.png" alt="3D .NET Bot" class="w-8 h-8 object-contain">
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <h4 class="text-xs sm:text-sm font-bold text-white">Official 3D .NET Bot Launch Crew</h4>
-                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300">OFFICIAL 3D</span>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Official 3D .NET Bot Launch Crew</h4>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-100 text-emerald-800">OFFICIAL 3D</span>
                             </div>
-                            <p class="text-[11px] text-slate-400">Twin 3D .NET Bots equipped with pressurized visors piloting the orbital rocket.</p>
+                            <p class="text-[11px] text-slate-600">Twin 3D .NET Bots equipped with pressurized visors piloting the orbital rocket.</p>
                         </div>
                     </div>
                     <button type="button" @onclick='() => ToggleSwagItem("bot")'
-                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("bot") ? "bg-emerald-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
+                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("bot") ? "bg-emerald-600 text-white" : "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100")">
                         @(_equippedSwags.Contains("bot") ? "✓ EQUIPPED" : "EQUIP")
                     </button>
                 </div>
 
                 <!-- Swag Item 3: Native AOT Sub-Orbital Pin -->
-                <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
+                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-purple-300 transition flex items-center justify-between gap-4 shadow-xs">
                     <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-xl bg-purple-950/80 border border-purple-700/60 flex items-center justify-center text-xl shrink-0">
+                        <div class="w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center text-xl shrink-0">
                             🎖️
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <h4 class="text-xs sm:text-sm font-bold text-white">Native AOT 415k RPS Sub-Orbital Pin</h4>
-                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/20 text-cyan-300">AOT GOLD</span>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Native AOT 415k RPS Sub-Orbital Pin</h4>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-sky-100 text-sky-800">AOT GOLD</span>
                             </div>
-                            <p class="text-[11px] text-slate-400">Titanium violet collector's pin commemorating 8.2ms startup ignition.</p>
+                            <p class="text-[11px] text-slate-600">Titanium violet collector's pin commemorating 8.2ms startup ignition.</p>
                         </div>
                     </div>
                     <button type="button" @onclick='() => ToggleSwagItem("pin")'
-                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("pin") ? "bg-cyan-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
+                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("pin") ? "bg-cyan-600 text-white" : "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100")">
                         @(_equippedSwags.Contains("pin") ? "✓ EQUIPPED" : "EQUIP")
                     </button>
                 </div>
 
                 <!-- Swag Item 4: NIST FIPS 203 Quantum Heat Shield -->
-                <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
+                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-purple-300 transition flex items-center justify-between gap-4 shadow-xs">
                     <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-xl bg-purple-950/80 border border-purple-700/60 flex items-center justify-center text-xl shrink-0">
+                        <div class="w-11 h-11 rounded-xl bg-purple-100 border border-purple-200 flex items-center justify-center text-xl shrink-0">
                             🛡️
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <h4 class="text-xs sm:text-sm font-bold text-white">NIST FIPS 203 ML-KEM-768 Quantum Heat Shield</h4>
-                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-500/20 text-amber-300">PQC TILE</span>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-900">NIST FIPS 203 ML-KEM-768 Quantum Heat Shield</h4>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-100 text-amber-800">PQC TILE</span>
                             </div>
-                            <p class="text-[11px] text-slate-400">Post-quantum cryptographic re-entry tile protecting telemetry against Shor attacks.</p>
+                            <p class="text-[11px] text-slate-600">Post-quantum cryptographic re-entry tile protecting telemetry against Shor attacks.</p>
                         </div>
                     </div>
                     <button type="button" @onclick='() => ToggleSwagItem("shield")'
-                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("shield") ? "bg-amber-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
+                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("shield") ? "bg-amber-600 text-white" : "bg-white text-slate-700 border border-slate-300 hover:bg-slate-100")">
                         @(_equippedSwags.Contains("shield") ? "✓ EQUIPPED" : "EQUIP")
                     </button>
                 </div>
@@ -195,66 +195,66 @@
     </div>
 
     <!-- Featured .NET 11 Real Sample Applications Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <a href="contract-signer" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-rose-500/50 transition-all shadow-lg hover:shadow-rose-500/10 block space-y-2">
+    <div class="sample-apps-5grid">
+        <a href="contract-signer" class="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-rose-400 transition-all shadow-xs hover:shadow-md block space-y-2">
             <div class="flex items-center justify-between">
                 <span class="text-2xl">📜</span>
-                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-rose-500/20 text-rose-300">REAL SAMPLE</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-rose-50 text-rose-700 border border-rose-200">REAL SAMPLE</span>
             </div>
-            <h3 class="text-base font-bold text-white group-hover:text-rose-400 transition">Contract Signer Studio</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Digital signature canvas, SHA-256 seal verification, and tamper-evident stream flattening.</p>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-rose-600 transition">Contract Signer Studio</h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal">Digital signature canvas, SHA-256 seal verification, and tamper-evident stream flattening.</p>
             <div class="text-[11px] font-semibold text-rose-400 flex items-center gap-1 pt-1">
                 <span>Sign Contract</span>
                 <span>&rarr;</span>
             </div>
         </a>
 
-        <a href="fintech-cockpit" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all shadow-lg hover:shadow-indigo-500/10 block space-y-2">
+        <a href="fintech-cockpit" class="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 transition-all shadow-xs hover:shadow-md block space-y-2">
             <div class="flex items-center justify-between">
                 <span class="text-2xl">💳</span>
                 <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-indigo-500/20 text-indigo-300">REAL SAMPLE</span>
             </div>
-            <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition">Fintech &amp; PQC Cockpit</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">EF Core 11 JSON queries, NACHA 94-char ACH wire transfers, and ML-KEM-768 quantum vault.</p>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition">Fintech &amp; PQC Cockpit</h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal">EF Core 11 JSON queries, NACHA 94-char ACH wire transfers, and ML-KEM-768 quantum vault.</p>
             <div class="text-[11px] font-semibold text-indigo-400 flex items-center gap-1 pt-1">
                 <span>Launch Cockpit</span>
                 <span>&rarr;</span>
             </div>
         </a>
 
-        <a href="hardware-lab" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition-all shadow-lg hover:shadow-purple-500/10 block space-y-2">
+        <a href="hardware-lab" class="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-purple-400 transition-all shadow-xs hover:shadow-md block space-y-2">
             <div class="flex items-center justify-between">
                 <span class="text-2xl">📱</span>
-                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-purple-500/20 text-purple-300">REAL SAMPLE</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-purple-100 text-purple-800">REAL SAMPLE</span>
             </div>
-            <h3 class="text-base font-bold text-white group-hover:text-purple-400 transition">Hardware &amp; AOT Lab</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">3-axis Gyroscope &amp; Accelerometer kinematics, GPS radar, and 8.2ms AOT boot benchmarks.</p>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-purple-600 transition">Hardware &amp; AOT Lab</h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal">3-axis Gyroscope &amp; Accelerometer kinematics, GPS radar, and 8.2ms AOT boot benchmarks.</p>
             <div class="text-[11px] font-semibold text-purple-400 flex items-center gap-1 pt-1">
                 <span>Launch Lab</span>
                 <span>&rarr;</span>
             </div>
         </a>
 
-        <a href="rag-radar" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 block space-y-2">
+        <a href="rag-radar" class="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 transition-all shadow-xs hover:shadow-md block space-y-2">
             <div class="flex items-center justify-between">
                 <span class="text-2xl">🤖</span>
-                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/20 text-amber-300">REAL SAMPLE</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-100 text-amber-800">REAL SAMPLE</span>
             </div>
-            <h3 class="text-base font-bold text-white group-hover:text-amber-400 transition">AI RAG &amp; Vector Radar</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">In-memory Cosine Similarity matching, signed feature hashing embeddings, and AI assistant.</p>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-600 transition">AI RAG &amp; Vector Radar</h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal">In-memory Cosine Similarity matching, signed feature hashing embeddings, and AI assistant.</p>
             <div class="text-[11px] font-semibold text-amber-400 flex items-center gap-1 pt-1">
                 <span>Launch Studio</span>
                 <span>&rarr;</span>
             </div>
         </a>
 
-        <a href="agent-ops" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-all shadow-lg hover:shadow-emerald-500/10 block space-y-2">
+        <a href="agent-ops" class="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 transition-all shadow-xs hover:shadow-md block space-y-2">
             <div class="flex items-center justify-between">
                 <span class="text-2xl">🛡️</span>
-                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300">REAL SAMPLE</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-emerald-100 text-emerald-800">REAL SAMPLE</span>
             </div>
-            <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition">Agent Ops Control Plane</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Human-in-the-loop approval gates genuinely blocking high-risk tool calls with takeover &amp; audit.</p>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition">Agent Ops Control Plane</h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal">Human-in-the-loop approval gates genuinely blocking high-risk tool calls with takeover &amp; audit.</p>
             <div class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1 pt-1">
                 <span>Launch Workspace</span>
                 <span>&rarr;</span>
@@ -263,11 +263,11 @@
     </div>
 
         <!-- 4K Ultra-HD Video Tour Player Section -->
-    <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+    <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
             <div class="space-y-1">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-rose-50 text-rose-700 border border-rose-200 border border-rose-500/30">
                         🎬 4K ULTRA-HD (3840×2160)
                     </span>
                     <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300">
@@ -275,7 +275,7 @@
                     </span>
                     <span class="text-xs text-slate-400 font-mono">172.5s E2E Live Tour</span>
                 </div>
-                <h2 class="text-xl font-bold text-white tracking-tight">
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight">
                     .NET 11 GA &amp; BlazorTwUI Masterclass Tour
                 </h2>
             </div>
@@ -303,33 +303,33 @@
     </div>
 
     <!-- 7 Showcase Modules Navigation Tabs -->
-    <div class="flex items-center gap-2 overflow-x-auto pb-2 p-1.5 rounded-2xl bg-slate-900/70 border border-slate-800 text-xs font-bold scrollbar-none">
+    <div class="flex items-center gap-2 overflow-x-auto pb-2 p-1.5 rounded-2xl bg-white border border-slate-200 text-xs font-bold scrollbar-none shadow-xs">
         <button type="button" @onclick='() => _activeTab = "blazor"'
-                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "blazor" ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30" : "text-slate-400 hover:text-white")">
+                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "blazor" ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30" : "text-slate-600 hover:text-slate-900 hover:bg-slate-100")">
             <span>⚡ 1. Blazor .NET 11</span>
         </button>
         <button type="button" @onclick='() => _activeTab = "maui"'
-                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "maui" ? "bg-purple-600 text-white shadow-md shadow-purple-600/30" : "text-slate-400 hover:text-white")">
+                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "maui" ? "bg-purple-600 text-white shadow-md shadow-purple-600/30" : "text-slate-600 hover:text-slate-900 hover:bg-slate-100")">
             <span>📱 2. MAUI Hybrid Lab</span>
         </button>
         <button type="button" @onclick='() => _activeTab = "backend"'
-                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "backend" ? "bg-blue-600 text-white shadow-md shadow-blue-600/30" : "text-slate-400 hover:text-white")">
+                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "backend" ? "bg-blue-600 text-white shadow-md shadow-blue-600/30" : "text-slate-600 hover:text-slate-900 hover:bg-slate-100")">
             <span>⚙️ 3. Minimal APIs & SignalR</span>
         </button>
         <button type="button" @onclick='() => _activeTab = "efcore"'
-                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "efcore" ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30" : "text-slate-400 hover:text-white")">
+                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "efcore" ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30" : "text-slate-600 hover:text-slate-900 hover:bg-slate-100")">
             <span>🗄️ 4. EF Core 11 & Vectors</span>
         </button>
         <button type="button" @onclick='() => _activeTab = "benchmarks"'
-                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "benchmarks" ? "bg-pink-600 text-white shadow-md shadow-pink-600/30" : "text-slate-400 hover:text-white")">
+                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "benchmarks" ? "bg-pink-600 text-white shadow-md shadow-pink-600/30" : "text-slate-600 hover:text-slate-900 hover:bg-slate-100")">
             <span>🚀 5. Native AOT & Benchmarks</span>
         </button>
         <button type="button" @onclick='() => _activeTab = "ai"'
-                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "ai" ? "bg-amber-600 text-white shadow-md shadow-amber-600/30" : "text-slate-400 hover:text-white")">
+                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "ai" ? "bg-amber-600 text-white shadow-md shadow-amber-600/30" : "text-slate-600 hover:text-slate-900 hover:bg-slate-100")">
             <span>🤖 6. AI RAG & Prompt Studio</span>
         </button>
         <button type="button" @onclick='() => _activeTab = "help"'
-                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "help" ? "bg-cyan-600 text-white shadow-md shadow-cyan-600/30" : "text-slate-400 hover:text-white")">
+                class="px-4 py-2.5 rounded-xl transition-all whitespace-nowrap flex items-center gap-2 @(_activeTab == "help" ? "bg-cyan-600 text-white shadow-md shadow-cyan-600/30" : "text-slate-600 hover:text-slate-900 hover:bg-slate-100")">
             <span>❓ 7. Help & Guides</span>
         </button>
     </div>
@@ -342,7 +342,7 @@
         <div class="space-y-6">
             <!-- 1.1 Rendering Modes Matrix & Live Profiler -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>🎭</span> .NET 11 Rendering Modes Matrix & Live Profiler
@@ -359,7 +359,7 @@
                     {
                         var isSel = _selectedRenderMode == mode;
                         <button type="button" @onclick="() => SelectRenderMode(mode)"
-                                class="p-3 rounded-2xl border text-left transition-all text-xs @(isSel ? "border-indigo-500 bg-indigo-950/40 text-white ring-2 ring-indigo-500/20" : "border-slate-800 bg-slate-950/50 text-slate-400 hover:border-slate-700")">
+                                class="p-3 rounded-2xl border text-left transition-all text-xs @(isSel ? "border-indigo-500 bg-indigo-950/40 text-white ring-2 ring-indigo-500/20" : "border-slate-800 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50")">
                             <div class="font-bold mb-1">@mode</div>
                             <div class="text-[10px] text-slate-500 font-mono">
                                 @(mode switch {
@@ -376,21 +376,21 @@
                 </div>
 
                 <!-- Mode Profiler Diagnostic Card -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-mono">
                     <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                        <span class="text-slate-400 block text-[10px]">CLIENT BUNDLE</span>
+                        <span class="text-slate-500 block text-[10px] font-bold">CLIENT BUNDLE</span>
                         <span class="text-emerald-400 font-bold text-sm">@_renderDiagnostics.BundleSizeKb kB</span>
                     </div>
                     <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                        <span class="text-slate-400 block text-[10px]">TIME TO INTERACTIVE</span>
+                        <span class="text-slate-500 block text-[10px] font-bold">TIME TO INTERACTIVE</span>
                         <span class="text-indigo-400 font-bold text-sm">@_renderDiagnostics.TimeToInteractiveMs ms</span>
                     </div>
                     <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                        <span class="text-slate-400 block text-[10px]">SERVER RAM / CLIENT</span>
+                        <span class="text-slate-500 block text-[10px] font-bold">SERVER RAM / CLIENT</span>
                         <span class="text-purple-400 font-bold text-sm">@_renderDiagnostics.ServerMemoryPerClientMb MB</span>
                     </div>
                     <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                        <span class="text-slate-400 block text-[10px]">PIPELINE ARCHITECTURE</span>
+                        <span class="text-slate-500 block text-[10px] font-bold">PIPELINE ARCHITECTURE</span>
                         <span class="text-amber-400 font-bold text-xs truncate block">@_renderDiagnostics.PipelineDescription</span>
                     </div>
                 </div>
@@ -398,7 +398,7 @@
 
             <!-- 1.2 QuickGrid Enhancements (Filtering, Sorting, Editing, Row Actions) -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>📊</span> Enhanced QuickGrid & Real Data Manipulation
@@ -412,7 +412,7 @@
                                placeholder="Filter components or category..."
                                class="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
                         <button type="button" @onclick="ResetGridItems"
-                                class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono">
+                                class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-700 text-xs font-mono">
                             ↺ Reset
                         </button>
                     </div>
@@ -485,7 +485,7 @@
 
             <!-- 1.3 Dynamic Forms & Async Validation Laboratory -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="border-b border-slate-800 pb-3">
+                <div class="border-b border-slate-200 pb-3">
                     <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                         <span>📝</span> Enterprise Node Enrollment -- Async Validation Form
                     </h3>
@@ -498,12 +498,12 @@
                     <div>
                         <label class="block text-slate-400 mb-1 font-mono text-[10px] uppercase">Node Identifier</label>
                         <input type="text" @bind="_formNodeId" placeholder="node-us-east-1a"
-                               class="w-full px-3 py-2 rounded-xl border border-slate-700 bg-slate-950 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                               class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
                     </div>
                     <div>
                         <label class="block text-slate-400 mb-1 font-mono text-[10px] uppercase">Cloud Region</label>
                         <select @bind="_formRegion"
-                                class="w-full px-3 py-2 rounded-xl border border-slate-700 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             <option value="US-East (Virginia)">US-East (Virginia)</option>
                             <option value="US-West (Oregon)">US-West (Oregon)</option>
                             <option value="EU-Central (Frankfurt)">EU-Central (Frankfurt)</option>
@@ -513,7 +513,7 @@
                     <div>
                         <label class="block text-slate-400 mb-1 font-mono text-[10px] uppercase">Max Sessions</label>
                         <input type="number" @bind="_formMaxSessions" min="10" max="100000"
-                               class="w-full px-3 py-2 rounded-xl border border-slate-700 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                               class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
                     </div>
                     <div class="flex items-end">
                         <button type="button" @onclick="SubmitEnrollmentForm"
@@ -527,7 +527,7 @@
                 {
                     <div class="p-3 rounded-xl @(_formIsError ? "bg-red-950/40 border border-red-500/30 text-red-300" : "bg-emerald-950/40 border border-emerald-500/30 text-emerald-300") text-xs font-mono flex items-center justify-between">
                         <span>@_formFeedback</span>
-                        <button type="button" @onclick='() => _formFeedback = ""' class="text-slate-400 hover:text-white">✕</button>
+                        <button type="button" @onclick='() => _formFeedback = ""' class="text-slate-600 hover:text-slate-900 hover:bg-slate-100">✕</button>
                     </div>
                 }
 
@@ -538,7 +538,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             @foreach (var node in _enrolledNodes)
                             {
-                                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono flex items-center justify-between">
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono flex items-center justify-between">
                                     <div class="flex items-center gap-2">
                                         <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                                         <span class="font-bold text-white">@node.NodeId</span>
@@ -562,7 +562,7 @@
         <div class="space-y-6">
             <!-- 2.1 CoreCLR Runtime Metrics -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>📱</span> MAUI CoreCLR Runtime Diagnostics & Tiered PGO
@@ -578,22 +578,22 @@
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
-                    <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-1">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
                         <span class="text-slate-400 text-[10px] uppercase">Cold Boot Startup</span>
                         <div class="text-2xl font-bold text-emerald-400">@_mauiMetrics.StartupTimeMs ms</div>
                         <span class="text-[10px] text-slate-500">CoreCLR Native Ahead-Of-Time</span>
                     </div>
-                    <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-1">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
                         <span class="text-slate-400 text-[10px] uppercase">Working Set RAM</span>
                         <div class="text-2xl font-bold text-purple-400">@_mauiMetrics.MemoryWorkingSetMb MB</div>
                         <span class="text-[10px] text-slate-500">Zero GC Pressure</span>
                     </div>
-                    <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-1">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
                         <span class="text-slate-400 text-[10px] uppercase">CPU Load</span>
                         <div class="text-2xl font-bold text-indigo-400">@_mauiMetrics.CpuUsagePercent %</div>
                         <span class="text-[10px] text-slate-500">Hardware Render Thread</span>
                     </div>
-                    <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-1">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
                         <span class="text-slate-400 text-[10px] uppercase">PGO Status</span>
                         <div class="text-base font-bold text-white truncate">@_pgoStatusText</div>
                         <span class="text-[10px] text-slate-500">Dynamic Profile Guided</span>
@@ -609,7 +609,7 @@
                         <span class="flex items-center gap-2"><span>📍</span> Live GPS & Geofencing</span>
                         <button type="button" @onclick="RefreshGps" class="text-xs text-indigo-400 hover:text-white font-mono">↻ Refresh Coordinates</button>
                     </h4>
-                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs space-y-2">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 font-mono text-xs space-y-2">
                         <div class="flex justify-between">
                             <span class="text-slate-400">Current Latitude:</span>
                             <span class="text-white font-bold">@_gpsLat.ToString("F4")° N</span>
@@ -640,15 +640,15 @@
                     
                     <div class="flex flex-col sm:flex-row items-center gap-4">
                         <div class="grid grid-cols-3 gap-2 font-mono text-xs text-center flex-1 w-full">
-                            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                                 <span class="text-slate-500 block text-[10px]">X-AXIS</span>
                                 <span class="text-emerald-400 font-bold">@_sensorX.ToString("F2") g</span>
                             </div>
-                            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                                 <span class="text-slate-500 block text-[10px]">Y-AXIS</span>
                                 <span class="text-indigo-400 font-bold">@_sensorY.ToString("F2") g</span>
                             </div>
-                            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
                                 <span class="text-slate-500 block text-[10px]">Z-AXIS</span>
                                 <span class="text-purple-400 font-bold">@_sensorZ.ToString("F2") g</span>
                             </div>
@@ -665,7 +665,7 @@
 
             <!-- 2.3 Simulated Camera & File Capture Enclave -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h4 class="text-sm font-bold text-white flex items-center gap-2">
                             <span>📷</span> Device Camera & File Attachment Pipeline
@@ -685,7 +685,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
                         @foreach (var file in _capturedFiles)
                         {
-                            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                                 <div class="flex items-center justify-between text-white font-bold">
                                     <span>@file.FileName</span>
                                     <span class="text-emerald-400">@file.SizeKb kB</span>
@@ -700,7 +700,7 @@
 
             <!-- 2.4 Offline-First SQLite Sync Queue -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h4 class="text-sm font-bold text-white flex items-center gap-2">
                             <span>📦</span> Offline-First SQLite Background Sync Queue
@@ -724,9 +724,9 @@
                 <div class="space-y-2">
                     @foreach (var queueItem in _syncQueue)
                     {
-                        <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs font-mono">
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs font-mono">
                             <div class="flex items-center gap-3">
-                                <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold text-[10px]">@queueItem.Action</span>
+                                <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold text-[10px]">@queueItem.Action</span>
                                 <span class="text-white font-bold">@queueItem.EntityName</span>
                                 <span class="text-slate-500 text-[10px]">#@queueItem.Id</span>
                             </div>
@@ -748,7 +748,7 @@
         <div class="space-y-6">
             <!-- 3.1 Endpoint Directory & Interactive Request Console -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>⚙️</span> ASP.NET Core 11 Minimal APIs & Interactive Sandbox
@@ -766,15 +766,15 @@
                 <div class="space-y-3">
                     @foreach (var endpoint in _apiEndpoints)
                     {
-                        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                             <div class="flex items-center gap-3 font-mono">
-                                <span class="px-2.5 py-1 rounded-lg font-bold @(endpoint.HttpMethod == "GET" ? "bg-emerald-500/20 text-emerald-300" : "bg-blue-500/20 text-blue-300")">
+                                <span class="px-2.5 py-1 rounded-lg font-bold @(endpoint.HttpMethod == "GET" ? "bg-emerald-100 text-emerald-800" : "bg-blue-500/20 text-blue-300")">
                                     @endpoint.HttpMethod
                                 </span>
                                 <span class="text-white font-bold text-sm">@endpoint.Route</span>
                             </div>
                             <div class="flex items-center gap-3">
-                                <span class="text-slate-400 text-xs">@endpoint.Summary</span>
+                                <span class="text-slate-600 text-xs">@endpoint.Summary</span>
                                 <button type="button" @onclick="() => ExecuteApiProbe(endpoint.Route)"
                                         class="px-3 py-1 rounded-xl bg-indigo-600/80 hover:bg-indigo-600 text-white font-mono text-[11px] font-bold">
                                     Execute Probe
@@ -786,10 +786,10 @@
 
                 @if (!string.IsNullOrEmpty(_apiConsoleOutput))
                 {
-                    <div class="p-4 rounded-2xl bg-slate-950 border border-indigo-500/30 font-mono text-xs space-y-2">
-                        <div class="flex items-center justify-between text-indigo-300 border-b border-slate-800 pb-2">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-indigo-200 font-mono text-xs space-y-2">
+                        <div class="flex items-center justify-between text-indigo-300 border-b border-slate-200 pb-2">
                             <span>Probe Target: <strong>@_lastProbedRoute</strong> (HTTP 200 OK • @_lastProbeLatencyMs ms)</span>
-                            <button type="button" @onclick='() => _apiConsoleOutput = ""' class="text-slate-400 hover:text-white">✕ Clear</button>
+                            <button type="button" @onclick='() => _apiConsoleOutput = ""' class="text-slate-600 hover:text-slate-900 hover:bg-slate-100">✕ Clear</button>
                         </div>
                         <pre class="text-emerald-400 overflow-x-auto text-[11px] leading-relaxed">@_apiConsoleOutput</pre>
                     </div>
@@ -798,7 +798,7 @@
 
             <!-- 3.2 SignalR Telemetry Live Stream Controller -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
                     <div>
                         <h4 class="text-sm font-bold text-white flex items-center gap-2">
                             <span>📡</span> SignalR Real-Time Telemetry Stream Controller
@@ -817,7 +817,7 @@
                     </div>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-emerald-400 space-y-1 max-h-48 overflow-y-auto">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 font-mono text-xs text-emerald-400 space-y-1 max-h-48 overflow-y-auto">
                     @foreach (var tick in _streamLogs)
                     {
                         <div class="flex justify-between">
@@ -838,7 +838,7 @@
         <div class="space-y-6">
             <!-- 4.1 In-Memory Cosine Similarity Vector Search -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>🗄️</span> EF Core 11 Cosine Similarity Vector Search
@@ -847,7 +847,7 @@
                             High-dimensional semantic vector ranking computed locally with zero external vector database dependencies.
                         </p>
                     </div>
-                    <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold">In-Memory Vector Math</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-mono text-xs font-bold">In-Memory Vector Math</span>
                 </div>
 
                 <!-- Preset Queries -->
@@ -875,7 +875,7 @@
                 <div class="flex gap-2">
                     <input type="text" @bind="_vectorQuery" @bind:event="oninput"
                            placeholder="Enter semantic query (e.g. Zero-Trust, high throughput, mobile)..."
-                           class="flex-1 px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-950 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                           class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
                     <button type="button" @onclick="ExecuteVectorSearch"
                             class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition">
                         Vector Search
@@ -886,12 +886,12 @@
                 <div class="space-y-3">
                     @foreach (var res in _vectorResults)
                     {
-                        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                             <div class="flex items-center justify-between">
                                 <h5 class="text-sm font-bold text-white">@res.Title</h5>
                                 <div class="flex items-center gap-2">
                                     <span class="text-[10px] font-mono text-slate-400">Similarity:</span>
-                                    <span class="px-2 py-0.5 rounded font-mono font-bold text-xs bg-emerald-500/20 text-emerald-300">
+                                    <span class="px-2 py-0.5 rounded font-mono font-bold text-xs bg-emerald-100 text-emerald-800">
                                         @((res.CosineSimilarity * 100).ToString("F1"))%
                                     </span>
                                 </div>
@@ -908,7 +908,7 @@
 
             <!-- 4.2 EF Core 11 JSON Column Query Sandbox -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h4 class="text-sm font-bold text-white flex items-center gap-2">
                             <span>🔍</span> EF Core 11 JSON Column LINQ Explorer
@@ -923,14 +923,14 @@
                     @foreach (var cat in new[] { "All", "Compute", "Security", "Transport", "Database", "Mobile" })
                     {
                         <button type="button" @onclick="() => FilterJsonCategory(cat)"
-                                class="px-3 py-1 rounded-xl border text-xs font-mono transition @(_selectedJsonCategory == cat ? "border-indigo-500 bg-indigo-950/40 text-white" : "border-slate-800 bg-slate-950 text-slate-400 hover:text-white")">
+                                class="px-3 py-1 rounded-xl border text-xs font-mono transition @(_selectedJsonCategory == cat ? "border-indigo-500 bg-indigo-950/40 text-white" : "border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50")">
                             @cat
                         </button>
                     }
                 </div>
 
                 <!-- Preview Generated SQL -->
-                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-300 space-y-1">
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-300 space-y-1">
                     <span class="text-slate-500 text-[10px] uppercase block">Generated EF Core SQL:</span>
                     <code class="text-indigo-400">@_generatedSqlPreview</code>
                 </div>
@@ -946,7 +946,7 @@
         <div class="space-y-6">
             <!-- 5.1 Multi-Version Comparison Table -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>🚀</span> Multi-Version Benchmarking Lab (.NET 8 vs 9 vs 10 vs 11)
@@ -992,7 +992,7 @@
 
             <!-- 5.2 Live In-Browser Micro-Benchmark Runner -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
                     <div>
                         <h4 class="text-sm font-bold text-white flex items-center gap-2">
                             <span>⚡</span> Execute Live Hardware Micro-Benchmark (50,000 Iterations)
@@ -1010,20 +1010,20 @@
                 @if (_microBenchResult != null)
                 {
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
-                        <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                            <span class="text-slate-400 block text-[10px]">ELAPSED TIME</span>
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <span class="text-slate-500 block text-[10px] font-bold">ELAPSED TIME</span>
                             <span class="text-emerald-400 font-bold text-base">@_microBenchResult.ElapsedMs.ToString("F2") ms</span>
                         </div>
-                        <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                            <span class="text-slate-400 block text-[10px]">THROUGHPUT</span>
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <span class="text-slate-500 block text-[10px] font-bold">THROUGHPUT</span>
                             <span class="text-indigo-400 font-bold text-base">@_microBenchResult.OpsPerSec.ToString("N0") ops/s</span>
                         </div>
-                        <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                            <span class="text-slate-400 block text-[10px]">GC COLLECTIONS</span>
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <span class="text-slate-500 block text-[10px] font-bold">GC COLLECTIONS</span>
                             <span class="text-purple-400 font-bold text-base">Gen0: @_microBenchResult.Gen0Count</span>
                         </div>
-                        <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                            <span class="text-slate-400 block text-[10px]">ITERATIONS</span>
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <span class="text-slate-500 block text-[10px] font-bold">ITERATIONS</span>
                             <span class="text-amber-400 font-bold text-base">50,000 JSON</span>
                         </div>
                     </div>
@@ -1040,7 +1040,7 @@
         <div class="space-y-6">
             <!-- 6.1 Prompt Studio Settings -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>🎛️</span> AI Prompt Studio & Parameter Tuning
@@ -1051,21 +1051,21 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
-                    <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                         <div class="flex justify-between">
                             <span class="text-slate-400">Temperature:</span>
                             <span class="text-white font-bold">@_aiTemperature.ToString("F1")</span>
                         </div>
                         <input type="range" min="0" max="1" step="0.1" @bind="_aiTemperature" class="w-full accent-amber-500" />
                     </div>
-                    <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                         <div class="flex justify-between">
                             <span class="text-slate-400">Top-P Sampling:</span>
                             <span class="text-white font-bold">@_aiTopP.ToString("F1")</span>
                         </div>
                         <input type="range" min="0.1" max="1" step="0.1" @bind="_aiTopP" class="w-full accent-amber-500" />
                     </div>
-                    <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                         <div class="flex justify-between">
                             <span class="text-slate-400">Session Tokens:</span>
                             <span class="text-amber-400 font-bold">@_sessionTokens total</span>
@@ -1077,7 +1077,7 @@
 
             <!-- 6.2 Chat Assistant -->
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>🤖</span> AI RAG & Context-Grounded Chat Assistant
@@ -1086,11 +1086,11 @@
                             Answers are dynamically grounded in the .NET 11 architecture vector index.
                         </p>
                     </div>
-                    <button type="button" @onclick="ClearChat" class="text-xs font-mono text-slate-400 hover:text-white">✕ Clear Chat</button>
+                    <button type="button" @onclick="ClearChat" class="text-xs font-mono text-slate-600 hover:text-slate-900 hover:bg-slate-100">✕ Clear Chat</button>
                 </div>
 
                 <!-- Chat History Window -->
-                <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 min-h-[220px] max-h-[360px] overflow-y-auto space-y-3 font-sans text-xs">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 min-h-[220px] max-h-[360px] overflow-y-auto space-y-3 font-sans text-xs">
                     @foreach (var msg in _chatMessages)
                     {
                         <div class="flex flex-col @(msg.Role == "User" ? "items-end" : "items-start")">
@@ -1126,7 +1126,7 @@
                 <div class="flex gap-2">
                     <input type="text" @bind="_chatInput" @onkeydown="HandleChatKey"
                            placeholder="Ask about .NET 11, Native AOT, or Blazor hybrid architecture..."
-                           class="flex-1 px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-950 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+                           class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500" />
                     <button type="button" @onclick="SendChatMessage"
                             class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition">
                         Send Prompt
@@ -1143,7 +1143,7 @@
     {
         <div class="space-y-6">
             <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-6">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                             <span>❓</span> System Help, Architectural Guides & FAQ
@@ -1152,12 +1152,12 @@
                             Pre-flight launcher instructions, troubleshooting port conflicts, offline SQLite mode, and cloud deployment guides.
                         </p>
                     </div>
-                    <span class="px-2.5 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 font-mono text-xs font-bold">100% Free Resources</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-sky-100 text-sky-800 font-mono text-xs font-bold">100% Free Resources</span>
                 </div>
 
                 <!-- 4 Quick Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                    <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                         <div class="font-bold text-white text-sm flex items-center gap-2">
                             <span class="text-cyan-400">⚡</span> Port Coordinator & Pre-Flight Probing
                         </div>
@@ -1166,7 +1166,7 @@
                         </p>
                     </div>
 
-                    <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                         <div class="font-bold text-white text-sm flex items-center gap-2">
                             <span class="text-purple-400">🌱</span> 100% Free Foundation
                         </div>
@@ -1175,7 +1175,7 @@
                         </p>
                     </div>
 
-                    <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                         <div class="font-bold text-white text-sm flex items-center gap-2">
                             <span class="text-emerald-400">☁️</span> Cloud Extension Points
                         </div>
@@ -1184,7 +1184,7 @@
                         </p>
                     </div>
 
-                    <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                         <div class="font-bold text-white text-sm flex items-center gap-2">
                             <span class="text-pink-400">🖥️</span> Windows Installer
                         </div>
@@ -1197,8 +1197,8 @@
                 <!-- CLI Cheat Sheet Table -->
                 <div class="space-y-2">
                     <h4 class="text-xs font-mono font-bold text-slate-300 uppercase">CLI Command Quick Reference</h4>
-                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-300 space-y-2">
-                        <div class="flex justify-between border-b border-slate-800 pb-1.5 text-slate-500 text-[10px]">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-300 space-y-2">
+                        <div class="flex justify-between border-b border-slate-200 pb-1.5 text-slate-500 text-[10px]">
                             <span>OPERATION</span>
                             <span>COMMAND</span>
                         </div>
