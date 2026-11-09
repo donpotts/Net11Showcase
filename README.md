@@ -5,25 +5,27 @@ A comprehensive showcase platform and enterprise reference architecture demonstr
 <p align="center">
   <a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-11.0.0_GA-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 11 GA" /></a>
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v3.4+-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
-  <a href="docs/videos/hyperframes_net11_showcase_4k.html"><img src="https://img.shields.io/badge/Video_Tour-4K_UHD_Dual_TTS-E11D48?style=for-the-badge&logo=youtube&logoColor=white" alt="4K UHD Video Tour" /></a>
+  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><img src="https://img.shields.io/badge/Watch_Video-4K_UHD_Masterclass-E11D48?style=for-the-badge&logo=youtube&logoColor=white" alt="4K UHD Video Tour" /></a>
+  <a href="https://github.com/donpotts/BlazorTwUI"><img src="https://img.shields.io/badge/UI_Suite-BlazorTwUI_268_Components-3B82F6?style=for-the-badge" alt="BlazorTwUI" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge" alt="MIT License" /></a>
 </p>
 
 ---
 
-## 🎬 4K Ultra-HD Video Tour & Interactive Masterclass
+## 🎬 4K Ultra-HD Video Tour & E2E Masterclass
 
 Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×2160)** featuring dual-voice neural narration (**Ava** - Lead Architecture & **Andrew** - Systems Lead) and on-screen telemetry overlays.
 
 <p align="center">
-  <a href="docs/videos/hyperframes_net11_showcase_4k.html">
-    <img src="docs/videos/net11-showcase-4k-poster.png" alt=".NET 11 GA 4K Video Tour" width="860" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+  <a href="docs/videos/net11-showcase-4k-masterclass.mp4">
+    <img src="docs/videos/net11-showcase-tour.gif" alt="Click to Watch .NET 11 GA 4K Video Tour" width="860" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
   </a>
 </p>
 
 <p align="center">
-  <a href="docs/videos/hyperframes_net11_showcase_4k.html"><b>▶️ Launch Interactive 4K Hyperframes Player</b></a> •
-  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><b>📥 Download Master 4K MP4 (172.5s)</b></a>
+  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Watch Full 4K Video in GitHub Video Player</b></a> •
+  <a href="https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4"><b>📥 Direct MP4 Download (8.3 MB)</b></a> •
+  <a href="docs/videos/hyperframes_net11_showcase_4k.html"><b>⚡ Interactive Hyperframes Chapter Player (HTML)</b></a>
 </p>
 
 ### Video Chapter Breakdown
@@ -44,7 +46,7 @@ Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×21
 The **Net11 Showcase Suite** serves as:
 - **Interactive Demo Platform**: Live demonstrations of rendering modes, hardware sensor bridges, and vector matching.
 - **Reference Architecture**: Production-grade multi-project architecture with clean separation of concerns.
-- **Component Showcase**: Reusable Tailwind UI components adapted from the [BlazorTailwindUI](https://github.com/donpotts/BlazorTailwindUI) ecosystem.
+- **Component Showcase**: Reusable Tailwind UI components adapted from the [BlazorTwUI](https://github.com/donpotts/BlazorTwUI) ecosystem.
 - **Benchmarking Lab**: Concrete performance comparisons between .NET 8, .NET 9, .NET 10, and .NET 11 (Throughput, Startup, Memory, Publish Size).
 - **100% Free Foundation with Cloud Options**: Runs completely offline with SQLite and local vector math, with seamless connection string switches for Azure SQL, Azure App Service (F1 zero cost), and Azure OpenAI.
 
@@ -183,4 +185,4 @@ dotnet run --project src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.c
 ---
 
 ## 📜 License & Acknowledgments
-Licensed under the **MIT License**. UI components adapted from [BlazorTailwindUI](https://github.com/donpotts/BlazorTailwindUI).
+Licensed under the **MIT License**. UI components adapted from [BlazorTwUI](https://github.com/donpotts/BlazorTwUI).

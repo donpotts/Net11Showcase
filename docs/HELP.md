@@ -45,7 +45,7 @@ The port coordinator (`launch-showcase.ps1`) automatically scans TCP ports start
 
 ## 📞 Getting Help & Reporting Issues
 
-- **Repository**: [Net11 Showcase on GitHub](https://github.com/donpotts/BlazorTailwindUI)
+- **Repository**: [Net11 Showcase on GitHub](https://github.com/donpotts/Net11Showcase)
 - **License**: MIT Open Source License
 
 ### 5. 4K Ultra-HD Video Tour & Hyperframes Player

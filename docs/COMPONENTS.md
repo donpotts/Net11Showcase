@@ -1,6 +1,6 @@
 # 🧩 Reusable Tailwind Component Library (`Net11Showcase.Components`)
 
-The suite provides a clean, dependency-free Razor Class Library (`Net11Showcase.Components`) adapted from the **BlazorTailwindUI** ecosystem.
+The suite provides a clean, dependency-free Razor Class Library (`Net11Showcase.Components`) adapted from the **BlazorTwUI** ecosystem.
 
 ---
 
