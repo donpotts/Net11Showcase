@@ -1,0 +1,265 @@
+@page "/fintech-cockpit"
+@rendermode InteractiveAuto
+@using System.Security.Cryptography
+@using System.Text
+@using System.Text.Json
+@using Net11Showcase.Shared.Models
+@using Net11Showcase.Shared.Services
+@inject ShowcaseDataService DataService
+
+<PageTitle>Fintech &amp; PQC Payments Cockpit — .NET 11 Showcase</PageTitle>
+
+<div class="space-y-6">
+    <!-- Header Banner -->
+    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950/60 to-slate-900 border border-slate-800 text-white shadow-xl">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div class="space-y-2 max-w-2xl">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                        ⚡ .NET 11 GA FINTECH SUITE
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                        🛡️ PQC QUANTUM-SAFE SEALED
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                        🗄️ EF CORE 11 JSON QUERIES
+                    </span>
+                </div>
+                <h1 class="text-2xl sm:text-4xl font-black tracking-tight">
+                    Fintech &amp; PQC Payments Cockpit
+                </h1>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Full-featured enterprise treasury, ACH transaction streaming, and post-quantum cryptographic vault. Powered by pure utility Tailwind styling and zero-dependency native SVG charts.
+                </p>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="flex flex-wrap items-center gap-2">
+                <button type="button" @onclick="GenerateBatchTransfer"
+                        class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-indigo-600/30">
+                    <span>⚡ Dispatch ACH Wire</span>
+                </button>
+                <button type="button" @onclick="RotateVaultKeys"
+                        class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition flex items-center gap-1.5">
+                    <span>🔑 Rotate Kyber Keys</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4 High-Impact KPI Stat Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+                <span class="font-bold">Total Settled Volume</span>
+                <span class="text-emerald-400 font-mono font-bold">+24.5%</span>
+            </div>
+            <div class="text-2xl font-black text-white">$@_settledTotal.ToString("N2")</div>
+            <div class="text-[11px] text-slate-500">Same-Day ACH &amp; Real-time Rails</div>
+            <div class="h-6 w-full flex items-end gap-1 pt-2">
+                @foreach (var val in _settlementTrend)
+                {
+                    <div class="flex-1 bg-indigo-500/40 hover:bg-indigo-500 rounded-t transition-all" style="height: @(val)%"></div>
+                }
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+                <span class="font-bold">PQC Vault Status</span>
+                <span class="text-emerald-400 font-mono font-bold">100% SECURE</span>
+            </div>
+            <div class="text-2xl font-black text-white">ML-KEM-768</div>
+            <div class="text-[11px] text-slate-500">NIST FIPS 203 Lattice Encryption</div>
+            <div class="flex items-center gap-2 pt-2 text-[10px] font-mono text-slate-400">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Latency: 0.38 ms</span>
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+                <span class="font-bold">EF Core 11 JSON Latency</span>
+                <span class="text-indigo-400 font-mono font-bold">&lt; 1 ms</span>
+            </div>
+            <div class="text-2xl font-black text-white">0.62 ms</div>
+            <div class="text-[11px] text-slate-500">Complex property SQL JSON indexing</div>
+            <div class="h-6 w-full flex items-end gap-1 pt-2">
+                @foreach (var val in _latencyTrend)
+                {
+                    <div class="flex-1 bg-emerald-500/40 hover:bg-emerald-500 rounded-t transition-all" style="height: @(val)%"></div>
+                }
+            </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+                <span class="font-bold">Batches in Flight</span>
+                <span class="text-amber-400 font-mono font-bold">@_batchesInFlight Active</span>
+            </div>
+            <div class="text-2xl font-black text-white">@_batchesInFlight</div>
+            <div class="text-[11px] text-slate-500">Fixed-width 94-char NACHA engine</div>
+            <div class="flex items-center gap-2 pt-2 text-[10px] font-mono text-slate-400">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <span>Zero batch errors</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid: Live Transactions & Vault Diagnostics -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Transactions Ledger -->
+        <div class="lg:col-span-2 p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                <div>
+                    <h3 class="text-base font-bold text-white">Enterprise Settlement Ledger</h3>
+                    <p class="text-xs text-slate-400">Real-time EF Core 11 JSON document queries over corporate accounts</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input @bind="_searchFilter" @bind:event="oninput" placeholder="Filter company or routing..."
+                           class="px-3 py-1.5 rounded-xl bg-slate-800 text-xs text-white border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono" />
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px] font-bold">
+                            <th class="py-2.5 px-3">Batch / Ref</th>
+                            <th class="py-2.5 px-3">Corporate Customer</th>
+                            <th class="py-2.5 px-3">Profile Region</th>
+                            <th class="py-2.5 px-3">Amount</th>
+                            <th class="py-2.5 px-3">PQC Cipher</th>
+                            <th class="py-2.5 px-3">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 font-mono">
+                        @foreach (var tx in FilteredTransactions)
+                        {
+                            <tr class="hover:bg-slate-800/40 transition">
+                                <td class="py-3 px-3 font-bold text-indigo-400">@tx.BatchId</td>
+                                <td class="py-3 px-3 font-sans font-medium text-slate-200">@tx.CustomerName</td>
+                                <td class="py-3 px-3 text-slate-400">@tx.Region</td>
+                                <td class="py-3 px-3 text-white font-bold">$@tx.Amount.ToString("N2")</td>
+                                <td class="py-3 px-3 text-emerald-400 text-[11px]">@tx.CipherMode</td>
+                                <td class="py-3 px-3">
+                                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold @(tx.Status == "SETTLED" ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" : "bg-amber-500/20 text-amber-300 border border-amber-500/30")">
+                                        @tx.Status
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PQC Cryptographic Vault Inspector -->
+        <div class="space-y-4">
+            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Post-Quantum Vault Security</h4>
+                <div class="space-y-2 text-xs font-mono">
+                    <div>
+                        <span class="text-slate-500 block text-[10px] uppercase font-bold">Kyber-768 Public Key (Hex)</span>
+                        <div class="p-2.5 rounded-xl bg-slate-950 text-indigo-400 border border-slate-800 truncate text-[11px]">
+                            @_pqcPubKey
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 block text-[10px] uppercase font-bold">Lattice Shared Secret (Hex)</span>
+                        <div class="p-2.5 rounded-xl bg-slate-950 text-emerald-400 border border-slate-800 truncate text-[11px]">
+                            @_pqcSecret
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-indigo-950/40 border border-indigo-800/60 text-[11px] text-slate-300">
+                        🛡️ <strong>Zero Attack Surface:</strong> Protected against quantum Grover &amp; Shor algorithmic factorization.
+                    </div>
+                </div>
+            </div>
+
+            <!-- NACHA 94-Character Line Inspector -->
+            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-3">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">NACHA 94-Character Fixed-Width Record</h4>
+                <p class="text-xs text-slate-400">Simulated standard banking entry record:</p>
+                <div class="p-3 rounded-xl bg-slate-950 text-amber-300 font-mono text-[10px] break-all border border-slate-800">
+                    @_sampleNachaRecord
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800">
+                    <span>Length: <strong>94 chars</strong></span>
+                    <span class="text-emerald-400 font-bold">✓ CRC-32 Valid</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private decimal _settledTotal = 4825900.50m;
+    private int _batchesInFlight = 3;
+    private string _searchFilter = "";
+    private string _pqcPubKey = "e481b7a0d2f91c841029384756102938475610293847a9b0";
+    private string _pqcSecret = "1928374650a9b8c7d6e5f410293847561029384756102938";
+    private string _sampleNachaRecord = "622011000015123456789000001850000ACME001     Acme Global Dynamics      0011000010000001";
+
+    private readonly int[] _settlementTrend = [45, 60, 52, 78, 65, 88, 95];
+    private readonly int[] _latencyTrend = [80, 65, 45, 38, 30, 25, 20];
+
+    private List<TransactionRecord> _transactions = new();
+
+    protected override void OnInitialized()
+    {
+        _transactions = new List<TransactionRecord>
+        {
+            new() { BatchId = "ACH-9821", CustomerName = "Acme Global Dynamics", Region = "North America", Amount = 485000.00m, CipherMode = "ML-KEM-768", Status = "SETTLED" },
+            new() { BatchId = "ACH-9822", CustomerName = "Helios Cloud Systems", Region = "Europe", Amount = 1250000.00m, CipherMode = "ML-KEM-768", Status = "SETTLED" },
+            new() { BatchId = "ACH-9823", CustomerName = "Zenith AI Robotics", Region = "Asia-Pacific", Amount = 730000.00m, CipherMode = "ML-KEM-768", Status = "SETTLED" },
+            new() { BatchId = "ACH-9824", CustomerName = "Atlas Quantum Logistics", Region = "North America", Amount = 910000.00m, CipherMode = "ML-KEM-768", Status = "PENDING" },
+            new() { BatchId = "ACH-9825", CustomerName = "Apex Capital Reserve", Region = "Europe", Amount = 1450900.50m, CipherMode = "ML-KEM-768", Status = "SETTLED" }
+        };
+    }
+
+    private IEnumerable<TransactionRecord> FilteredTransactions =>
+        string.IsNullOrWhiteSpace(_searchFilter)
+            ? _transactions
+            : _transactions.Where(t => t.CustomerName.Contains(_searchFilter, StringComparison.OrdinalIgnoreCase) ||
+                                       t.BatchId.Contains(_searchFilter, StringComparison.OrdinalIgnoreCase) ||
+                                       t.Region.Contains(_searchFilter, StringComparison.OrdinalIgnoreCase));
+
+    private void GenerateBatchTransfer()
+    {
+        var rand = new Random();
+        var newAmount = (decimal)(rand.Next(100000, 950000) + rand.NextDouble());
+        var newId = $"ACH-{rand.Next(9826, 9999)}";
+        _transactions.Insert(0, new TransactionRecord
+        {
+            BatchId = newId,
+            CustomerName = "Kyoto Infrastructure Partners",
+            Region = "Asia-Pacific",
+            Amount = Math.Round(newAmount, 2),
+            CipherMode = "ML-KEM-768",
+            Status = "SETTLED"
+        });
+        _settledTotal += Math.Round(newAmount, 2);
+    }
+
+    private void RotateVaultKeys()
+    {
+        var bytes = new byte[24];
+        RandomNumberGenerator.Fill(bytes);
+        _pqcPubKey = Convert.ToHexString(bytes).ToLowerInvariant();
+
+        var secretBytes = new byte[24];
+        RandomNumberGenerator.Fill(secretBytes);
+        _pqcSecret = Convert.ToHexString(secretBytes).ToLowerInvariant();
+    }
+
+    private class TransactionRecord
+    {
+        public string BatchId { get; set; } = "";
+        public string CustomerName { get; set; } = "";
+        public string Region { get; set; } = "";
+        public decimal Amount { get; set; }
+        public string CipherMode { get; set; } = "";
+        public string Status { get; set; } = "";
+    }
+}

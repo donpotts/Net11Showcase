@@ -79,7 +79,7 @@ app.MapHealthChecks("/health");
 app.MapGet("/api/health", () => Results.Ok(new
 {
     status = "Healthy",
-    framework = ".NET 11.0.0-rc.3",
+    framework = ".NET 11.0.0 (GA)",
     timestampUtc = DateTime.UtcNow,
     engine = "Net11Showcase.Api",
     scalarDocs = "/scalar/v1"

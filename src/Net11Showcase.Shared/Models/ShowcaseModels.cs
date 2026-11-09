@@ -37,7 +37,7 @@ public sealed class DynamicValidationFormModel
 #region 2. MAUI Blazor Hybrid Models
 public sealed class CoreClrRuntimeMetrics
 {
-    public string RuntimeVersion { get; set; } = ".NET 11.0.0-rc.3 (CoreCLR / ReadyToRun)";
+    public string RuntimeVersion { get; set; } = ".NET 11.0.0 (CoreCLR / ReadyToRun)";
     public double StartupTimeMs { get; set; } = 84.2;
     public double MemoryWorkingSetMb { get; set; } = 38.6;
     public double CpuUsagePercent { get; set; } = 1.4;

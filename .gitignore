@@ -21,6 +21,8 @@ TestResults/
 
 ## Distribution & Published Binaries
 dist/
+dist-web/
+scratch/
 *.exe
 
 

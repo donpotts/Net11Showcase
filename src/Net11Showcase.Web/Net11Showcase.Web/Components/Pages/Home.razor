@@ -17,7 +17,7 @@
             <div class="space-y-2 max-w-3xl">
                 <div class="flex flex-wrap items-center gap-2">
                     <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                        ⚡ .NET 11.0.0-rc.3 LTS Architecture
+                        ⚡ .NET 11 LTS (GA) Architecture
                     </span>
                     <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                         🌱 100% Free Resources (Zero Paid APIs)
@@ -54,6 +54,61 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Featured .NET 11 & BlazorTwUI Sample Applications -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="fintech-cockpit" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all shadow-lg hover:shadow-indigo-500/10 block space-y-2">
+            <div class="flex items-center justify-between">
+                <span class="text-2xl">💳</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-indigo-500/20 text-indigo-300">SAMPLE APP</span>
+            </div>
+            <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition">Fintech &amp; PQC Cockpit</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">EF Core 11 JSON queries, NACHA 94-char ACH wire transfers, and ML-KEM-768 quantum vault.</p>
+            <div class="text-[11px] font-semibold text-indigo-400 flex items-center gap-1 pt-1">
+                <span>Launch Cockpit</span>
+                <span>→</span>
+            </div>
+        </a>
+
+        <a href="hardware-lab" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition-all shadow-lg hover:shadow-purple-500/10 block space-y-2">
+            <div class="flex items-center justify-between">
+                <span class="text-2xl">📱</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-purple-500/20 text-purple-300">SAMPLE APP</span>
+            </div>
+            <h3 class="text-base font-bold text-white group-hover:text-purple-400 transition">Hardware &amp; AOT Lab</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">3-axis simulated Gyroscope &amp; Accelerometer kinematics, GPS radar, and 8.2ms AOT boot benchmarks.</p>
+            <div class="text-[11px] font-semibold text-purple-400 flex items-center gap-1 pt-1">
+                <span>Launch Lab</span>
+                <span>→</span>
+            </div>
+        </a>
+
+        <a href="rag-radar" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition-all shadow-lg hover:shadow-amber-500/10 block space-y-2">
+            <div class="flex items-center justify-between">
+                <span class="text-2xl">🤖</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/20 text-amber-300">SAMPLE APP</span>
+            </div>
+            <h3 class="text-base font-bold text-white group-hover:text-amber-400 transition">AI RAG &amp; Vector Radar</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">In-memory Cosine Similarity matching, signed feature hashing embeddings, and AI streaming assistant.</p>
+            <div class="text-[11px] font-semibold text-amber-400 flex items-center gap-1 pt-1">
+                <span>Launch Studio</span>
+                <span>→</span>
+            </div>
+        </a>
+
+        <a href="agent-ops" class="group p-5 rounded-3xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-all shadow-lg hover:shadow-emerald-500/10 block space-y-2">
+            <div class="flex items-center justify-between">
+                <span class="text-2xl">🛡️</span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300">SAMPLE APP</span>
+            </div>
+            <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition">Agent Ops Control Plane</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Human-in-the-loop approval gates genuinely blocking high-risk tool calls with takeover &amp; audit trail.</p>
+            <div class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1 pt-1">
+                <span>Launch Workspace</span>
+                <span>→</span>
+            </div>
+        </a>
     </div>
 
     <!-- 7 Showcase Modules Navigation Tabs -->
@@ -1212,7 +1267,7 @@
             "/api/health" => JsonSerializer.Serialize(new
             {
                 status = "Healthy",
-                framework = ".NET 11.0.0-rc.3",
+                framework = ".NET 11.0.0 (GA)",
                 uptimeSeconds = 3840,
                 allocatedWorkingSetMb = _mauiMetrics.MemoryWorkingSetMb,
                 activeRenderMode = _selectedRenderMode.ToString()

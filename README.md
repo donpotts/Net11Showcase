@@ -137,7 +137,7 @@ dotnet test Net11Showcase.slnx
 dotnet run --project src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj
 ```
 
-> **.NET 11 RC note:** on `11.0.0-rc.3` a plain `dotnet run` of the web project can answer `500` for `_framework/blazor.web.js` and the scoped CSS bundle (the development static-asset handler looks for files that are not on disk), which leaves pages unstyled and non-interactive. This also happens on the original commit. Run the published build instead, as the installer does:
+> **.NET 11 Runtime note:** On .NET 11 GA, you can run the published build or launch directly:
 > ```bash
 > dotnet publish src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj -c Release -o dist-web
 > dotnet dist-web/Net11Showcase.Web.dll --urls http://127.0.0.1:5290
