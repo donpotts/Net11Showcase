@@ -11,279 +11,146 @@
 <PageTitle>.NET 11 Showcase Platform & Enterprise Architecture Lab</PageTitle>
 
 <div class="space-y-8">
-    <!-- Hero Banner with Live Architecture Telemetry -->
-    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950/60 to-slate-900 border border-slate-800 p-6 sm:p-10 shadow-2xl">
-        <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div class="space-y-2 max-w-3xl">
-                <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                        ⚡ .NET 11 LTS (GA) Architecture
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                        🌱 100% Free Resources (Zero Paid APIs)
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">
-                        ☁️ Cloud Ready (Azure / Containers)
-                    </span>
-                </div>
-                <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white">
-                    .NET 11 Showcase Platform
-                </h1>
-                <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
-                    Interactive enterprise reference platform demonstrating <strong>ASP.NET Core</strong>, <strong>Blazor Auto/WASM</strong>, <strong>MAUI Blazor Hybrid</strong>, <strong>EF Core 11</strong>, <strong>Native AOT</strong>, and <strong>AI RAG Vector Integrations</strong> with full working functionality across all modules.
-                </p>
-            </div>
-
-            <!-- Quick Telemetry HUD Card -->
-            <div class="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs font-mono shrink-0">
-                <div class="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                    <span class="text-slate-400 block text-[10px]">AOT BOOT TIME</span>
-                    <span class="text-emerald-400 font-bold text-base sm:text-lg">@_mauiMetrics.StartupTimeMs ms</span>
-                </div>
-                <div class="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                    <span class="text-slate-400 block text-[10px]">THROUGHPUT</span>
-                    <span class="text-indigo-400 font-bold text-base sm:text-lg">415 kRPS</span>
-                </div>
-                <div class="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                    <span class="text-slate-400 block text-[10px]">WORKING SET</span>
-                    <span class="text-purple-400 font-bold text-base sm:text-lg">@_mauiMetrics.MemoryWorkingSetMb MB</span>
-                </div>
-                <div class="p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/60">
-                    <span class="text-slate-400 block text-[10px]">ACTIVE MODULE</span>
-                    <span class="text-amber-400 font-bold text-base sm:text-lg uppercase">@_activeTab</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- ========================================================================= -->
-    <!-- 🚀 .NET 11 ORBITAL LAUNCH VEHICLE, ROCKET THRUSTERS & MISSION SWAG BAY   -->
+    <!-- 🚀 OFFICIAL .NET 11 ORBITAL LAUNCH VEHICLE & CREATIVE SWAG BAY             -->
     <!-- ========================================================================= -->
     <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-purple-950/40 to-slate-950 border border-purple-900/60 p-6 sm:p-8 shadow-2xl space-y-6">
         <style>
-            @@keyframes thrustRoar {
-                0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.95; }
-                50% { transform: scaleY(1.18) scaleX(0.92); opacity: 1; filter: drop-shadow(0 0 30px #a855f7); }
+            @@keyframes rocketFloat {
+                0%, 100% {
+                    transform: translateY(0) rotate(0deg);
+                    filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.35));
+                }
+                50% {
+                    transform: translateY(-10px) rotate(1deg);
+                    filter: drop-shadow(0 0 40px rgba(236, 72, 153, 0.6));
+                }
             }
-            @@keyframes innerCore {
-                0%, 100% { transform: scaleY(1); opacity: 0.9; }
-                50% { transform: scaleY(1.25); opacity: 1; }
+            .official-rocket-motion {
+                animation: rocketFloat 3.5s ease-in-out infinite;
+                max-width: 100%;
+                height: auto;
+                user-select: none;
             }
-            @@keyframes shockDiamond {
-                0%, 100% { opacity: 0.4; transform: translateY(0) scale(0.9); }
-                50% { opacity: 0.95; transform: translateY(8px) scale(1.1); }
-            }
-            @@keyframes particleRise {
-                0% { transform: translateY(0) scale(1); opacity: 1; }
-                100% { transform: translateY(120px) scale(0.2); opacity: 0; }
-            }
-            @@keyframes rocketHover {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-8px); }
-            }
-            .rocket-animated-group {
-                animation: rocketHover 3s ease-in-out infinite;
-            }
-            .thruster-plume-active {
-                transform-origin: top center;
-                animation: thrustRoar 0.12s ease-in-out infinite;
-            }
-            .inner-core-active {
-                transform-origin: top center;
-                animation: innerCore 0.08s ease-in-out infinite;
-            }
-            .shock-1 { animation: shockDiamond 0.2s ease-in-out infinite; }
-            .shock-2 { animation: shockDiamond 0.2s ease-in-out infinite 0.07s; }
-            .shock-3 { animation: shockDiamond 0.2s ease-in-out infinite 0.14s; }
         </style>
 
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-purple-900/40">
-            <div>
+        <!-- Top Header & Telemetry HUD -->
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 pb-4 border-b border-purple-900/40">
+            <div class="space-y-1.5">
                 <div class="flex flex-wrap items-center gap-2">
                     <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40 flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
-                        🚀 MISSION .NET 11 GA
+                        🚀 OFFICIAL .NET 11 ORBITAL MISSION
                     </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold @(_afterburnersActive ? "bg-amber-500/20 text-amber-300 border border-amber-500/40" : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40")">
-                        @(_afterburnersActive ? "⚡ AFTERBURNERS ENGAGED" : "🔥 100% THRUST NOMINAL")
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                        🔥 @(_afterburnersActive ? "520,000 RPS THRUST" : "415,000 RPS THRUST")
                     </span>
                     <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
-                        🎒 .NET 11 SWAG LOCKER
+                        ⚡ 8.2ms INSTANT IGNITION
                     </span>
                 </div>
-                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight mt-2 flex items-center gap-2">
-                    <span>.NET 11 Orbital Launch Vehicle &amp; Swag Bay</span>
-                </h2>
-                <p class="text-xs sm:text-sm text-slate-300">
-                    Triple Native AOT rocket thrusters generating 415,000 RPS liftoff thrust with official .NET 11 mission gear and real working sample apps.
+                <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                    .NET 11 Showcase Platform &amp; Official Swag Bay
+                </h1>
+                <p class="text-xs sm:text-sm text-slate-300 max-w-2xl">
+                    Featuring the official .NET 11 3D orbital launch vehicle, twin .NET Bots, Native AOT vector propulsion, and enterprise sample applications.
                 </p>
             </div>
 
-            <!-- Thruster Flight Controls & Telemetry -->
-            <div class="flex flex-wrap items-center gap-3">
-                <button type="button" @onclick="ToggleThrusters"
-                        class="px-4 py-2 rounded-xl text-xs font-mono font-bold transition flex items-center gap-2 shadow-lg @(_thrustersNominal ? "bg-purple-600 hover:bg-purple-500 text-white shadow-purple-600/30" : "bg-slate-800 text-slate-300 border border-slate-700")">
-                    <span>🔥</span>
-                    <span>@(_thrustersNominal ? "Main Thrusters: ONLINE" : "Main Thrusters: IDLE")</span>
-                </button>
-                <button type="button" @onclick="ToggleAfterburners"
-                        class="px-4 py-2 rounded-xl text-xs font-mono font-bold transition flex items-center gap-2 shadow-lg @(_afterburnersActive ? "bg-amber-600 hover:bg-amber-500 text-white shadow-amber-600/30 animate-pulse" : "bg-slate-800 text-slate-300 border border-slate-700")">
-                    <span>⚡</span>
-                    <span>@(_afterburnersActive ? "Mach 15.4 Boost ON" : "Engage Afterburners")</span>
-                </button>
+            <!-- Telemetry HUD -->
+            <div class="flex flex-wrap items-center gap-2.5 font-mono shrink-0">
+                <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-center min-w-[90px]">
+                    <span class="text-slate-400 block text-[10px]">AOT BOOT</span>
+                    <span class="text-emerald-400 font-bold text-base sm:text-lg">8.2 ms</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-center min-w-[90px]">
+                    <span class="text-slate-400 block text-[10px]">THROUGHPUT</span>
+                    <span class="text-indigo-400 font-bold text-base sm:text-lg">@(_afterburnersActive ? "520 kRPS" : "415 kRPS")</span>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 text-center min-w-[90px]">
+                    <span class="text-slate-400 block text-[10px]">VELOCITY</span>
+                    <span class="text-cyan-400 font-bold text-base sm:text-lg">@(_afterburnersActive ? "MACH 15.4" : "MACH 11.0")</span>
+                </div>
             </div>
         </div>
 
-        <!-- Integrated Vehicle & Swag Bay Grid -->
+        <!-- Center Content: Official 3D Rocket (Left) + Official Swag Deck (Right) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
-            <!-- Left: SVG Rocket with Live Firing Thruster Plasma (5 cols) -->
-            <div class="lg:col-span-5 flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-900/60 border border-purple-900/30 relative overflow-hidden">
-                <div class="text-[10px] font-mono font-bold text-purple-300 mb-1 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
-                    <span>NATIVE AOT VECTOR PROPULSION • SUB-ORBITAL ASCENT</span>
+            <!-- Left: Official 3D Rocket Image with Dynamic Glow & Hover Physics -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center p-4 rounded-2xl bg-slate-900/60 border border-purple-900/35 relative">
+                <div class="w-full flex items-center justify-between font-mono text-[11px] text-purple-300 mb-2 px-1">
+                    <span>OFFICIAL MISSION ASSET</span>
+                    <span class="text-emerald-400">STATUS: FLIGHT READY</span>
                 </div>
 
-                <svg class="rocket-animated-group" width="280" height="340" viewBox="0 0 340 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <!-- Thruster Plasma Gradient -->
-                        <linearGradient id="mainFlame" x1="0.5" y1="0" x2="0.5" y2="1">
-                            <stop offset="0%" stop-color="#ffffff"/>
-                            <stop offset="15%" stop-color="#fef08a"/>
-                            <stop offset="35%" stop-color="#f59e0b"/>
-                            <stop offset="65%" stop-color="#dc2626"/>
-                            <stop offset="90%" stop-color="#9333ea"/>
-                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
-                        </linearGradient>
+                <div class="w-full h-[330px] flex items-center justify-center overflow-hidden">
+                    <img class="official-rocket-motion" src="images/swag/dotnet-rocket-launch.png" alt="Official .NET 11 3D Rocket" style="max-height: 310px; object-fit: contain;">
+                </div>
 
-                        <linearGradient id="purpleFlame" x1="0.5" y1="0" x2="0.5" y2="1">
-                            <stop offset="0%" stop-color="#ffffff"/>
-                            <stop offset="25%" stop-color="#c084fc"/>
-                            <stop offset="60%" stop-color="#7c3aed"/>
-                            <stop offset="100%" stop-color="#4f46e5" stop-opacity="0"/>
-                        </linearGradient>
-
-                        <linearGradient id="hullGrad" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="#1e1b4b"/>
-                            <stop offset="45%" stop-color="#312e81"/>
-                            <stop offset="55%" stop-color="#4338ca"/>
-                            <stop offset="100%" stop-color="#1e1b4b"/>
-                        </linearGradient>
-
-                        <linearGradient id="finGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#6366f1"/>
-                            <stop offset="100%" stop-color="#4338ca"/>
-                        </linearGradient>
-
-                        <filter id="thrusterGlow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
-                            <feMerge>
-                                <feMergeNode in="blur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-
-                    <!-- Particle Sparkles -->
-                    <circle cx="170" cy="310" r="3" fill="#fef08a" style="animation: particleRise 0.4s infinite;"/>
-                    <circle cx="160" cy="330" r="2.5" fill="#f59e0b" style="animation: particleRise 0.5s infinite 0.1s;"/>
-                    <circle cx="180" cy="325" r="2" fill="#c084fc" style="animation: particleRise 0.35s infinite 0.2s;"/>
-                    <circle cx="125" cy="290" r="2" fill="#f59e0b" style="animation: particleRise 0.45s infinite;"/>
-                    <circle cx="215" cy="290" r="2" fill="#f59e0b" style="animation: particleRise 0.45s infinite 0.15s;"/>
-
-                    <!-- LEFT THRUSTER FLAME -->
-                    <g class="thruster-plume-active" transform="translate(125, 235)" filter="url(#thrusterGlow)">
-                        <path d="M-10 0 C-15 40, -18 80, 0 110 C18 80, 15 40, 10 0 Z" fill="url(#mainFlame)"/>
-                        <path class="inner-core-active" d="M-5 0 C-8 30, -8 55, 0 75 C8 55, 8 30, 5 0 Z" fill="#ffffff"/>
-                    </g>
-
-                    <!-- RIGHT THRUSTER FLAME -->
-                    <g class="thruster-plume-active" transform="translate(215, 235)" filter="url(#thrusterGlow)">
-                        <path d="M-10 0 C-15 40, -18 80, 0 110 C18 80, 15 40, 10 0 Z" fill="url(#mainFlame)"/>
-                        <path class="inner-core-active" d="M-5 0 C-8 30, -8 55, 0 75 C8 55, 8 30, 5 0 Z" fill="#ffffff"/>
-                    </g>
-
-                    <!-- CENTER MAIN CORE THRUSTER PLUME (415k RPS Blast) -->
-                    <g class="thruster-plume-active" transform="translate(170, 245)" filter="url(#thrusterGlow)">
-                        <path d="M-22 0 C-35 55, -30 115, 0 155 C30 115, 35 55, 22 0 Z" fill="url(#mainFlame)"/>
-                        <path class="inner-core-active" d="M-14 0 C-22 45, -18 90, 0 120 C18 90, 22 45, 14 0 Z" fill="url(#purpleFlame)"/>
-                        <path d="M-7 0 C-10 30, -9 60, 0 85 C9 60, 10 30, 7 0 Z" fill="#ffffff"/>
-                        
-                        <!-- Mach Shock Diamonds -->
-                        <ellipse class="shock-1" cx="0" cy="35" rx="8" ry="4" fill="#ffffff" opacity="0.9"/>
-                        <ellipse class="shock-2" cx="0" cy="65" rx="6" ry="3" fill="#ffffff" opacity="0.8"/>
-                        <ellipse class="shock-3" cx="0" cy="95" rx="4" ry="2" fill="#c084fc" opacity="0.7"/>
-                    </g>
-
-                    <!-- ROCKET FUSELAGE & STRUCTURE -->
-                    <!-- Delta Fins -->
-                    <path d="M125 180 L80 235 L125 225 Z" fill="url(#finGrad)" stroke="#818cf8" stroke-width="1.5"/>
-                    <path d="M215 180 L260 235 L215 225 Z" fill="url(#finGrad)" stroke="#818cf8" stroke-width="1.5"/>
-                    <path d="M165 190 L170 240 L175 190 Z" fill="#4338ca"/>
-
-                    <!-- Main Body -->
-                    <path d="M170 30 C140 75, 130 145, 130 235 L210 235 C210 145, 200 75, 170 30 Z" fill="url(#hullGrad)" stroke="#6366f1" stroke-width="2"/>
-
-                    <!-- Nose Cone Tip -->
-                    <path d="M170 30 C155 55, 145 90, 140 105 L200 105 C195 90, 185 55, 170 30 Z" fill="#4f46e5"/>
-                    <circle cx="170" cy="45" r="3" fill="#38bdf8" filter="url(#thrusterGlow)"/>
-
-                    <!-- Viewport Window (Cyan Glass) -->
-                    <circle cx="170" cy="135" r="20" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
-                    <circle cx="170" cy="135" r="16" fill="#0284c7"/>
-                    <circle cx="170" cy="135" r="13" fill="#38bdf8" opacity="0.8"/>
-                    <path d="M162 126 A 11 11 0 0 1 178 126 A 11 11 0 0 0 162 126" fill="#ffffff" opacity="0.6"/>
-
-                    <!-- .NET 11 Brand Decal -->
-                    <rect x="150" y="168" width="40" height="24" rx="6" fill="#512BD4" stroke="#a855f7" stroke-width="1.5"/>
-                    <text x="170" y="184" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="900" font-size="12" letter-spacing="0.5">.NET 11</text>
-
-                    <!-- Rocket Thruster Nozzles -->
-                    <path d="M117 235 L133 235 L130 245 L120 245 Z" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
-                    <path d="M158 235 L182 235 L178 248 L162 248 Z" fill="#334155" stroke="#cbd5e1" stroke-width="1.5"/>
-                    <path d="M207 235 L223 235 L220 245 L210 245 Z" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
-
-                    <!-- Thruster Heat Rings -->
-                    <line x1="120" y1="244" x2="130" y2="244" stroke="#f59e0b" stroke-width="2"/>
-                    <line x1="162" y1="247" x2="178" y2="247" stroke="#fef08a" stroke-width="2.5" filter="url(#thrusterGlow)"/>
-                    <line x1="210" y1="244" x2="220" y2="244" stroke="#f59e0b" stroke-width="2"/>
-                </svg>
-
-                <div class="w-full flex items-center justify-between text-[11px] font-mono text-slate-400 mt-2 px-2 pt-2 border-t border-purple-900/30">
-                    <span>Thrust: <strong class="text-purple-300">@(_afterburnersActive ? "520 kRPS" : "415 kRPS")</strong></span>
-                    <span>Ignition: <strong class="text-emerald-300">8.2 ms</strong></span>
-                    <span>Velocity: <strong class="text-cyan-300">@(_afterburnersActive ? "MACH 15.4" : "MACH 11.0")</strong></span>
+                <!-- Flight Controls -->
+                <div class="flex gap-2.5 mt-2 w-full">
+                    <button type="button" @onclick="ToggleThrusters"
+                            class="flex-1 py-2 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-md @(_thrustersNominal ? "bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30" : "bg-slate-800 text-slate-300 border border-slate-700")">
+                        <span>🔥</span>
+                        <span>@(_thrustersNominal ? "Main Thrusters: ONLINE" : "Main Thrusters: IDLE")</span>
+                    </button>
+                    <button type="button" @onclick="ToggleAfterburners"
+                            class="flex-1 py-2 px-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-md @(_afterburnersActive ? "bg-amber-600 hover:bg-amber-500 text-white shadow-amber-600/30 animate-pulse" : "bg-slate-800 text-slate-300 border border-slate-700")">
+                        <span>⚡</span>
+                        <span>@(_afterburnersActive ? "Mach 15.4 Boost ON" : "Engage Afterburners")</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Right: .NET 11 Mission Swag Deck (7 cols) -->
-            <div class="lg:col-span-7 space-y-3">
-                <div class="flex items-center justify-between">
+            <!-- Right: Official .NET Conf 2026 Swag Deck -->
+            <div class="lg:col-span-7 space-y-2.5">
+                <div class="flex items-center justify-between pb-1">
                     <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">Official Mission Equipment Deck</span>
                     <span class="text-xs font-mono text-purple-400">@(_equippedSwags.Count) / 4 ITEMS EQUIPPED</span>
                 </div>
 
-                <!-- Swag Item 1: Flight Jacket & Hoodie -->
+                <!-- Swag Item 1: Official 4K Wallpapers -->
                 <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
                     <div class="flex items-center gap-3">
                         <div class="w-11 h-11 rounded-xl bg-purple-950/80 border border-purple-700/60 flex items-center justify-center text-xl shrink-0">
-                            🧥
+                            🖼️
                         </div>
                         <div>
                             <div class="flex items-center gap-2">
-                                <h4 class="text-xs sm:text-sm font-bold text-white">Official .NET 11 Orbital Flight Jacket &amp; Hoodie</h4>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/20 text-purple-300">LIMITED</span>
+                                <h4 class="text-xs sm:text-sm font-bold text-white">Official .NET Conf 2026 4K Wallpaper Pack</h4>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-purple-500/20 text-purple-300">4K UHD</span>
                             </div>
-                            <p class="text-[11px] text-slate-400">Embroidered .NET 11 GA Mission Patch &amp; C# 15 Discriminated Union arm badge.</p>
+                            <p class="text-[11px] text-slate-400">3840×2160 Ultra-HD Desktop wallpapers in official Blue &amp; Pink variants.</p>
                         </div>
                     </div>
-                    <button type="button" @onclick='() => ToggleSwagItem("jacket")'
-                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("jacket") ? "bg-purple-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
-                        @(_equippedSwags.Contains("jacket") ? "✓ EQUIPPED" : "EQUIP")
+                    <button type="button" @onclick='() => ToggleSwagItem("wallpaper")'
+                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("wallpaper") ? "bg-purple-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
+                        @(_equippedSwags.Contains("wallpaper") ? "✓ EQUIPPED" : "EQUIP")
                     </button>
                 </div>
 
-                <!-- Swag Item 2: Native AOT Sub-Orbital Pin -->
+                <!-- Swag Item 2: Official 3D .NET Bot Crew -->
+                <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-xl overflow-hidden bg-purple-950/80 border border-purple-700/60 flex items-center justify-center shrink-0">
+                            <img src="images/swag/dotnet-bot-astronaut.png" alt="3D .NET Bot" class="w-8 h-8 object-contain">
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-xs sm:text-sm font-bold text-white">Official 3D .NET Bot Launch Crew</h4>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-500/20 text-emerald-300">OFFICIAL 3D</span>
+                            </div>
+                            <p class="text-[11px] text-slate-400">Twin 3D .NET Bots equipped with pressurized visors piloting the orbital rocket.</p>
+                        </div>
+                    </div>
+                    <button type="button" @onclick='() => ToggleSwagItem("bot")'
+                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("bot") ? "bg-emerald-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
+                        @(_equippedSwags.Contains("bot") ? "✓ EQUIPPED" : "EQUIP")
+                    </button>
+                </div>
+
+                <!-- Swag Item 3: Native AOT Sub-Orbital Pin -->
                 <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
                     <div class="flex items-center gap-3">
                         <div class="w-11 h-11 rounded-xl bg-purple-950/80 border border-purple-700/60 flex items-center justify-center text-xl shrink-0">
@@ -292,18 +159,18 @@
                         <div>
                             <div class="flex items-center gap-2">
                                 <h4 class="text-xs sm:text-sm font-bold text-white">Native AOT 415k RPS Sub-Orbital Pin</h4>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300">AOT GOLD</span>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-cyan-500/20 text-cyan-300">AOT GOLD</span>
                             </div>
-                            <p class="text-[11px] text-slate-400">Hard enamel collector's pin in titanium violet, commemorating 8.2ms startup ignition.</p>
+                            <p class="text-[11px] text-slate-400">Titanium violet collector's pin commemorating 8.2ms startup ignition.</p>
                         </div>
                     </div>
                     <button type="button" @onclick='() => ToggleSwagItem("pin")'
-                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("pin") ? "bg-emerald-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
+                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("pin") ? "bg-cyan-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
                         @(_equippedSwags.Contains("pin") ? "✓ EQUIPPED" : "EQUIP")
                     </button>
                 </div>
 
-                <!-- Swag Item 3: NIST FIPS 203 Quantum Heat Shield -->
+                <!-- Swag Item 4: NIST FIPS 203 Quantum Heat Shield -->
                 <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
                     <div class="flex items-center gap-3">
                         <div class="w-11 h-11 rounded-xl bg-purple-950/80 border border-purple-700/60 flex items-center justify-center text-xl shrink-0">
@@ -312,34 +179,14 @@
                         <div>
                             <div class="flex items-center gap-2">
                                 <h4 class="text-xs sm:text-sm font-bold text-white">NIST FIPS 203 ML-KEM-768 Quantum Heat Shield</h4>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300">PQC TILE</span>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-500/20 text-amber-300">PQC TILE</span>
                             </div>
-                            <p class="text-[11px] text-slate-400">Post-quantum cryptographic re-entry tile protecting telemetry against Shor algorithms.</p>
+                            <p class="text-[11px] text-slate-400">Post-quantum cryptographic re-entry tile protecting telemetry against Shor attacks.</p>
                         </div>
                     </div>
                     <button type="button" @onclick='() => ToggleSwagItem("shield")'
-                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("shield") ? "bg-cyan-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
+                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("shield") ? "bg-amber-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
                         @(_equippedSwags.Contains("shield") ? "✓ EQUIPPED" : "EQUIP")
-                    </button>
-                </div>
-
-                <!-- Swag Item 4: .NET Bot Astronaut Launch Commander -->
-                <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-purple-900/40 hover:border-purple-500/60 transition flex items-center justify-between gap-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-11 h-11 rounded-xl bg-purple-950/80 border border-purple-700/60 flex items-center justify-center text-xl shrink-0">
-                            🤖
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h4 class="text-xs sm:text-sm font-bold text-white">.NET Bot Astronaut Launch Commander</h4>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-300">MASCOT</span>
-                            </div>
-                            <p class="text-[11px] text-slate-400">Mission mascot equipped with pressurized EVA gold visor and dual-vector thrusters.</p>
-                        </div>
-                    </div>
-                    <button type="button" @onclick='() => ToggleSwagItem("bot")'
-                            class="px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition shrink-0 @(_equippedSwags.Contains("bot") ? "bg-amber-600 text-white" : "bg-slate-800 text-slate-300 hover:text-white")">
-                        @(_equippedSwags.Contains("bot") ? "✓ EQUIPPED" : "EQUIP")
                     </button>
                 </div>
             </div>
