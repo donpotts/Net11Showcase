@@ -23,8 +23,7 @@ Experience the complete end-to-end walkthrough in native **60 FPS** featuring du
 </p>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Direct Stream / Download Master MP4 (7.9 MB)</b></a> •
-  <a href="https://htmlpreview.github.io/?https://github.com/donpotts/Net11Showcase/blob/main/docs/videos/hyperframes_net11_showcase_4k.html"><b>⚡ Launch Live Interactive Scrubber Player</b></a> •
+  <a href="https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Watch / Stream 60 FPS Video (MP4)</b></a> •
   <a href="docs/videos/net11-showcase-4k-poster.png"><b>🖼️ High-Res Poster Frame</b></a>
 </p>
 
@@ -139,7 +138,7 @@ Open **/agent-ops** for a human-in-the-loop agent workspace:
 | [📊 **Benchmark Lab**](docs/BENCHMARKS.md) | Detailed benchmark measurements comparing .NET 8, 9, 10, and 11 Native AOT (Startup, Throughput, RAM) |
 | [🧩 **Components Catalog**](docs/COMPONENTS.md) | Reference list of all reusable Tailwind UI components included in the suite |
 | [❓ **Help & FAQ**](docs/HELP.md) | Troubleshooting port bindings, firewall rules, PowerShell execution policies, and database reset |
-| [🎬 **Interactive Chapter Scrubber Player**](https://htmlpreview.github.io/?https://github.com/donpotts/Net11Showcase/blob/main/docs/videos/hyperframes_net11_showcase_4k.html) | Interactive HTML5 4K video player with chapter navigation and dual neural TTS transcripts |
+| [🎬 **60 FPS Video Walkthrough (MP4)**](https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4) | High-definition 60 FPS walkthrough with dual neural narration |
 
 ---
 
