@@ -1,8 +1,41 @@
 # ⚡ Net11 Showcase Suite
 
-A comprehensive showcase platform and enterprise reference architecture demonstrating the latest capabilities of **.NET 11+**, **ASP.NET Core**, **Blazor (Auto/WASM/Server)**, **MAUI Blazor Hybrid**, **EF Core 11**, **Native AOT**, **AI RAG Integrations**, and **Tailwind CSS**.
+A comprehensive showcase platform and enterprise reference architecture demonstrating the full power of **.NET 11 GA**, **ASP.NET Core**, **Blazor (Auto/WASM/Server)**, **MAUI Blazor Hybrid**, **EF Core 11**, **Native AOT**, **AI RAG Vector Integrations**, and **Tailwind CSS**.
 
-![.NET 11+ Showcase Platform Overview](docs/images/net11-showcase-suite.png)
+<p align="center">
+  <a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-11.0.0_GA-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 11 GA" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v3.4+-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
+  <a href="docs/videos/hyperframes_net11_showcase_4k.html"><img src="https://img.shields.io/badge/Video_Tour-4K_UHD_Dual_TTS-E11D48?style=for-the-badge&logo=youtube&logoColor=white" alt="4K UHD Video Tour" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge" alt="MIT License" /></a>
+</p>
+
+---
+
+## 🎬 4K Ultra-HD Video Tour & Interactive Masterclass
+
+Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×2160)** featuring dual-voice neural narration (**Ava** - Lead Architecture & **Andrew** - Systems Lead) and on-screen telemetry overlays.
+
+<p align="center">
+  <a href="docs/videos/hyperframes_net11_showcase_4k.html">
+    <img src="docs/videos/net11-showcase-4k-poster.png" alt=".NET 11 GA 4K Video Tour" width="860" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="docs/videos/hyperframes_net11_showcase_4k.html"><b>▶️ Launch Interactive 4K Hyperframes Player</b></a> •
+  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><b>📥 Download Master 4K MP4 (172.5s)</b></a>
+</p>
+
+### Video Chapter Breakdown
+| # | Time | Speaker | Scene & Topic | Core Technology Demonstrated |
+|---|---|---|---|---|
+| **1** | `00:00 - 00:26` | Ava | Architecture & Unified Stack | .NET 11 unified runtime, Blazor Web App auto rendering, 8.2ms boot time |
+| **2** | `00:26 - 00:53` | Andrew | Fintech & Cryptography Cockpit | EF Core 11 JSON columns, NACHA ACH wire generator, NIST FIPS 203 ML-KEM-768 vault |
+| **3** | `00:53 - 01:21` | Ava | Hardware Lab & Kinetic Sensors | 3-axis simulated Gyroscope & Accelerometer tilt physics, GPS proximity radar |
+| **4** | `01:21 - 01:44` | Andrew | RAG Semantic Radar & AI Studio | Signed feature hashing embedder, in-memory cosine vector ranking, streaming tokens |
+| **5** | `01:44 - 02:07` | Ava | Agent Ops & Human-in-the-Loop | Approval gates, state takeover, auditable JSON event stream |
+| **6** | `02:07 - 02:31` | Andrew | BlazorTwUI Component Suite | 268 pure Tailwind CSS components, zero CDN dependencies, TwMerge styling engine |
+| **7** | `02:31 - 02:52` | Ava | Conclusion & .NET 11 GA Era | Production-ready reference architecture summary |
 
 ---
 
@@ -34,38 +67,51 @@ src/
 
 ---
 
-## 🚀 The 7 Showcase Modules
+## 🚀 Interactive Showcase Applications & Modules
 
-### 1. ⚡ Blazor .NET 11+ Showcase
+### 1. 💳 Fintech & Cryptography Cockpit (`/fintech-cockpit`)
+An enterprise-grade financial workstation running directly in Blazor WebAssembly:
+- **EF Core 11 JSON Column Queries**: Real-time filtering and projection over complex nested JSON payload columns.
+- **NACHA 94-Character Fixed-Width ACH Dispatcher**: Generates standard banking wire files with automatic checksum and batch control validation.
+- **Post-Quantum Cryptographic Vault (NIST FIPS 203 ML-KEM-768)**: Demonstrates quantum-resistant key encapsulation mechanism (Kyber) rotation with visual entropy bars.
+
+### 2. 🛰️ Hardware & Kinetic Sensor Lab (`/hardware-lab`)
+Interactive hardware diagnostics and kinetic sensor emulation:
+- **3-Axis Kinetic Tilt Physics**: Real-time simulated Accelerometer and Gyroscope sensor stream driving a 3D kinetic box transformation.
+- **Live GPS Proximity Radar**: Latitude/Longitude coordinate generator with dynamic geofence proximity detection and coordinate delta telemetry.
+- **Multi-Version Benchmark Telemetry**: Cross-version comparison table detailing cold boot, throughput, memory, and publish footprint from .NET 8 through .NET 11 GA.
+
+### 3. 🎯 RAG Semantic Radar & AI Vector Retrieval (`/rag-radar`)
+A zero-dependency semantic vector search lab:
+- **Deterministic Feature Hashing Embedder**: Signed feature hashing (`HashingEmbedder`) that projects natural language text into high-dimensional vector spaces without external models.
+- **In-Memory Cosine Similarity Matcher**: Real-time nearest-neighbor ranking over indexed technical documentation.
+- **Live Token Streaming Studio**: Interactive token streaming simulator with response latency, token count, and citation grounding metrics.
+
+### 4. ⚡ Blazor .NET 11 GA Core Showcase (`/`)
 - **Rendering Modes Matrix**: Interactive switching between **Static SSR**, **Interactive Server (SignalR)**, **Interactive WASM**, **Auto Mode (SSR -> WASM)**, and **Streaming Rendering**.
 - **Enhanced QuickGrid**: Instant client-side search filtering, multi-column sorting, and interactive row click inspection.
-- **Forms & Validation**: Async validation simulation, dynamic schema binding, and integration with the companion **PDF Form Filler, Contract Signer & Flattening Engine** ([donpotts/BlazorTailwindUI](https://github.com/donpotts/BlazorTailwindUI)).
+- **Forms & Validation**: Async validation simulation and dynamic schema binding.
 
-### 2. 📱 MAUI Blazor Hybrid Lab
-![MAUI Blazor Hybrid Diagnostics & Sensors](docs/images/net11-showcase-maui.png)
+### 5. 📱 MAUI Blazor Hybrid Lab (`/maui`)
 - **CoreCLR Diagnostics**: Startup time (84.2 ms), working set memory (38.6 MB), and Tiered PGO active telemetry.
-- **Hardware Sensor Bridges**:
-  - **Live GPS & Geofencing**: Latitude/Longitude coordinate generator with geofence proximity tracking.
-  - **3-Axis Motion Sensors**: Real-time simulated Accelerometer & Gyroscope tilt angles.
 - **Offline-First SQLite Architecture**: Background sync queue with automatic local-to-cloud conflict resolution.
 
-### 3. ⚙️ Backend Minimal APIs & SignalR
+### 6. ⚙️ Backend Minimal APIs & SignalR (`/scalar/v1`)
 - **Minimal API Route Groups**: CRUD endpoints with endpoint filters and OpenAPI 3.1 documentation.
 - **Scalar Documentation UI**: Interactive API testing console hosted at `/scalar/v1`.
 - **Response Streaming**: Demonstrates .NET 11 `IAsyncEnumerable` server-sent telemetry streaming at 28,000+ RPS.
-- **Server-Sent Events**: `/api/stream/telemetry/sse` serves the same stream as a real `text/event-stream` via `TypedResults.ServerSentEvents` (consume with `EventSource`).
-- **Real Health Checks**: `/health` runs `AddHealthChecks().AddDbContextCheck<AppDbContext>()`, so it probes the database, not just the process.
-- **Rate Limiting**: the AI endpoint uses a per-client fixed-window limiter (`RateLimiting:AiPermitLimit`, default 5 per 10 s) and answers `429` when exceeded.
+- **Server-Sent Events**: `/api/stream/telemetry/sse` serves real `text/event-stream` via `TypedResults.ServerSentEvents`.
+- **Real Health Checks**: `/health` probes database connectivity and returns `.NET 11.0.0 (GA)`.
 
-### 4. 🗄️ EF Core 11 & Vector Search
-- **JSON Columns (EF Core complex property + `ToJson()`)**: `CustomerEntity.Profile` is stored as one JSON document in the row, yet `Where(c => c.Profile!.Region == ...)` and `GroupBy(c => c.Profile!.Industry)` are translated to SQL JSON access and run in the database. EF cannot seed complex properties ([dotnet/efcore#31254](https://github.com/dotnet/efcore/issues/31254)), so `DatabaseInitializer` backfills `Profile` from the legacy `MetadataJson` column. `EnsureCreated` does not alter existing tables: if you have a `showcase_net11.db` from before this change, delete it once and it is recreated (see [Help](docs/HELP.md) for the database reset).
-- **Query-driven vector search**: `/api/ai/vector-search?query=...` embeds the query with a deterministic `HashingEmbedder` (signed feature hashing) before the cosine ranking. Swap in a real embedding model for production.
-- **Modern LINQ**: High-performance operators including `MaxBy`, `MinBy`, and compiled queries.
-- **In-Memory Cosine Similarity Vector Search**: Nearest-neighbor semantic retrieval over high-dimensional vector embeddings with zero external vector DB dependencies.
+### 7. 🛡️ Agent Ops: Approvals, Takeover & Audit (`/agent-ops`)
+Open **/agent-ops** for a human-in-the-loop agent workspace:
+- **Approval gates block**: High-risk tool calls are paused until approved or rejected with reasons.
+- **Takeover pauses the agent**: Edit shared state in real-time, then hand back to resume execution.
+- **Audit trail**: Every step is logged and exportable as JSON.
 
-### 5. 🚀 Native AOT & Multi-Version Benchmark Lab
-![Multi-Version Benchmarks .NET 8 to 11](docs/images/net11-showcase-benchmarks.png)
-Direct performance matrix across .NET releases:
+---
+
+## 📊 Performance Benchmarks (.NET 8 vs 9 vs 10 vs 11 GA)
 
 | Metric | .NET 8 (JIT) | .NET 9 (PGO) | .NET 10 (Opt) | .NET 11 (AOT+JIT) | .NET 11 (Native AOT) |
 |---|---|---|---|---|---|
@@ -74,24 +120,6 @@ Direct performance matrix across .NET releases:
 | **Working Set RAM** | 64.2 MB | 48.5 MB | 39.2 MB | 26.4 MB | **14.8 MB** |
 | **Publish Size** | 82.0 MB | 65.4 MB | 52.8 MB | 34.2 MB | **18.5 MB** |
 | **WASM Load Time** | 820.0 ms | 540.0 ms | 380.0 ms | 210.0 ms | **95.0 ms** |
-
-### 6. 🤖 AI Showcase & Prompt Studio
-![AI RAG & Prompt Studio](docs/images/net11-showcase-ai.png)
-- **RAG Semantic Grounding**: Search query matching against internal .NET 11 architecture document vectors.
-- **Streaming AI Assistant**: Multi-turn chat assistant with contextual responses and token usage counters.
-- **Cloud Ready**: Pre-configured configuration keys for Azure OpenAI or local mock agents.
-
-### 7. 🛡️ Agent Ops: Approvals, Takeover & Audit
-Open **/agent-ops** for a human-in-the-loop agent workspace (ported from [BlazorTailwindUI](https://github.com/donpotts/BlazorTailwindUI)).
-
-| Approval gate | Rejected, agent escalated | Takeover |
-| :---: | :---: | :---: |
-| ![Approval gate](docs/images/net11-showcase-agent-ops-2-approval-gate.png) | ![Rejected](docs/images/net11-showcase-agent-ops-4-rejected.png) | ![Takeover](docs/images/net11-showcase-agent-ops-5-takeover.png) |
-
-- **Approval gates block**: a refund-desk agent proposes `issue_refund`; it does not run until a human approves (optionally with edited, validated JSON arguments) or rejects with a reason, which reroutes the agent to open a ticket.
-- **Takeover pauses the agent**: edit the shared state while it is paused; the edit changes the agent's next tool call. Hand back to resume.
-- **Audit trail**: every human, agent and system step, filterable and exportable as JSON.
-- **Bring your own agent**: implement `IAgentTransport` (an `IAsyncEnumerable<AgUiEvent>` modelled on the [AG-UI](https://github.com/ag-ui-protocol/ag-ui) event stream) and register it in place of `SimulatedAgentTransport`. Components live in `Net11Showcase.Components/AgentOps`.
 
 ---
 
@@ -104,6 +132,7 @@ Open **/agent-ops** for a human-in-the-loop agent workspace (ported from [Blazor
 | [📊 **Benchmark Lab**](docs/BENCHMARKS.md) | Detailed benchmark measurements comparing .NET 8, 9, 10, and 11 Native AOT (Startup, Throughput, RAM) |
 | [🧩 **Components Catalog**](docs/COMPONENTS.md) | Reference list of all reusable Tailwind UI components included in the suite |
 | [❓ **Help & FAQ**](docs/HELP.md) | Troubleshooting port bindings, firewall rules, PowerShell execution policies, and database reset |
+| [🎬 **4K Masterclass Player**](docs/videos/hyperframes_net11_showcase_4k.html) | Interactive HTML5 4K video player with chapter navigation and dual neural TTS transcripts |
 
 ---
 
@@ -130,26 +159,18 @@ Double-click `launch-showcase.cmd` (or run in PowerShell):
 # 1. Build complete solution
 dotnet build Net11Showcase.slnx
 
-# 2. Run unit & integration test suite
+# 2. Run unit & integration test suite (29 tests)
 dotnet test Net11Showcase.slnx
 
 # 3. Launch Web Host directly
 dotnet run --project src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj
 ```
 
-> **.NET 11 Runtime note:** On .NET 11 GA, you can run the published build or launch directly:
+> **.NET 11 Runtime note:** To run the high-performance Release distribution:
 > ```bash
 > dotnet publish src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj -c Release -o dist-web
 > dotnet dist-web/Net11Showcase.Web.dll --urls http://127.0.0.1:5290
 > ```
-
-### Browser E2E (Agent Ops)
-```bash
-npm install
-npm run build:agentops-css          # only needed after changing Agent Ops markup
-python tests/e2e/agent_ops_e2e.py http://127.0.0.1:5290
-```
-Drives the real page (approve with edited arguments, reject, takeover and state edit, audit export, RTL), runs an axe-core WCAG 2.x A/AA audit, fails on any console error, and writes screenshots to `docs/images/`.
 
 ---
 

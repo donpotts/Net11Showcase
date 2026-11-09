@@ -47,3 +47,9 @@ The port coordinator (`launch-showcase.ps1`) automatically scans TCP ports start
 
 - **Repository**: [Net11 Showcase on GitHub](https://github.com/donpotts/BlazorTailwindUI)
 - **License**: MIT Open Source License
+
+### 5. 4K Ultra-HD Video Tour & Hyperframes Player
+- **Access**: Open `docs/videos/hyperframes_net11_showcase_4k.html` in any modern browser (Edge, Chrome, Firefox, Safari).
+- **Features**: Interactive chapter timeline scrubber, synchronized neural speaker transcripts, and direct links to live showcase routes.
+- **Direct Video File**: `docs/videos/net11-showcase-4k-masterclass.mp4` (H.264 4K UHD 3840x2160, 256kbps AAC audio).
+

@@ -43,3 +43,28 @@ Styles: these components use Tailwind utilities compiled by `npm run build:agent
 ### 5. Benchmark & Diagnostics Components
 - **`BenchmarkMatrixTable`**: Color-coded performance comparison table comparing .NET 8 through .NET 11 Native AOT metrics.
 - **`RuntimeTelemetryHud`**: Glassmorphic KPI tiles displaying startup time, memory working set, throughput, and vector similarity in real time.
+---
+
+## 💼 Showcase Application Pages
+
+### 1. Fintech Cockpit (`FintechCockpit.razor`)
+- **Route**: `/fintech-cockpit`
+- **Features**:
+  - Live EF Core 11 JSON Column Queries with client-side filters.
+  - NACHA 94-character fixed-width ACH transaction dispatch and format validation.
+  - Post-Quantum Cryptographic Key Encapsulation (NIST FIPS 203 ML-KEM-768 Kyber) rotation simulation with entropy bars.
+
+### 2. Hardware Motion Lab (`HardwareLab.razor`)
+- **Route**: `/hardware-lab`
+- **Features**:
+  - Kinetic 3D tilt box driven by real-time simulated 3-axis Gyroscope & Accelerometer math.
+  - Live GPS coordinate proximity radar with dynamic geofencing boundary calculation.
+  - Performance benchmark HUD comparing .NET 8, 9, 10, and 11 GA.
+
+### 3. RAG Semantic Radar (`RagRadar.razor`)
+- **Route**: `/rag-radar`
+- **Features**:
+  - Signed feature hashing vector projection (`HashingEmbedder`).
+  - In-memory Cosine Similarity nearest-neighbor vector matcher.
+  - Live streaming AI response token generator with token-per-second telemetry.
+
