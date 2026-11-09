@@ -1,40 +1,42 @@
 # ⚡ Net11 Showcase Suite
 
-A comprehensive showcase platform and enterprise reference architecture demonstrating the full power of **.NET 11 GA**, **ASP.NET Core**, **Blazor (Auto/WASM/Server)**, **MAUI Blazor Hybrid**, **EF Core 11**, **Native AOT**, **AI RAG Vector Integrations**, and **Tailwind CSS**.
+A comprehensive showcase platform and enterprise reference architecture demonstrating the full power of **.NET 11 STS**, **ASP.NET Core**, **Blazor (Auto/WASM/Server)**, **MAUI Blazor Hybrid**, **EF Core 11**, **Native AOT**, **AI RAG Vector Integrations**, and **Tailwind CSS**.
 
 <p align="center">
-  <a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-11.0.0_GA-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 11 GA" /></a>
+  <a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-11.0.0_STS-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 11 STS" /></a>
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v3.4+-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
-  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><img src="https://img.shields.io/badge/Watch_Video-4K_UHD_Masterclass-E11D48?style=for-the-badge&logo=youtube&logoColor=white" alt="4K UHD Video Tour" /></a>
+  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><img src="https://img.shields.io/badge/Watch_Video-60_FPS_Broadcast-E11D48?style=for-the-badge&logo=youtube&logoColor=white" alt="60 FPS Video Tour" /></a>
   <a href="https://github.com/donpotts/BlazorTwUI"><img src="https://img.shields.io/badge/UI_Suite-BlazorTwUI_268_Components-3B82F6?style=for-the-badge" alt="BlazorTwUI" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge" alt="MIT License" /></a>
 </p>
 
 ---
 
-## 🎬 4K Ultra-HD Video Tour & E2E Masterclass
+## 🎬 60 FPS Cinematic Broadcast Tour & Architecture Masterclass
 
-Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×2160)** featuring dual-voice neural narration (**Ava** - Lead Architecture & **Andrew** - Systems Lead) showcasing the official .NET 11 orbital launch vehicle, real working sample applications, and Native AOT performance.
+Experience the complete end-to-end walkthrough in native **60 FPS** featuring dual-voice neural narration (**Ava** - Principal Architecture & **Christopher** - Systems Lead) showcasing the official .NET Conf 2026 orbital launch vehicle, real working sample applications, and Native AOT performance.
 
 <p align="center">
   <a href="docs/videos/net11-showcase-4k-masterclass.mp4">
-    <img src="docs/videos/net11-showcase-tour.gif" alt="Click to Watch .NET 11 GA 4K Video Tour" width="100%" />
+    <img src="docs/videos/net11-showcase-tour.gif" alt="Click to Watch .NET 11 STS 60 FPS Cinematic Broadcast Tour" width="100%" />
   </a>
 </p>
 
 <p align="center">
-  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Watch Full 4K Masterclass Video (MP4)</b></a> •
-  <a href="docs/videos/net11-showcase-4k-poster.png"><b>🖼️ High-Res 4K Frame Poster</b></a>
+  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Watch Full 60 FPS Masterclass Video (MP4)</b></a> •
+  <a href="docs/videos/hyperframes_net11_showcase_4k.html"><b>⚡ Interactive Chapter Scrubbing Player</b></a> •
+  <a href="docs/videos/net11-showcase-4k-poster.png"><b>🖼️ High-Res Poster Frame</b></a>
 </p>
 
-### Video Chapter Breakdown (60-Second WOW Reel)
+### Video Chapter Breakdown (55-Second Frame-Synchronized Broadcast)
 | # | Time | Speaker | Scene & Topic | Core Technology Demonstrated |
 |---|---|---|---|---|
-| **1** | `00:00 - 00:12` | Ava | .NET 11 Native AOT & Orbital Propulsion | Official 3D rocket, 8.2ms instant cold boot, 415k RPS Native AOT thrust |
-| **2** | `00:12 - 00:24` | Andrew | Blazor Auto Render Mode & Live Hydration | Dynamic switching from Server SSR to Client WASM & streaming chunks |
-| **3** | `00:24 - 00:36` | Ava | EF Core 11 Complex JSON & Banking Wires | Real-time LINQ over complex JSON columns, NACHA ACH wire dispatch, PQC key vault |
-| **4** | `00:36 - 00:48` | Andrew | AI Semantic RAG & In-Memory Vector Radar | Sub-2ms cosine similarity retrieval over 512-dim vectors, streaming tokens |
-| **5** | `00:48 - 01:00` | Ava | Enterprise SLA Contract Signer & Cryptographic Seal | Biometric signature capture, SHA-256 seal verification, stream flattening |
+| **0** | `00:00 - 00:06` | Ava | Opening Ignition & Mission Control | Official .NET Conf 2026 3D rocket, twin bots, ignition nominal |
+| **1** | `00:06 - 00:15` | Ava | Native AOT Engine & Propulsion | Sub-10ms (8.2ms) cold start, 415k RPS, -77.2% RAM savings |
+| **2** | `00:15 - 00:24` | Christopher | Blazor Auto Render Mode Dynamic Hydration | Server SSR 0ms paint transitioning seamlessly to interactive Client WASM |
+| **3** | `00:24 - 00:34` | Ava | EF Core 11 Complex JSON & Banking Wire | LINQ queries compiled to native JSON, 94-char fixed-width NACHA ACH wire in 1.8ms |
+| **4** | `00:34 - 00:45` | Christopher | AI Vector Radar & Cryptographic Contract Signer | 512-dim cosine similarity in 1.1ms, canvas flattening, SHA-256 seal |
+| **5** | `00:45 - 00:55` | Ava | Production Ready Architecture & Star CTA | Full stack recap, MIT open-source repo, clone and build instructions |
 
 ---
 
