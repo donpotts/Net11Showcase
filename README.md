@@ -27,16 +27,14 @@ Experience the complete end-to-end walkthrough in native **4K Ultra-HD (3840×21
   <a href="docs/videos/net11-showcase-4k-poster.png"><b>🖼️ High-Res 4K Frame Poster</b></a>
 </p>
 
-### Video Chapter Breakdown
+### Video Chapter Breakdown (60-Second WOW Reel)
 | # | Time | Speaker | Scene & Topic | Core Technology Demonstrated |
 |---|---|---|---|---|
-| **1** | `00:00 - 00:26` | Ava | Orbital Rocket & Architecture | Triple Native AOT rocket thrusters, .NET 11 Swag Deck, 415k RPS thrust |
-| **2** | `00:26 - 00:53` | Andrew | Fintech & Cryptography Cockpit | EF Core 11 JSON columns, NACHA ACH wire generator, NIST FIPS 203 ML-KEM-768 vault |
-| **3** | `00:53 - 01:21` | Ava | Hardware Lab & Kinetic Sensors | 3-axis simulated Gyroscope & Accelerometer tilt physics, GPS proximity radar |
-| **4** | `01:21 - 01:44` | Andrew | RAG Semantic Radar & AI Studio | Signed feature hashing embedder, in-memory cosine vector ranking, streaming tokens |
-| **5** | `01:44 - 02:07` | Ava | Agent Ops & Human-in-the-Loop | Approval gates, state takeover, auditable JSON event stream |
-| **6** | `02:07 - 02:31` | Andrew | Contract Signer & BlazorTwUI | Digital signature canvas, SHA-256 seal verification, stream flattening |
-| **7** | `02:31 - 02:52` | Ava | Conclusion & .NET 11 GA Era | Production-ready reference architecture summary |
+| **1** | `00:00 - 00:12` | Ava | .NET 11 Native AOT & Orbital Propulsion | Official 3D rocket, 8.2ms instant cold boot, 415k RPS Native AOT thrust |
+| **2** | `00:12 - 00:24` | Andrew | Blazor Auto Render Mode & Live Hydration | Dynamic switching from Server SSR to Client WASM & streaming chunks |
+| **3** | `00:24 - 00:36` | Ava | EF Core 11 Complex JSON & Banking Wires | Real-time LINQ over complex JSON columns, NACHA ACH wire dispatch, PQC key vault |
+| **4** | `00:36 - 00:48` | Andrew | AI Semantic RAG & In-Memory Vector Radar | Sub-2ms cosine similarity retrieval over 512-dim vectors, streaming tokens |
+| **5** | `00:48 - 01:00` | Ava | Enterprise SLA Contract Signer & Cryptographic Seal | Biometric signature capture, SHA-256 seal verification, stream flattening |
 
 ---
 
