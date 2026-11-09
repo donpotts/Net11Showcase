@@ -5,7 +5,7 @@ A comprehensive showcase platform and enterprise reference architecture demonstr
 <p align="center">
   <a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-11.0.0_STS-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 11 STS" /></a>
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v3.4+-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
-  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><img src="https://img.shields.io/badge/Watch_Video-60_FPS_Broadcast-E11D48?style=for-the-badge&logo=youtube&logoColor=white" alt="60 FPS Video Tour" /></a>
+  <a href="https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4"><img src="https://img.shields.io/badge/Watch_Video-60_FPS_Broadcast-E11D48?style=for-the-badge&logo=youtube&logoColor=white" alt="60 FPS Video Tour" /></a>
   <a href="https://github.com/donpotts/BlazorTwUI"><img src="https://img.shields.io/badge/UI_Suite-BlazorTwUI_268_Components-3B82F6?style=for-the-badge" alt="BlazorTwUI" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge" alt="MIT License" /></a>
 </p>
@@ -17,14 +17,14 @@ A comprehensive showcase platform and enterprise reference architecture demonstr
 Experience the complete end-to-end walkthrough in native **60 FPS** featuring dual-voice neural narration (**Ava** - Principal Architecture & **Christopher** - Systems Lead) showcasing the official .NET Conf 2026 orbital launch vehicle, real working sample applications, and Native AOT performance.
 
 <p align="center">
-  <a href="docs/videos/net11-showcase-4k-masterclass.mp4">
-    <img src="docs/videos/net11-showcase-tour.gif" alt="Click to Watch .NET 11 STS 60 FPS Cinematic Broadcast Tour" width="100%" />
+  <a href="https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4">
+    <img src="docs/videos/net11-showcase-tour.gif" alt="Click to Stream .NET 11 STS 60 FPS Cinematic Broadcast Tour" width="100%" />
   </a>
 </p>
 
 <p align="center">
-  <a href="docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Watch Full 60 FPS Masterclass Video (MP4)</b></a> •
-  <a href="docs/videos/hyperframes_net11_showcase_4k.html"><b>⚡ Interactive Chapter Scrubbing Player</b></a> •
+  <a href="https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4"><b>▶️ Direct Stream / Download Master MP4 (7.9 MB)</b></a> •
+  <a href="https://htmlpreview.github.io/?https://github.com/donpotts/Net11Showcase/blob/main/docs/videos/hyperframes_net11_showcase_4k.html"><b>⚡ Launch Live Interactive Scrubber Player</b></a> •
   <a href="docs/videos/net11-showcase-4k-poster.png"><b>🖼️ High-Res Poster Frame</b></a>
 </p>
 
@@ -139,7 +139,7 @@ Open **/agent-ops** for a human-in-the-loop agent workspace:
 | [📊 **Benchmark Lab**](docs/BENCHMARKS.md) | Detailed benchmark measurements comparing .NET 8, 9, 10, and 11 Native AOT (Startup, Throughput, RAM) |
 | [🧩 **Components Catalog**](docs/COMPONENTS.md) | Reference list of all reusable Tailwind UI components included in the suite |
 | [❓ **Help & FAQ**](docs/HELP.md) | Troubleshooting port bindings, firewall rules, PowerShell execution policies, and database reset |
-| [🎬 **4K Masterclass Player**](docs/videos/hyperframes_net11_showcase_4k.html) | Interactive HTML5 4K video player with chapter navigation and dual neural TTS transcripts |
+| [🎬 **Interactive Chapter Scrubber Player**](https://htmlpreview.github.io/?https://github.com/donpotts/Net11Showcase/blob/main/docs/videos/hyperframes_net11_showcase_4k.html) | Interactive HTML5 4K video player with chapter navigation and dual neural TTS transcripts |
 
 ---
 
