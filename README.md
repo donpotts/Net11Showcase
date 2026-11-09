@@ -14,7 +14,7 @@ A comprehensive showcase platform and enterprise reference architecture demonstr
 
 ## 🎬 60 FPS Cinematic Broadcast Tour & Architecture Masterclass
 
-Experience the complete end-to-end walkthrough in native **60 FPS** featuring dual-voice neural narration (**Ava** - Principal Architecture & **Christopher** - Systems Lead) showcasing the official .NET Conf 2026 orbital launch vehicle, real working sample applications, and Native AOT performance.
+Experience the complete end-to-end walkthrough in native **60 FPS** featuring dual-voice neural narration (**Ava** - Principal Architecture & **Christopher** - Systems Lead) showcasing the .NET Conf 2026 3D rocket launch vehicle, real working sample applications, and Native AOT performance.
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/donpotts/Net11Showcase/main/docs/videos/net11-showcase-4k-masterclass.mp4">
@@ -30,7 +30,7 @@ Experience the complete end-to-end walkthrough in native **60 FPS** featuring du
 ### Video Chapter Breakdown (55-Second Frame-Synchronized Broadcast)
 | # | Time | Speaker | Scene & Topic | Core Technology Demonstrated |
 |---|---|---|---|---|
-| **0** | `00:00 - 00:06` | Ava | Opening Ignition & Mission Control | Official .NET Conf 2026 3D rocket, twin bots, ignition nominal |
+| **0** | `00:00 - 00:06` | Ava | Opening Ignition & Mission Control | .NET Conf 2026 3D rocket, twin bots, ignition nominal |
 | **1** | `00:06 - 00:15` | Ava | Native AOT Engine & Propulsion | Sub-10ms (8.2ms) cold start, 415k RPS, -77.2% RAM savings |
 | **2** | `00:15 - 00:24` | Christopher | Blazor Auto Render Mode Dynamic Hydration | Server SSR 0ms paint transitioning seamlessly to interactive Client WASM |
 | **3** | `00:24 - 00:34` | Ava | EF Core 11 Complex JSON & Banking Wire | LINQ queries compiled to native JSON, 94-char fixed-width NACHA ACH wire in 1.8ms |
