@@ -15,15 +15,15 @@
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div class="space-y-2 max-w-2xl">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                    <TwBadge Variant="SemanticVariant.Warning" Size="ComponentSize.Sm" ShowDot="true">
                         🤖 AI RAG &amp; PROMPT STUDIO
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    </TwBadge>
+                    <TwBadge Variant="SemanticVariant.Success" Size="ComponentSize.Sm">
                         🔍 IN-MEMORY COSINE SIMILARITY
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    </TwBadge>
+                    <TwBadge Variant="SemanticVariant.Primary" Size="ComponentSize.Sm">
                         🌱 ZERO PAID APIS (100% OFFLINE)
-                    </span>
+                    </TwBadge>
                 </div>
                 <h1 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-900">
                     AI Semantic RAG &amp; Vector Radar
@@ -33,11 +33,7 @@
                 </p>
             </div>
 
-            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-mono text-center shrink-0">
-                <span class="text-slate-500 block text-[10px] font-bold">VECTOR RETRIEVAL</span>
-                <span class="text-amber-400 font-bold text-lg">1.2 ms</span>
-                <span class="text-slate-500 block text-[9px]">512-dim Cosine Rank</span>
-            </div>
+            <TwStatCard Title="VECTOR RETRIEVAL" Value="1.2 ms" Subtitle="512-dim Cosine Rank" TrendText="Sub-2ms" IsTrendPositive="true" Class="shrink-0" />
         </div>
     </div>
 
@@ -56,18 +52,9 @@
                     <div class="flex gap-2">
                         <input @bind="_promptInput" @onkeydown="HandleKeyDown" placeholder="Ask about .NET 11 (e.g. 'How does Native AOT achieve 8.2ms startup?')..."
                                class="flex-1 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 font-sans shadow-xs" />
-                        <button type="button" @onclick="SubmitPrompt" disabled="@_isGenerating"
-                                class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 disabled:opacity-60 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-600/30 cursor-pointer">
-                            @if (_isGenerating)
-                            {
-                                <span class="inline-block animate-spin">⏳</span>
-                                <span>Synthesizing...</span>
-                            }
-                            else
-                            {
-                                <span>🚀 Generate</span>
-                            }
-                        </button>
+                        <TwButton Variant="ButtonVariant.Primary" Size="ComponentSize.Md" Loading="@_isGenerating" OnClick="SubmitPrompt" Class="bg-amber-600 hover:bg-amber-500 text-white shadow-md shadow-amber-600/30 shrink-0">
+                            <span>🚀 Generate</span>
+                        </TwButton>
                     </div>
 
                     <!-- Suggestion Chips -->

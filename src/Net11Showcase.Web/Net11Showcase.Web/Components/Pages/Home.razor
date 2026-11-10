@@ -1525,30 +1525,17 @@
                             <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Execute Zero-Allocation Verification (100,000 Iterations)</h4>
                             <p class="text-[11px] text-slate-500 font-sans">Measures GC.GetAllocatedBytesForCurrentThread() across standard array vs .NET 11 params span.</p>
                         </div>
-                        <button type="button" @onclick="ExecuteHomeInnovationsBenchmark" disabled="@_isRunningHomeBench"
-                                class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white font-mono text-xs font-bold transition shrink-0">
-                            @(_isRunningHomeBench ? "⏳ Running..." : "▶ Run Allocation Test")
-                        </button>
+                        <TwButton Variant="ButtonVariant.Primary" Loading="@_isRunningHomeBench" OnClick="ExecuteHomeInnovationsBenchmark" Class="shrink-0 font-mono text-xs shadow-md shadow-purple-600/30">
+                            <span>▶ Run Allocation Test</span>
+                        </TwButton>
                     </div>
 
                     @if (_homeBenchResult != null)
                     {
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs pt-1">
-                            <div class="p-3 rounded-xl bg-rose-50 border border-rose-200">
-                                <span class="text-[10px] text-rose-600 font-bold block">OLD params T[] ALLOCATION</span>
-                                <span class="text-rose-900 font-bold text-sm">@(_homeBenchResult.ArrayAllocatedBytes.ToString("N0")) bytes</span>
-                                <span class="text-[10px] text-slate-500 block">@_homeBenchResult.ArrayElapsedMs ms</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-300">
-                                <span class="text-[10px] text-emerald-600 font-bold block">.NET 11 params ReadOnlySpan</span>
-                                <span class="text-emerald-900 font-bold text-sm">0 bytes (Zero Heap)</span>
-                                <span class="text-[10px] text-emerald-700 font-bold block">@_homeBenchResult.SpanElapsedMs ms (@_homeBenchResult.SpeedupRatio x faster)</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-indigo-50 border border-indigo-200">
-                                <span class="text-[10px] text-indigo-600 font-bold block">MEMORY SAVINGS</span>
-                                <span class="text-indigo-900 font-bold text-sm">@((_homeBenchResult.MemorySavedBytes / 1024.0 / 1024.0).ToString("F2")) MB</span>
-                                <span class="text-[10px] text-slate-500 block">Gen0 Collections: 0</span>
-                            </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
+                            <TwStatCard Title="OLD PARAMS T[] ALLOCATION" Value="@(_homeBenchResult.ArrayAllocatedBytes.ToString("N0") + " B")" Subtitle="@(_homeBenchResult.ArrayElapsedMs + " ms")" TrendText="Heap Gen0" IsTrendPositive="false" />
+                            <TwStatCard Title=".NET 11 READONLYSPAN" Value="0 B" Subtitle="@(_homeBenchResult.SpanElapsedMs + " ms (" + _homeBenchResult.SpeedupRatio + "x faster)")" TrendText="Zero Heap" IsTrendPositive="true" />
+                            <TwStatCard Title="MEMORY SAVED" Value="@((_homeBenchResult.MemorySavedBytes / 1024.0 / 1024.0).ToString("F2") + " MB")" Subtitle="Gen0 Collections: 0" TrendText="Zero GC" IsTrendPositive="true" />
                         </div>
                     }
                 </div>

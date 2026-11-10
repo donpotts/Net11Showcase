@@ -11,18 +11,14 @@
 <div class="space-y-6 max-w-7xl mx-auto pb-12">
     @if (_isSealed)
     {
-        <div class="p-4 rounded-2xl bg-emerald-600 text-white font-sans text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
-            <div class="flex items-center gap-3">
-                <span class="text-2xl">✅</span>
-                <div>
-                    <span class="font-bold text-sm block">Document Cryptographically Sealed &amp; Flattened</span>
-                    <span class="text-emerald-100 text-[11px] font-mono break-all">Digest: @_sha256Digest</span>
-                </div>
+        <TwAlert Variant="SemanticVariant.Success" Title="Document Cryptographically Sealed &amp; Flattened" Dismissible="false" Class="shadow-lg">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+                <span class="text-emerald-900 text-xs font-mono break-all font-bold">Digest: @_sha256Digest</span>
+                <TwButton Variant="ButtonVariant.Primary" Size="ComponentSize.Xs" OnClick="UnlockDocument" Class="shrink-0 bg-emerald-700 hover:bg-emerald-800 text-white">
+                    🔓 Unlock to Edit
+                </TwButton>
             </div>
-            <button type="button" @onclick="UnlockDocument" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs border border-emerald-500 shrink-0">
-                🔓 Unlock to Edit
-            </button>
-        </div>
+        </TwAlert>
     }
 
     <!-- Header Banner -->
@@ -33,17 +29,17 @@
             </div>
             <div>
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    <TwBadge Variant="SemanticVariant.Primary" Size="ComponentSize.Sm" ShowDot="true">
                         ⚡ .NET 11 REAL SAMPLE APP
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    </TwBadge>
+                    <TwBadge Variant="SemanticVariant.Success" Size="ComponentSize.Sm">
                         🔐 SHA-256 CRYPTOGRAPHIC SEAL
-                    </span>
+                    </TwBadge>
                     @if (_isSealed)
                     {
-                        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">
+                        <TwBadge Variant="SemanticVariant.Warning" Size="ComponentSize.Sm">
                             🛡️ FLATTENED &amp; SEALED
-                        </span>
+                        </TwBadge>
                     }
                 </div>
                 <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-1">
@@ -56,29 +52,25 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
-            <button type="button" @onclick="DownloadFlattenedPdf"
-                    class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+            <TwButton Variant="ButtonVariant.Secondary" Size="ComponentSize.Sm" OnClick="DownloadFlattenedPdf" Class="bg-slate-900 text-white hover:bg-slate-800">
                 <span>📥</span>
                 <span>Download Flattened PDF</span>
-            </button>
+            </TwButton>
             @if (_isSealed)
             {
-                <button type="button" @onclick="UnlockDocument"
-                        class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold transition border border-slate-300 shadow-xs">
+                <TwButton Variant="ButtonVariant.Outline" Size="ComponentSize.Sm" OnClick="UnlockDocument">
                     🔓 Unlock &amp; Edit
-                </button>
+                </TwButton>
             }
             else
             {
-                <button type="button" @onclick="ResetDocument"
-                        class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold transition border border-slate-300 shadow-xs">
+                <TwButton Variant="ButtonVariant.Outline" Size="ComponentSize.Sm" OnClick="ResetDocument">
                     🔄 Reset Form
-                </button>
-                <button type="button" @onclick="SealDocument" disabled="@(!CanSeal)"
-                        class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-indigo-600/30">
+                </TwButton>
+                <TwButton Variant="ButtonVariant.Primary" Size="ComponentSize.Sm" Disabled="@(!CanSeal)" OnClick="SealDocument" Class="shadow-lg shadow-indigo-600/30">
                     <span>🔒</span>
                     <span>Sign &amp; Seal Document</span>
-                </button>
+                </TwButton>
             }
         </div>
     </div>

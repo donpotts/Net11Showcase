@@ -12,18 +12,18 @@
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div class="space-y-3 max-w-3xl">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-100 text-purple-800 border border-purple-200">
+                    <TwBadge Variant="SemanticVariant.Primary" Size="ComponentSize.Sm" ShowDot="true">
                         🚀 .NET 11 IS HERE
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    </TwBadge>
+                    <TwBadge Variant="SemanticVariant.Primary" Size="ComponentSize.Sm">
                         🧬 C# 15 UNIONS
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    </TwBadge>
+                    <TwBadge Variant="SemanticVariant.Success" Size="ComponentSize.Sm">
                         ⚡ AVX-512 SIMD
-                    </span>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-pink-50 text-pink-700 border border-pink-200">
+                    </TwBadge>
+                    <TwBadge Variant="SemanticVariant.Warning" Size="ComponentSize.Sm">
                         🔥 8.2ms NATIVE AOT
-                    </span>
+                    </TwBadge>
                 </div>
                 <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
                     .NET 11 IS HERE
@@ -35,11 +35,10 @@
 
             <!-- Infographic Toggle & Host Runtime Card -->
             <div class="flex flex-col sm:flex-row lg:flex-col items-center lg:items-end gap-3 shrink-0">
-                <button type="button" @onclick="() => _showInfographicModal = !_showInfographicModal"
-                        class="px-4 py-2.5 rounded-2xl bg-purple-600 hover:bg-purple-500 text-white font-mono text-xs font-bold transition flex items-center gap-2 shadow-md shadow-purple-600/30">
+                <TwButton Variant="ButtonVariant.Primary" OnClick="() => _showInfographicModal = true" Class="shadow-md shadow-purple-600/30">
                     <span>🖼️</span>
-                    <span>@(_showInfographicModal ? "Hide Infographic" : "View .NET 11 Infographic")</span>
-                </button>
+                    <span>View .NET 11 Infographic</span>
+                </TwButton>
                 <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-mono text-center lg:text-right min-w-[210px]">
                     <div class="text-[10px] text-slate-500 uppercase font-bold">Runtime Engine</div>
                     <div class="text-purple-700 font-bold">.NET 11.0.100 STS (GA)</div>
@@ -50,18 +49,14 @@
                 </div>
             </div>
         </div>
-
-        @if (_showInfographicModal)
-        {
-            <div class="mt-6 p-4 rounded-3xl bg-slate-900 border border-purple-500/30 flex flex-col items-center space-y-3">
-                <div class="flex items-center justify-between w-full max-w-xl text-white text-xs font-mono">
-                    <span class="font-bold text-purple-300">.NET 11 Architectural Infographic Reference</span>
-                    <button type="button" @onclick="() => _showInfographicModal = false" class="text-slate-400 hover:text-white font-bold">✕ Close</button>
-                </div>
-                <img src="images/net11-infographic.jpg" alt=".NET 11 Is Here Infographic" class="max-w-full sm:max-w-lg rounded-2xl shadow-2xl border border-purple-400/40" />
-            </div>
-        }
     </div>
+
+    <!-- BlazorTwUI Infographic Modal -->
+    <TwModal @bind-IsOpen="_showInfographicModal" Title=".NET 11 IS HERE — Architectural Reference" Description="8 Flagship Pillars • 40 Promoted Features in .NET 11 STS" MaxWidth="2xl">
+        <div class="flex flex-col items-center p-2 space-y-2">
+            <img src="images/net11-infographic.jpg" alt=".NET 11 Infographic" class="max-w-full rounded-2xl shadow-xl border border-slate-200" />
+        </div>
+    </TwModal>
 
     <!-- 8 Flagship Architectural Pillars Navigation Tabs -->
     <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
@@ -143,33 +138,7 @@
                     </p>
 
                     <!-- Code Demonstration Box -->
-                    <div class="rounded-2xl bg-slate-900 text-slate-100 p-5 space-y-3 font-mono text-xs border border-purple-500/30 shadow-md">
-                        <div class="text-[11px] uppercase font-bold text-purple-400">C# 15 Language Syntax In Action</div>
-                        <pre class="text-[11px] overflow-x-auto text-purple-200 leading-relaxed"><code>// 1. Union Types &amp; Closed Hierarchies
-public union FlightTelemetry
-{
-    Nominal(double AltitudeKm, double VelocityKps, double ThrustKn),
-    Warning(string Subsystem, double SensorValue, double Threshold),
-    Emergency(string CriticalAlert, int ProtocolCode),
-    Docked(string StationId, DateTime DockedUtc)
-}
-
-// 2. Extension Indexers on Any Type
-public static ref T this[this ReadOnlySpan&lt;T&gt; span, Index idx] =&gt; ref span[idx];
-
-// 3. Collection Expression Arguments (0 Heap Allocation)
-ProcessTelemetry([10.5, 20.8, ..ambientReadings]);
-
-// 4. Labeled break and continue in Nested Loops
-orbitalSearch: for (int orbit = 0; orbit &lt; maxOrbits; orbit++) {
-    for (int sector = 0; sector &lt; 360; sector++) {
-        if (IsDockingTargetLocked(orbit, sector)) {
-            InitiateDockingSequence();
-            break orbitalSearch; // Clean multi-level break!
-        }
-    }
-}</code></pre>
-                    </div>
+                    <TwCodeBlock Code="@CSharp15Code" Language="csharp" FileName="FlightTelemetry.cs — C# 15 Syntax" />
                 </div>
             }
             else if (_selectedPillar == "aspnet")
@@ -211,25 +180,7 @@ orbitalSearch: for (int orbit = 0; orbit &lt; maxOrbits; orbit++) {
                         ASP.NET Core in .NET 11 optimizes sub-microsecond HTTP throughput with the <code>[ShortCircuit]</code> attribute, native OpenTelemetry span propagation, async validation filters in Minimal APIs, SignalR cancellation tokens, and automated OpenAPI 3.2 document synthesis.
                     </p>
 
-                    <div class="rounded-2xl bg-slate-900 text-slate-100 p-5 space-y-3 font-mono text-xs border border-indigo-500/30 shadow-md">
-                        <div class="text-[11px] uppercase font-bold text-indigo-400">ASP.NET Core 11 Endpoint Architecture</div>
-                        <pre class="text-[11px] overflow-x-auto text-indigo-200 leading-relaxed"><code>// 1. [ShortCircuit] High-Throughput Bypass (Bypasses Middleware Stack)
-app.MapGet("/health", () =&gt; Results.Ok("Nominal")).ShortCircuit();
-
-// 2. Async Minimal API Validation
-app.MapPost("/contracts", async (ContractDto dto, IValidator&lt;ContractDto&gt; validator) =&gt; {
-    var validation = await validator.ValidateAsync(dto);
-    if (!validation.IsValid) return Results.ValidationProblem(validation.ToDictionary());
-    return Results.Created($"/contracts/{dto.Id}", dto);
-});
-
-// 3. SignalR Client Invocation Cancellation
-public async Task StreamTelemetry(CancellationToken clientCancellation) {
-    while (!clientCancellation.IsCancellationRequested) {
-        await Clients.Caller.SendAsync("Tick", GetLiveTelemetry(), clientCancellation);
-    }
-}</code></pre>
-                    </div>
+                    <TwCodeBlock Code="@AspNetCode" Language="csharp" FileName="Program.cs — ASP.NET Core Endpoints" />
                 </div>
             }
             else if (_selectedPillar == "efcore")
@@ -271,26 +222,7 @@ public async Task StreamTelemetry(CancellationToken clientCancellation) {
                         EF Core 11 brings native LINQ <code>FullJoin()</code> translating to standard SQL <code>FULL OUTER JOIN</code>, direct async aggregations via <code>MinByAsync</code> and <code>MaxByAsync</code>, complex-type keys/indexes on nested objects, optimized SQL generation with predicate pushdown, and <code>EF.Functions.JsonExists()</code> for nested JSON schemas.
                     </p>
 
-                    <div class="rounded-2xl bg-slate-900 text-slate-100 p-5 space-y-3 font-mono text-xs border border-emerald-500/30 shadow-md">
-                        <div class="text-[11px] uppercase font-bold text-emerald-400">EF Core 11 LINQ Query Engine</div>
-                        <pre class="text-[11px] overflow-x-auto text-emerald-200 leading-relaxed"><code>// 1. Native LINQ FullJoin (Translates to SQL FULL OUTER JOIN)
-var fullJoined = await db.Customers
-    .FullJoin(db.Contracts, c =&gt; c.Id, k =&gt; k.CustomerId, (c, k) =&gt; new { c, k })
-    .ToListAsync();
-
-// 2. Direct Async Extremum Aggregation
-var highestBudget = await db.Contracts.MaxByAsync(c =&gt; c.BudgetCap);
-
-// 3. Complex-Type Keys &amp; Indexes
-modelBuilder.Entity&lt;CustomerEntity&gt;()
-    .ComplexProperty(c =&gt; c.Profile)
-    .HasIndex(p =&gt; p.Region);
-
-// 4. JSON Path Existence Function
-var securedAccounts = await db.Customers
-    .Where(c =&gt; EF.Functions.JsonExists(c.MetadataJson, "$.SecurityAudit"))
-    .ToListAsync();</code></pre>
-                    </div>
+                    <TwCodeBlock Code="@EfCoreCode" Language="csharp" FileName="ShowcaseDbContext.cs — EF Core 11 LINQ" />
                 </div>
             }
             else if (_selectedPillar == "runtime")
@@ -332,20 +264,7 @@ var securedAccounts = await db.Customers
                         CoreCLR eliminates state machine overhead with <strong>runtime-native async</strong>, advances Tiered PGO loop vectorization, enables sub-nanosecond monomorphic interface dispatch in Native AOT, captures structured in-process crash reports before aborting, and leverages hardware half-precision <strong>FP16 SIMD</strong> instructions.
                     </p>
 
-                    <div class="rounded-2xl bg-slate-900 text-slate-100 p-5 space-y-3 font-mono text-xs border border-pink-500/30 shadow-md">
-                        <div class="text-[11px] uppercase font-bold text-pink-400">CoreCLR Runtime Advancements</div>
-                        <pre class="text-[11px] overflow-x-auto text-pink-200 leading-relaxed"><code>// 1. Hardware FP16 (Half / float16) Vector Math
-Vector&lt;Half&gt; weights = new(halfArray);
-Vector&lt;Half&gt; inputs  = new(sensorArray);
-var output = weights * inputs; // Native hardware half-precision SIMD!
-
-// 2. Faster NativeAOT Interface Calls (Sub-nanosecond devirtualized jumps)
-public interface IFlightController { void AdjustYaw(float deg); }
-controller.AdjustYaw(1.5f); // JIT devirtualization directly into CPU jump
-
-// 3. In-Process Structured JSON Crash Reports
-AppContext.SetData("RuntimeCrashReporting", "StructuredJsonEnclave");</code></pre>
-                    </div>
+                    <TwCodeBlock Code="@RuntimeCode" Language="csharp" FileName="CoreClrRuntime.cs — .NET 11 Runtime" />
                 </div>
             }
             else if (_selectedPillar == "libraries")
@@ -387,21 +306,7 @@ AppContext.SetData("RuntimeCrashReporting", "StructuredJsonEnclave");</code></pr
                         Modern libraries in .NET 11 introduce native JSON serialization for C# 15 union types, streaming <strong>JSON Lines</strong> (<code>application/x-ndjson</code>) output, high-throughput <strong>Zstandard compression</strong>, single-line <strong>Process.RunAsync()</strong> execution, and built-in OpenTelemetry metrics on <code>MemoryCache</code>.
                     </p>
 
-                    <div class="rounded-2xl bg-slate-900 text-slate-100 p-5 space-y-3 font-mono text-xs border border-blue-500/30 shadow-md">
-                        <div class="text-[11px] uppercase font-bold text-blue-400">Modern BCL Features</div>
-                        <pre class="text-[11px] overflow-x-auto text-blue-200 leading-relaxed"><code>// 1. Zstandard Streaming Compression (High Throughput, 78% ratio)
-using var zstd = new ZstandardStream(outputStream, CompressionLevel.Optimal);
-await payloadStream.CopyToAsync(zstd);
-
-// 2. JSON Lines Streaming Output (NDJSON)
-await foreach (var packet in streamReader.ReadJsonLinesAsync&lt;TelemetryPacket&gt;()) {
-    ProcessTelemetryPacket(packet);
-}
-
-// 3. Process Run-and-Capture in One Line
-ProcessResult res = await Process.RunAsync("dotnet", ["--version"], cancellationToken);
-Console.WriteLine($"Exit: {res.ExitCode}, Output: {res.StandardOutput}");</code></pre>
-                    </div>
+                    <TwCodeBlock Code="@LibrariesCode" Language="csharp" FileName="JsonZstdPipelines.cs — .NET 11 Libraries" />
                 </div>
             }
             else if (_selectedPillar == "sdk")
@@ -443,17 +348,7 @@ Console.WriteLine($"Exit: {res.ExitCode}, Output: {res.StandardOutput}");</code>
                         Developer velocity accelerates with 40% smaller cross-platform SDK installers, instant NativeAOT CLI tools, multi-process <code>dotnet test</code> execution controls with live terminal reporting, native rootless multi-arch container compilation with Podman, and the background <strong>MSBuild Server</strong> enabled by default.
                     </p>
 
-                    <div class="rounded-2xl bg-slate-900 text-slate-100 p-5 space-y-3 font-mono text-xs border border-cyan-500/30 shadow-md">
-                        <div class="text-[11px] uppercase font-bold text-cyan-400">SDK Tooling Commands</div>
-                        <pre class="text-[11px] overflow-x-auto text-cyan-200 leading-relaxed"><code># 1. Multi-Process Test Runner with Terminal Logger
-dotnet test --max-parallel-test-modules 8 --terminal-logger on
-
-# 2. NativeAOT Single-File CLI Publish
-dotnet publish -c Release -r win-x64 --self-contained -p:PublishAot=true
-
-# 3. Multi-Architecture Container Build via Podman
-dotnet publish --os linux --arch arm64 -t:PublishContainer -p:ContainerRuntime=podman</code></pre>
-                    </div>
+                    <TwCodeBlock Code="@SdkCode" Language="bash" FileName="dotnet-cli.sh — .NET 11 SDK" />
                 </div>
             }
             else if (_selectedPillar == "winforms")
@@ -495,21 +390,7 @@ dotnet publish --os linux --arch arm64 -t:PublishContainer -p:ContainerRuntime=p
                         Enterprise desktop applications in Windows Forms gain seamless Windows 11 Fluent visual styles, native WinUI <strong>ToggleSwitch</strong> controls, flicker-free rendering via <code>SuspendPainting()</code>, fullscreen locked <strong>Kiosk Mode</strong>, and deferred form reveals that eliminate blank window white flashes.
                     </p>
 
-                    <div class="rounded-2xl bg-slate-900 text-slate-100 p-5 space-y-3 font-mono text-xs border border-amber-500/30 shadow-md">
-                        <div class="text-[11px] uppercase font-bold text-amber-400">Modern Windows Forms API</div>
-                        <pre class="text-[11px] overflow-x-auto text-amber-200 leading-relaxed"><code>// 1. Fluent Dark/Light Theme &amp; Toggle Switch
-Application.SetColorMode(SystemColorMode.Dark);
-var thrustersSwitch = new ToggleSwitch { Text = "Main Thrusters", IsOn = true };
-
-// 2. Flicker-Free Layout Batching
-using (this.SuspendPainting()) {
-    for (int i = 0; i &lt; 200; i++) Controls.Add(new Label { Text = $"Telemetry #{i}" });
-}
-
-// 3. Kiosk Mode &amp; Deferred Window Reveal (Zero Flash)
-this.KioskMode = true;
-this.DeferRevealUntilLoaded = true;</code></pre>
-                    </div>
+                    <TwCodeBlock Code="@WinFormsCode" Language="csharp" FileName="MainForm.cs — Modern Windows Forms" />
                 </div>
             }
             else if (_selectedPillar == "maui")
@@ -551,20 +432,7 @@ this.DeferRevealUntilLoaded = true;</code></pre>
                         .NET MAUI standardizes on the high-performance desktop-grade <strong>CoreCLR runtime</strong> on Android and iOS by default, unlocks <strong>NativeAOT compilation</strong> for sub-50ms mobile startup, provides automated on-device test suites, adaptive dark/light themed splash screens, and native iOS push notification authorization APIs.
                     </p>
 
-                    <div class="rounded-2xl bg-slate-900 text-slate-100 p-5 space-y-3 font-mono text-xs border border-teal-500/30 shadow-md">
-                        <div class="text-[11px] uppercase font-bold text-teal-400">.NET MAUI Mobile Capabilities</div>
-                        <pre class="text-[11px] overflow-x-auto text-teal-200 leading-relaxed"><code>// 1. CoreCLR by default on iOS / Android (No Mono interpreter penalty)
-// Fully unlocks SIMD Vector&lt;T&gt; math and Tiered Dynamic PGO on mobile!
-
-// 2. NativeAOT Publishing in MAUI Project:
-// &lt;PublishAot&gt;true&lt;/PublishAot&gt;
-
-// 3. Built-in iOS Notification Permissions API:
-var permission = await Permissions.RequestAsync&lt;Permissions.PostNotifications&gt;();
-if (permission == PermissionStatus.Granted) {
-    await LocalNotificationCenter.Current.Show(missionAlert);
-}</code></pre>
-                    </div>
+                    <TwCodeBlock Code="@MauiCode" Language="csharp" FileName="MauiProgram.cs — .NET MAUI CoreCLR" />
                 </div>
             }
         </div>
@@ -662,32 +530,15 @@ if (permission == PermissionStatus.Granted) {
 
                         <!-- Live Union vs Polymorphism Benchmark Button -->
                         <div class="pt-2 border-t border-slate-200 space-y-3">
-                            <button type="button" @onclick="ExecuteUnionBenchmark" disabled="@_isRunningUnionBench"
-                                    class="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white font-bold text-xs shadow-md shadow-purple-600/30 transition flex items-center justify-center gap-2">
-                                @if (_isRunningUnionBench)
-                                {
-                                    <span class="animate-spin">⏳</span>
-                                    <span>Benchmarking C# 15 Unions...</span>
-                                }
-                                else
-                                {
-                                    <span>▶ Run C# 15 Union vs Class Benchmark (100k Runs)</span>
-                                }
-                            </button>
+                            <TwButton Variant="ButtonVariant.Primary" FullWidth="true" Loading="@_isRunningUnionBench" OnClick="ExecuteUnionBenchmark" Class="shadow-md shadow-purple-600/30">
+                                <span>▶ Run C# 15 Union vs Class Benchmark (100k Runs)</span>
+                            </TwButton>
 
                             @if (_unionBenchResult != null)
                             {
-                                <div class="grid grid-cols-2 gap-2 text-xs">
-                                    <div class="p-3 rounded-xl bg-rose-50 border border-rose-200">
-                                        <span class="text-[10px] text-rose-600 font-bold block">POLYMORPHIC CLASSES</span>
-                                        <span class="text-rose-900 font-bold text-sm">@(_unionBenchResult.PolymorphicAllocatedBytes.ToString("N0")) B</span>
-                                        <span class="text-[10px] text-slate-500 block">@_unionBenchResult.PolymorphicElapsedMs ms</span>
-                                    </div>
-                                    <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-300">
-                                        <span class="text-emerald-700 font-bold block text-[10px]">C# 15 UNION STRUCT</span>
-                                        <span class="text-emerald-900 font-bold text-sm">0 B (Zero Heap)</span>
-                                        <span class="text-[10px] text-emerald-700 font-bold block">@_unionBenchResult.UnionElapsedMs ms (@_unionBenchResult.SpeedupRatio x faster)</span>
-                                    </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <TwStatCard Title="POLYMORPHIC CLASSES" Value="@(_unionBenchResult.PolymorphicAllocatedBytes.ToString("N0") + " B")" Subtitle="@(_unionBenchResult.PolymorphicElapsedMs + " ms")" TrendText="Heap Gen0" IsTrendPositive="false" />
+                                    <TwStatCard Title="C# 15 UNION STRUCT" Value="0 B" Subtitle="@(_unionBenchResult.UnionElapsedMs + " ms (" + _unionBenchResult.SpeedupRatio + "x faster)")" TrendText="Zero Heap" IsTrendPositive="true" />
                                 </div>
                             }
                         </div>
@@ -701,41 +552,21 @@ if (permission == PermissionStatus.Granted) {
                             Executes <strong>100,000 iterations</strong> comparing <code class="font-mono">params int[]</code> (heap allocation) vs <code class="font-mono text-emerald-700 font-bold">params ReadOnlySpan&lt;int&gt;</code> (zero allocation) measuring real bytes allocated on the current thread.
                         </div>
 
-                        <button type="button" @onclick="ExecuteSpanBenchmark" disabled="@_isRunningSpanBench"
-                                class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-bold text-xs shadow-md shadow-indigo-600/30 transition flex items-center justify-center gap-2">
-                            @if (_isRunningSpanBench)
-                            {
-                                <span class="animate-spin">⏳</span>
-                                <span>Measuring GC Allocations...</span>
-                            }
-                            else
-                            {
-                                <span>▶ Run Zero-Allocation Benchmark (100k Runs)</span>
-                            }
-                        </button>
+                        <TwButton Variant="ButtonVariant.Primary" FullWidth="true" Loading="@_isRunningSpanBench" OnClick="ExecuteSpanBenchmark" Class="shadow-md shadow-indigo-600/30">
+                            <span>▶ Run Zero-Allocation Benchmark (100k Runs)</span>
+                        </TwButton>
 
                         @if (_spanResult != null)
                         {
                             <div class="space-y-2.5 font-mono text-xs pt-2">
-                                <div class="p-3 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-between">
-                                    <div>
-                                        <span class="text-[10px] text-rose-600 font-bold block">OLD: 'params int[]' ALLOCATED</span>
-                                        <span class="font-bold text-rose-800 text-sm">@(_spanResult.ArrayAllocatedBytes.ToString("N0")) bytes</span>
-                                    </div>
-                                    <span class="text-xs text-rose-700">@_spanResult.ArrayElapsedMs ms</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <TwStatCard Title="OLD: PARAMS INT[]" Value="@(_spanResult.ArrayAllocatedBytes.ToString("N0") + " B")" Subtitle="@(_spanResult.ArrayElapsedMs + " ms")" TrendText="Heap Gen0" IsTrendPositive="false" />
+                                    <TwStatCard Title=".NET 11: READONLYSPAN" Value="0 B" Subtitle="@(_spanResult.SpanElapsedMs + " ms (" + _spanResult.SpeedupRatio + "x faster)")" TrendText="Zero Heap" IsTrendPositive="true" />
                                 </div>
 
-                                <div class="p-3 rounded-2xl bg-emerald-50 border border-emerald-300 flex items-center justify-between shadow-xs">
-                                    <div>
-                                        <span class="text-[10px] text-emerald-600 font-bold block">.NET 11: 'params ReadOnlySpan' ALLOCATED</span>
-                                        <span class="font-bold text-emerald-800 text-sm">@(_spanResult.SpanAllocatedBytes) bytes (0.00 B)</span>
-                                    </div>
-                                    <span class="text-xs text-emerald-700 font-bold">@_spanResult.SpanElapsedMs ms (@_spanResult.SpeedupRatio x faster)</span>
-                                </div>
-
-                                <div class="p-3 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 text-[11px] font-sans">
-                                    🎉 <strong>100% Zero Heap Allocation:</strong> Saved <strong>@((_spanResult.MemorySavedBytes / 1024.0 / 1024.0).ToString("F2")) MB</strong> of Gen0 GC garbage across 100,000 invocations.
-                                </div>
+                                <TwAlert Variant="SemanticVariant.Success" Title="100% Zero Heap Allocation">
+                                    Saved <strong>@((_spanResult.MemorySavedBytes / 1024.0 / 1024.0).ToString("F2")) MB</strong> of Gen0 GC garbage across 100,000 invocations.
+                                </TwAlert>
                             </div>
                         }
                     </div>
@@ -748,43 +579,21 @@ if (permission == PermissionStatus.Granted) {
                             Executes <strong>100,000 float vector dot products</strong> (20 consecutive runs) comparing single-scalar CPU execution vs 512-bit hardware SIMD intrinsics.
                         </div>
 
-                        <button type="button" @onclick="ExecuteSimdBenchmark" disabled="@_isRunningSimdBench"
-                                class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-bold text-xs shadow-md shadow-emerald-600/30 transition flex items-center justify-center gap-2">
-                            @if (_isRunningSimdBench)
-                            {
-                                <span class="animate-spin">⚙️</span>
-                                <span>Benchmarking AVX-512 Vectors...</span>
-                            }
-                            else
-                            {
-                                <span>▶ Run SIMD Vector Benchmark (100k Floats)</span>
-                            }
-                        </button>
+                        <TwButton Variant="ButtonVariant.Primary" FullWidth="true" Loading="@_isRunningSimdBench" OnClick="ExecuteSimdBenchmark" Class="shadow-md shadow-emerald-600/30">
+                            <span>▶ Run SIMD Vector Benchmark (100k Floats)</span>
+                        </TwButton>
 
                         @if (_simdResult != null)
                         {
                             <div class="space-y-2.5 font-mono text-xs pt-2">
-                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                    <span class="text-slate-500 block text-[10px] font-bold">DETECTED HARDWARE INTRINSICS</span>
-                                    <span class="font-bold text-indigo-600 text-xs">@_simdResult.HardwareAccelerationType</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <TwStatCard Title="SCALAR LOOP" Value="@(_simdResult.ScalarElapsedUs + " µs")" Subtitle="@(_simdResult.ScalarGflops + " GFLOPS")" TrendText="Baseline" IsTrendPositive="false" />
+                                    <TwStatCard Title="SIMD INTRINSICS" Value="@(_simdResult.SimdElapsedUs + " µs")" Subtitle="@(_simdResult.SimdGflops + " GFLOPS (" + _simdResult.Speedup + "x faster)")" TrendText="@_simdResult.HardwareAccelerationType" IsTrendPositive="true" />
                                 </div>
 
-                                <div class="grid grid-cols-2 gap-2 text-xs">
-                                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                        <span class="text-slate-500 block text-[10px] font-bold">SCALAR LOOP</span>
-                                        <span class="text-slate-800 font-bold text-sm">@_simdResult.ScalarElapsedUs µs</span>
-                                        <span class="text-[10px] text-slate-500 block">@_simdResult.ScalarGflops GFLOPS</span>
-                                    </div>
-                                    <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-300">
-                                        <span class="text-emerald-700 block text-[10px] font-bold">SIMD INTRINSICS</span>
-                                        <span class="text-emerald-800 font-bold text-sm">@_simdResult.SimdElapsedUs µs</span>
-                                        <span class="text-[10px] text-emerald-700 font-bold block">@_simdResult.SimdGflops GFLOPS</span>
-                                    </div>
-                                </div>
-
-                                <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] font-sans">
-                                    ⚡ <strong>SIMD Acceleration:</strong> <strong>@_simdResult.Speedup x speedup</strong> with zero scalar bottleneck.
-                                </div>
+                                <TwAlert Variant="SemanticVariant.Success" Title="Hardware Vector Acceleration">
+                                    @_simdResult.HardwareAccelerationType: Vectorized throughput delivers <strong>@_simdResult.Speedup x faster</strong> processing.
+                                </TwAlert>
                             </div>
                         }
                     </div>
@@ -797,10 +606,9 @@ if (permission == PermissionStatus.Granted) {
                             Generates a real <strong>NIST FIPS 203 ML-KEM-768</strong> lattice key pair, computes 32-byte shared secret encapsulation, and verifies lattice parameters.
                         </div>
 
-                        <button type="button" @onclick="ExecutePqcGeneration"
-                                class="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-md shadow-purple-600/30 transition flex items-center justify-center gap-2">
+                        <TwButton Variant="ButtonVariant.Primary" FullWidth="true" OnClick="ExecutePqcGeneration" Class="shadow-md shadow-purple-600/30">
                             <span>🔐 Generate PQC Lattice Key Pair</span>
-                        </button>
+                        </TwButton>
 
                         @if (_pqcMetrics != null)
                         {
@@ -851,23 +659,13 @@ if (permission == PermissionStatus.Granted) {
                         @if (_cacheResult != null)
                         {
                             <div class="space-y-2.5 font-mono text-xs pt-2">
-                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-                                    <div>
-                                        <span class="text-[10px] text-slate-500 font-bold block">STORAGE TIER</span>
-                                        <span class="font-bold text-slate-900">@_cacheResult.StorageTier</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <span class="text-[10px] text-slate-500 font-bold block">ACCESS LATENCY</span>
-                                        <span class="font-bold text-sm @(_cacheResult.LatencyMs < 1.0 ? "text-emerald-700" : _cacheResult.LatencyMs < 5.0 ? "text-blue-700" : "text-amber-700")">
-                                            @_cacheResult.LatencyMs ms
-                                        </span>
-                                    </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <TwStatCard Title="STORAGE TIER" Value="@_cacheResult.StorageTier" Subtitle="HybridCache Tier" TrendText="Dual-Tier" IsTrendPositive="true" />
+                                    <TwStatCard Title="ACCESS LATENCY" Value="@(_cacheResult.LatencyMs + " ms")" Subtitle="Response time" TrendText="Sub-millisecond" IsTrendPositive="true" />
                                 </div>
-
-                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                                    <span class="text-[10px] text-slate-500 font-bold block">STAMPEDE PROTECTION</span>
-                                    <span class="text-slate-800 text-xs">@_cacheResult.StampedeProtectionStatus</span>
-                                </div>
+                                <TwAlert Variant="SemanticVariant.Info" Title="Stampede Protection">
+                                    @_cacheResult.StampedeProtectionStatus
+                                </TwAlert>
                             </div>
                         }
                     </div>
@@ -881,6 +679,126 @@ if (permission == PermissionStatus.Granted) {
     private string _selectedPillar = "csharp15";
     private string _activeLab = "union";
     private bool _showInfographicModal = false;
+
+    // Code Block Snippets for 8 Pillars
+    private const string CSharp15Code = @"// 1. Union Types & Closed Hierarchies
+public union FlightTelemetry
+{
+    Nominal(double AltitudeKm, double VelocityKps, double ThrustKn),
+    Warning(string Subsystem, double SensorValue, double Threshold),
+    Emergency(string CriticalAlert, int ProtocolCode),
+    Docked(string StationId, DateTime DockedUtc)
+}
+
+// 2. Extension Indexers on Any Type
+public static ref T this[this ReadOnlySpan<T> span, Index idx] => ref span[idx];
+
+// 3. Collection Expression Arguments (0 Heap Allocation)
+ProcessTelemetry([10.5, 20.8, ..ambientReadings]);
+
+// 4. Labeled break and continue in Nested Loops
+orbitalSearch: for (int orbit = 0; orbit < maxOrbits; orbit++) {
+    for (int sector = 0; sector < 360; sector++) {
+        if (IsDockingTargetLocked(orbit, sector)) {
+            InitiateDockingSequence();
+            break orbitalSearch; // Clean multi-level break!
+        }
+    }
+}";
+
+    private const string AspNetCode = @"// 1. [ShortCircuit] High-Throughput Bypass (Bypasses Middleware Stack)
+app.MapGet(""/health"", () => Results.Ok(""Nominal"")).ShortCircuit();
+
+// 2. Async Minimal API Validation
+app.MapPost(""/contracts"", async (ContractDto dto, IValidator<ContractDto> validator) => {
+    var validation = await validator.ValidateAsync(dto);
+    if (!validation.IsValid) return Results.ValidationProblem(validation.ToDictionary());
+    return Results.Created($""/contracts/{dto.Id}"", dto);
+});
+
+// 3. SignalR Client Invocation Cancellation
+public async Task StreamTelemetry(CancellationToken clientCancellation) {
+    while (!clientCancellation.IsCancellationRequested) {
+        await Clients.Caller.SendAsync(""Tick"", GetLiveTelemetry(), clientCancellation);
+    }
+}";
+
+    private const string EfCoreCode = @"// 1. Native LINQ FullJoin (Translates to SQL FULL OUTER JOIN)
+var fullJoined = await db.Customers
+    .FullJoin(db.Contracts, c => c.Id, k => k.CustomerId, (c, k) => new { c, k })
+    .ToListAsync();
+
+// 2. Direct Async Extremum Aggregation
+var highestBudget = await db.Contracts.MaxByAsync(c => c.BudgetCap);
+
+// 3. Complex-Type Keys & Indexes
+modelBuilder.Entity<CustomerEntity>()
+    .ComplexProperty(c => c.Profile)
+    .HasIndex(p => p.Region);
+
+// 4. JSON Path Existence Function
+var securedAccounts = await db.Customers
+    .Where(c => EF.Functions.JsonExists(c.MetadataJson, ""$.SecurityAudit""))
+    .ToListAsync();";
+
+    private const string RuntimeCode = @"// 1. Hardware FP16 (Half / float16) Vector Math
+Vector<Half> weights = new(halfArray);
+Vector<Half> inputs  = new(sensorArray);
+var output = weights * inputs; // Native hardware half-precision SIMD!
+
+// 2. Faster NativeAOT Interface Calls (Sub-nanosecond devirtualized jumps)
+public interface IFlightController { void AdjustYaw(float deg); }
+controller.AdjustYaw(1.5f); // JIT devirtualization directly into CPU jump
+
+// 3. In-Process Structured JSON Crash Reports
+AppContext.SetData(""RuntimeCrashReporting"", ""StructuredJsonEnclave"");";
+
+    private const string LibrariesCode = @"// 1. Zstandard Streaming Compression (High Throughput, 78% ratio)
+using var zstd = new ZstandardStream(outputStream, CompressionLevel.Optimal);
+await payloadStream.CopyToAsync(zstd);
+
+// 2. JSON Lines Streaming Output (NDJSON)
+await foreach (var packet in streamReader.ReadJsonLinesAsync<TelemetryPacket>()) {
+    ProcessTelemetryPacket(packet);
+}
+
+// 3. Process Run-and-Capture in One Line
+ProcessResult res = await Process.RunAsync(""dotnet"", [""--version""], cancellationToken);
+Console.WriteLine($""Exit: {res.ExitCode}, Output: {res.StandardOutput}"");";
+
+    private const string SdkCode = @"# 1. Multi-Process Test Runner with Terminal Logger
+dotnet test --max-parallel-test-modules 8 --terminal-logger on
+
+# 2. NativeAOT Single-File CLI Publish
+dotnet publish -c Release -r win-x64 --self-contained -p:PublishAot=true
+
+# 3. Multi-Architecture Container Build via Podman
+dotnet publish --os linux --arch arm64 -t:PublishContainer -p:ContainerRuntime=podman";
+
+    private const string WinFormsCode = @"// 1. Fluent Dark/Light Theme & Toggle Switch
+Application.SetColorMode(SystemColorMode.Dark);
+var thrustersSwitch = new ToggleSwitch { Text = ""Main Thrusters"", IsOn = true };
+
+// 2. Flicker-Free Layout Batching
+using (this.SuspendPainting()) {
+    for (int i = 0; i < 200; i++) Controls.Add(new Label { Text = $""Telemetry #{i}"" });
+}
+
+// 3. Kiosk Mode & Deferred Window Reveal (Zero Flash)
+this.KioskMode = true;
+this.DeferRevealUntilLoaded = true;";
+
+    private const string MauiCode = @"// 1. CoreCLR by default on iOS / Android (No Mono interpreter penalty)
+// Fully unlocks SIMD Vector<T> math and Tiered Dynamic PGO on mobile!
+
+// 2. NativeAOT Publishing in MAUI Project:
+// <PublishAot>true</PublishAot>
+
+// 3. Built-in iOS Notification Permissions API:
+var permission = await Permissions.RequestAsync<Permissions.PostNotifications>();
+if (permission == PermissionStatus.Granted) {
+    await LocalNotificationCenter.Current.Show(missionAlert);
+}";
 
     // C# 15 Union Lab State
     private string _selectedUnionVariant = "nominal";
