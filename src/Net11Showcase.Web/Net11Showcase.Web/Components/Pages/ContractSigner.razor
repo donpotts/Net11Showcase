@@ -8,6 +8,22 @@
 <PageTitle>Enterprise Contract Signer &amp; PDF Sealing Studio - .NET 11 GA</PageTitle>
 
 <div class="space-y-6 max-w-7xl mx-auto pb-12">
+    @if (_isSealed)
+    {
+        <div class="p-4 rounded-2xl bg-emerald-600 text-white font-sans text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">✅</span>
+                <div>
+                    <span class="font-bold text-sm block">Document Cryptographically Sealed &amp; Flattened</span>
+                    <span class="text-emerald-100 text-[11px] font-mono break-all">Digest: @_sha256Digest</span>
+                </div>
+            </div>
+            <button type="button" @onclick="UnlockDocument" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs border border-emerald-500 shrink-0">
+                🔓 Unlock to Edit
+            </button>
+        </div>
+    }
+
     <!-- Header Banner -->
     <div class="p-6 rounded-3xl bg-white border border-slate-200 text-slate-900 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div class="flex items-center gap-4">
@@ -39,15 +55,25 @@
         </div>
 
         <div class="flex items-center gap-3">
-            <button type="button" @onclick="ResetDocument"
-                    class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold transition border border-slate-300 shadow-xs">
-                🔄 Reset Form
-            </button>
-            <button type="button" @onclick="SealDocument" disabled="@(!CanSeal)"
-                    class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-indigo-600/30">
-                <span>🔒</span>
-                <span>@(_isSealed ? "Document Sealed (SHA-256)" : "Sign & Seal Document")</span>
-            </button>
+            @if (_isSealed)
+            {
+                <button type="button" @onclick="UnlockDocument"
+                        class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold transition border border-slate-300 shadow-xs">
+                    🔓 Unlock &amp; Edit
+                </button>
+            }
+            else
+            {
+                <button type="button" @onclick="ResetDocument"
+                        class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold transition border border-slate-300 shadow-xs">
+                    🔄 Reset Form
+                </button>
+                <button type="button" @onclick="SealDocument" disabled="@(!CanSeal)"
+                        class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-indigo-600/30">
+                    <span>🔒</span>
+                    <span>Sign &amp; Seal Document</span>
+                </button>
+            }
         </div>
     </div>
 
@@ -59,7 +85,7 @@
             <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-5">
                 <div class="flex items-center justify-between pb-3 border-b border-slate-200">
                     <div class="flex items-center gap-2">
-                        <span class="text-indigo-400 font-bold text-sm">SECTION 1:</span>
+                        <span class="text-indigo-600 font-bold text-sm">SECTION 1:</span>
                         <h2 class="text-base font-bold text-slate-900">Party Identification &amp; Master Terms</h2>
                     </div>
                     <span class="text-xs font-mono text-slate-500">REF: MSA-2026-NET11</span>
@@ -68,19 +94,19 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">Signatory Legal Name</label>
-                        <input type="text" @bind="_signerName" disabled="@_isSealed"
+                        <input type="text" value="@_signerName" @oninput="OnSignerNameInput" disabled="@_isSealed"
                                placeholder="e.g. Sarah Connor"
                                class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">Corporation / Organization</label>
-                        <input type="text" @bind="_companyName" disabled="@_isSealed"
+                        <input type="text" @bind="_companyName" @bind:event="oninput" disabled="@_isSealed"
                                placeholder="e.g. Cyberdyne Systems Corp"
                                class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">Corporate Email Address</label>
-                        <input type="email" @bind="_signerEmail" disabled="@_isSealed"
+                        <input type="email" @bind="_signerEmail" @bind:event="oninput" disabled="@_isSealed"
                                placeholder="sconnor@cyberdyne.io"
                                class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-medium focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
                     </div>
@@ -99,7 +125,7 @@
                     <label class="block text-xs font-bold text-slate-700 mb-1.5">Authorized Annual Cloud Budget Cap</label>
                     <div class="relative">
                         <span class="absolute left-3.5 top-2.5 text-xs text-slate-500 font-bold">$</span>
-                        <input type="number" @bind="_budgetCap" disabled="@_isSealed"
+                        <input type="number" @bind="_budgetCap" @bind:event="oninput" disabled="@_isSealed"
                                class="w-full pl-8 pr-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 text-xs font-mono font-bold focus:border-indigo-500 focus:outline-none transition disabled:opacity-60" />
                     </div>
                 </div>
@@ -108,13 +134,13 @@
             <!-- Agreement Terms & Acceptance Checklist -->
             <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4">
                 <div class="flex items-center gap-2 pb-3 border-b border-slate-200">
-                    <span class="text-indigo-400 font-bold text-sm">SECTION 2:</span>
+                    <span class="text-indigo-600 font-bold text-sm">SECTION 2:</span>
                     <h2 class="text-base font-bold text-slate-900">Legal Obligations &amp; Technical Compliance</h2>
                 </div>
 
                 <div class="space-y-3 text-xs">
                     <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                        <input type="checkbox" @bind="_acceptAotTerms" disabled="@_isSealed"
+                        <input type="checkbox" @bind="_acceptAotTerms" @bind:after="CalculateDigest" disabled="@_isSealed"
                                class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 bg-white" />
                         <span class="text-slate-700 leading-relaxed font-normal">
                             <strong>1. Zero Cold-Boot Warmup:</strong> Subscriber acknowledges that services operate under .NET 11 Native AOT compilation with deterministic sub-10ms startup boundaries.
@@ -122,7 +148,7 @@
                     </label>
 
                     <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                        <input type="checkbox" @bind="_acceptCryptoTerms" disabled="@_isSealed"
+                        <input type="checkbox" @bind="_acceptCryptoTerms" @bind:after="CalculateDigest" disabled="@_isSealed"
                                class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 bg-white" />
                         <span class="text-slate-700 leading-relaxed font-normal">
                             <strong>2. Post-Quantum Lattice Protocol:</strong> All API tokens and transmission payloads shall adhere to NIST FIPS 203 ML-KEM-768 lattice cryptography.
@@ -130,7 +156,7 @@
                     </label>
 
                     <label class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-300 cursor-pointer transition">
-                        <input type="checkbox" @bind="_acceptTamperProof" disabled="@_isSealed"
+                        <input type="checkbox" @bind="_acceptTamperProof" @bind:after="CalculateDigest" disabled="@_isSealed"
                                class="w-4 h-4 mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 bg-white" />
                         <span class="text-slate-700 leading-relaxed font-normal">
                             <strong>3. Tamper-Evident SHA-256 Flattening:</strong> Once sealed, this contract's byte hash is registered immutably in the local audit register.
@@ -143,75 +169,127 @@
             <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4">
                 <div class="flex items-center justify-between pb-3 border-b border-slate-200">
                     <div class="flex items-center gap-2">
-                        <span class="text-indigo-400 font-bold text-sm">SECTION 3:</span>
+                        <span class="text-indigo-600 font-bold text-sm">SECTION 3:</span>
                         <h2 class="text-base font-bold text-slate-900">Authorized Digital Signature</h2>
                     </div>
-                    @if (!string.IsNullOrEmpty(_signatureData))
+                    @if (!string.IsNullOrEmpty(_signatureData) || !string.IsNullOrEmpty(_svgPath))
                     {
-                        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300">
-                            ✓ Stroke Data Captured
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            ✓ Signature Stroke Captured
                         </span>
                     }
                 </div>
 
                 <div class="space-y-3">
-                    <p class="text-xs text-slate-400">
-                        Sign below using mouse, pen, or touch. Click preset stamps or sign manually:
+                    <p class="text-xs text-slate-600">
+                        Draw below using your mouse/touch, or choose an official preset signature stamp:
                     </p>
 
                     <!-- Quick Preset Signatures -->
                     <div class="flex flex-wrap items-center gap-2">
-                        <button type="button" @onclick='() => ApplyPresetSignature("Executive Formal Signature")' disabled="@_isSealed"
-                                class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-800 transition border border-slate-300">
+                        <button type="button" @onclick='() => ApplyPresetSignature("Executive")' disabled="@_isSealed"
+                                class="px-3.5 py-2 rounded-xl @(_selectedPreset == "Executive" ? "bg-indigo-600 text-white font-bold" : "bg-slate-100 hover:bg-slate-200 text-slate-800") text-xs font-bold transition border border-slate-300">
                             ✍️ Formal Executive
                         </button>
-                        <button type="button" @onclick='() => ApplyPresetSignature("Legal Counsel Signature")' disabled="@_isSealed"
-                                class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-800 transition border border-slate-300">
+                        <button type="button" @onclick='() => ApplyPresetSignature("Counsel")' disabled="@_isSealed"
+                                class="px-3.5 py-2 rounded-xl @(_selectedPreset == "Counsel" ? "bg-indigo-600 text-white font-bold" : "bg-slate-100 hover:bg-slate-200 text-slate-800") text-xs font-bold transition border border-slate-300">
                             🖋️ General Counsel
                         </button>
-                        <button type="button" @onclick='() => ApplyPresetSignature("Chief Architect Seal")' disabled="@_isSealed"
-                                class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-800 transition border border-slate-300">
+                        <button type="button" @onclick='() => ApplyPresetSignature("Architect")' disabled="@_isSealed"
+                                class="px-3.5 py-2 rounded-xl @(_selectedPreset == "Architect" ? "bg-indigo-600 text-white font-bold" : "bg-slate-100 hover:bg-slate-200 text-slate-800") text-xs font-bold transition border border-slate-300">
                             ⚡ Chief Architect
                         </button>
                         <button type="button" @onclick="ClearSignature" disabled="@_isSealed"
-                                class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-700 transition border border-rose-200">
+                                class="px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-xs font-bold text-rose-700 transition border border-rose-200">
                             ✕ Clear Signature
                         </button>
                     </div>
 
-                    <!-- Signature Visual Box -->
-                    <div class="relative h-44 rounded-2xl bg-slate-50 border-2 border-dashed @(_isSealed ? "border-emerald-500/40" : "border-indigo-500/40") p-4 flex flex-col justify-between overflow-hidden">
-                        <div class="flex items-center justify-between text-[11px] text-slate-500 font-mono">
-                            <span>SIGNATURE CAPTURE PLANE</span>
-                            <span>X: @(_hasDrawn ? "CAPTURE ACTIVE" : "AWAITING STROKE")</span>
+                    <!-- Interactive Signature Visual / Drawing Box -->
+                    <div class="relative h-44 rounded-2xl bg-slate-50 border-2 border-dashed @(_isSealed ? "border-emerald-500" : "border-indigo-400 hover:border-indigo-600") p-4 flex flex-col justify-between overflow-hidden cursor-crosshair select-none"
+                         @onmousedown="OnMouseDown"
+                         @onmousemove="OnMouseMove"
+                         @onmouseup="OnMouseUp"
+                         @onmouseleave="OnMouseUp">
+                        
+                        <div class="flex items-center justify-between text-[11px] text-slate-500 font-mono z-10 pointer-events-none">
+                            <span>SIGNATURE CAPTURE PLANE (DRAG MOUSE OR CLICK PRESET)</span>
+                            <span>@(_hasManualDrawn ? "IN-FLIGHT INK STROKE ACTIVE" : "AUTHENTICATED STAMP")</span>
                         </div>
 
-                        <!-- Rendered Signature Graphic -->
-                        <div class="flex-1 flex items-center justify-center">
-                            @if (!string.IsNullOrEmpty(_signatureData))
+                        <!-- Rendered SVG Inking or Typography -->
+                        <div class="flex-1 flex items-center justify-center relative">
+                            @if (!string.IsNullOrEmpty(_svgPath))
                             {
-                                <div class="text-center space-y-1">
+                                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 600 160">
+                                    <path d="@_svgPath" fill="none" stroke="#4f46e5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            }
+
+                            @if (!string.IsNullOrEmpty(_signatureData) && string.IsNullOrEmpty(_svgPath))
+                            {
+                                <div class="text-center space-y-1 pointer-events-none z-10">
                                     <div class="font-serif italic text-3xl sm:text-4xl text-indigo-700 font-bold tracking-wider">
                                         @_signatureData
                                     </div>
-                                    <div class="text-[10px] font-mono text-emerald-400">
+                                    <div class="text-[10px] font-mono text-emerald-600 font-bold">
                                         AUTHENTICATED BIOMETRIC STROKE IDENTIFIER: #@(_signatureHash)
                                     </div>
                                 </div>
                             }
-                            else
+                            else if (string.IsNullOrEmpty(_signatureData) && string.IsNullOrEmpty(_svgPath))
                             {
-                                <div class="text-slate-500 text-xs flex flex-col items-center gap-1 font-medium">
-                                    <span class="text-2xl">✍️</span>
-                                    <span>Click a preset signature stamp above to generate biometric stroke path</span>
+                                <div class="text-slate-400 text-xs flex flex-col items-center gap-1 font-medium pointer-events-none">
+                                    <span class="text-3xl">✍️</span>
+                                    <span>Draw here with your mouse, or click any preset stamp above</span>
                                 </div>
                             }
                         </div>
 
-                        <div class="border-t border-slate-200 pt-1 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                        <div class="border-t border-slate-200 pt-1 flex items-center justify-between text-[10px] text-slate-500 font-mono z-10 pointer-events-none">
                             <span>SIGNATORY: @(_signerName.Length > 0 ? _signerName : "UNSPECIFIED")</span>
                             <span>DATE: @DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss") UTC</span>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Direct Seal Bar -->
+                <div class="mt-4 p-5 rounded-2xl bg-indigo-50 border border-indigo-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h4 class="text-sm font-bold text-indigo-950">
+                            @(_isSealed ? "✓ Contract Successfully Sealed" : "Ready to Seal Document?")
+                        </h4>
+                        <p class="text-xs text-indigo-700 mt-0.5">
+                            @if (_isSealed)
+                            {
+                                <span>All boundaries frozen. Document is locked under SHA-256 seal.</span>
+                            }
+                            else if (!CanSeal)
+                            {
+                                <span>Please verify your signatory name, accept all 3 legal terms, and provide a signature above.</span>
+                            }
+                            else
+                            {
+                                <span>All prerequisites verified. Click below to flatten and seal this contract.</span>
+                            }
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        @if (_isSealed)
+                        {
+                            <button type="button" @onclick="UnlockDocument"
+                                    class="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 text-xs font-bold border border-slate-300 shadow-sm transition">
+                                🔓 Unlock &amp; Edit
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="button" @onclick="SealDocument" disabled="@(!CanSeal)"
+                                    class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-bold shadow-lg shadow-indigo-600/30 transition flex items-center gap-2">
+                                <span>🔒</span>
+                                <span>Sign &amp; Seal Document</span>
+                            </button>
+                        }
                     </div>
                 </div>
             </div>
@@ -226,7 +304,7 @@
                         <span class="text-xl">🔐</span>
                         <h3 class="text-base font-bold text-slate-900">SHA-256 Integrity Certificate</h3>
                     </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-purple-500/20 text-purple-300">
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-purple-50 text-purple-700 border border-purple-200">
                         NIST CERTIFIED
                     </span>
                 </div>
@@ -247,15 +325,15 @@
                     <div class="space-y-2.5">
                         <div class="flex items-center gap-3 text-xs">
                             <span class="w-2.5 h-2.5 rounded-full @(_signerName.Length > 0 ? "bg-emerald-600" : "bg-slate-300")"></span>
-                            <span class="@(_signerName.Length > 0 ? "text-slate-800 font-medium" : "text-slate-500")">Signatory Identity Provided</span>
+                            <span class="@(_signerName.Length > 0 ? "text-slate-800 font-medium" : "text-slate-500")">Signatory Identity: @(_signerName.Length > 0 ? _signerName : "Required")</span>
                         </div>
                         <div class="flex items-center gap-3 text-xs">
                             <span class="w-2.5 h-2.5 rounded-full @(AllTermsAccepted ? "bg-emerald-600" : "bg-slate-300")"></span>
                             <span class="@(AllTermsAccepted ? "text-slate-800 font-medium" : "text-slate-500")">3/3 Mandatory Legal Clauses Accepted</span>
                         </div>
                         <div class="flex items-center gap-3 text-xs">
-                            <span class="w-2.5 h-2.5 rounded-full @(!string.IsNullOrEmpty(_signatureData) ? "bg-emerald-600" : "bg-slate-300")"></span>
-                            <span class="@(!string.IsNullOrEmpty(_signatureData) ? "text-slate-800 font-medium" : "text-slate-500")">Digital Signature Stroke Captured</span>
+                            <span class="w-2.5 h-2.5 rounded-full @((!string.IsNullOrEmpty(_signatureData) || !string.IsNullOrEmpty(_svgPath)) ? "bg-emerald-600" : "bg-slate-300")"></span>
+                            <span class="@((!string.IsNullOrEmpty(_signatureData) || !string.IsNullOrEmpty(_svgPath)) ? "text-slate-800 font-medium" : "text-slate-500")">Digital Signature Stroke Captured</span>
                         </div>
                         <div class="flex items-center gap-3 text-xs">
                             <span class="w-2.5 h-2.5 rounded-full @(_isSealed ? "bg-emerald-600 shadow-sm shadow-emerald-400/50" : "bg-slate-300")"></span>
@@ -279,13 +357,13 @@
                                     📋 Copy Sealed Audit JSON
                                 </button>
                                 <button type="button" @onclick="SimulatePdfDownload"
-                                        class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-300 text-slate-200 font-bold text-xs transition border border-slate-700">
+                                        class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition border border-slate-700">
                                     📥 Download Flattened PDF
                                 </button>
                             </div>
                             @if (!string.IsNullOrEmpty(_actionNotice))
                             {
-                                <div class="p-2 rounded-xl bg-emerald-100 text-emerald-900 font-mono text-[11px] flex items-center justify-between border border-emerald-300">
+                                <div class="p-2.5 rounded-xl bg-emerald-100 text-emerald-900 font-mono text-[11px] flex items-center justify-between border border-emerald-300">
                                     <span>✓ @_actionNotice</span>
                                     <button type="button" @onclick='() => _actionNotice = null' class="font-bold hover:text-black">✕</button>
                                 </div>
@@ -299,21 +377,21 @@
             <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-3 font-mono text-xs">
                 <div class="text-slate-600 text-xs font-bold font-sans">LIVE CONTRACT AUDIT TELEMETRY</div>
                 <div class="space-y-1.5 text-[11px]">
-                    <div class="flex justify-between text-slate-400">
+                    <div class="flex justify-between text-slate-500">
                         <span>RUNTIME:</span>
-                        <span class="text-indigo-400 font-bold">.NET 11.0.0 (GA) WebAssembly</span>
+                        <span class="text-indigo-600 font-bold">.NET 11.0.0 (GA)</span>
                     </div>
-                    <div class="flex justify-between text-slate-400">
+                    <div class="flex justify-between text-slate-500">
                         <span>COMPONENT:</span>
                         <span class="text-slate-800 font-medium">BlazorTwUI TwPdfFormFiller</span>
                     </div>
-                    <div class="flex justify-between text-slate-400">
+                    <div class="flex justify-between text-slate-500">
                         <span>BYTES CONSUMED:</span>
                         <span class="text-slate-800 font-medium">@(_payloadBytes) bytes</span>
                     </div>
-                    <div class="flex justify-between text-slate-400">
+                    <div class="flex justify-between text-slate-500">
                         <span>SEAL STATUS:</span>
-                        <span class="@(_isSealed ? "text-emerald-700 font-bold" : "text-amber-400 font-bold")">
+                        <span class="@(_isSealed ? "text-emerald-700 font-bold" : "text-amber-600 font-bold")">
                             @(_isSealed ? "LOCKED & FLATTENED" : "DRAFT (MUTABLE)")
                         </span>
                     </div>
@@ -336,25 +414,53 @@
 
     private string _signatureData = "Sarah Connor";
     private string _signatureHash = "84f1a9";
-    private bool _hasDrawn = true;
+    private string _selectedPreset = "Executive";
+    private bool _hasManualDrawn = false;
+    private bool _isDrawing = false;
+    private string _svgPath = "";
+    private StringBuilder _pathBuilder = new();
+
     private bool _isSealed = false;
+    private string? _actionNotice;
 
     private string _sha256Digest = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
     private int _payloadBytes = 412;
 
     private bool AllTermsAccepted => _acceptAotTerms && _acceptCryptoTerms && _acceptTamperProof;
-    private bool CanSeal => !string.IsNullOrWhiteSpace(_signerName) && AllTermsAccepted && !string.IsNullOrWhiteSpace(_signatureData) && !_isSealed;
+    private bool CanSeal => !string.IsNullOrWhiteSpace(_signerName) && AllTermsAccepted && (!string.IsNullOrWhiteSpace(_signatureData) || !string.IsNullOrWhiteSpace(_svgPath)) && !_isSealed;
 
     protected override void OnInitialized()
     {
         CalculateDigest();
     }
 
-    private void ApplyPresetSignature(string signatureText)
+    private void OnSignerNameInput(ChangeEventArgs e)
+    {
+        _signerName = e.Value?.ToString() ?? "";
+        if (!_hasManualDrawn)
+        {
+            _signatureData = _signerName;
+        }
+        CalculateDigest();
+    }
+
+    private void ApplyPresetSignature(string preset)
     {
         if (_isSealed) return;
-        _signatureData = _signerName.Length > 0 ? _signerName : signatureText;
-        _hasDrawn = true;
+        _hasManualDrawn = false;
+        _svgPath = string.Empty;
+        _pathBuilder.Clear();
+        var name = string.IsNullOrWhiteSpace(_signerName) ? "Sarah Connor" : _signerName;
+
+        _signatureData = preset switch
+        {
+            "Executive" => $"{name} (Executive Signature)",
+            "Counsel" => $"{name}, Esq. (Legal Counsel)",
+            "Architect" => $"{name} (Chief Architect)",
+            _ => name
+        };
+        _selectedPreset = preset;
+
         using var sha = SHA256.Create();
         var hashBytes = sha.ComputeHash(Encoding.UTF8.GetBytes(_signatureData + DateTime.UtcNow.Ticks));
         _signatureHash = Convert.ToHexString(hashBytes)[..8];
@@ -365,7 +471,38 @@
     {
         if (_isSealed) return;
         _signatureData = string.Empty;
-        _hasDrawn = false;
+        _svgPath = string.Empty;
+        _pathBuilder.Clear();
+        _hasManualDrawn = false;
+        _selectedPreset = "";
+        CalculateDigest();
+    }
+
+    private void OnMouseDown(MouseEventArgs e)
+    {
+        if (_isSealed) return;
+        _isDrawing = true;
+        _hasManualDrawn = true;
+        _signatureData = string.Empty; // Switch to manual ink mode
+        _selectedPreset = "";
+        _pathBuilder.Append($"M {e.OffsetX:F0} {e.OffsetY:F0} ");
+        _svgPath = _pathBuilder.ToString();
+    }
+
+    private void OnMouseMove(MouseEventArgs e)
+    {
+        if (!_isDrawing || _isSealed) return;
+        _pathBuilder.Append($"L {e.OffsetX:F0} {e.OffsetY:F0} ");
+        _svgPath = _pathBuilder.ToString();
+    }
+
+    private void OnMouseUp()
+    {
+        if (!_isDrawing) return;
+        _isDrawing = false;
+        using var sha = SHA256.Create();
+        var hashBytes = sha.ComputeHash(Encoding.UTF8.GetBytes(_svgPath.Length > 0 ? _svgPath : "ink"));
+        _signatureHash = Convert.ToHexString(hashBytes)[..8];
         CalculateDigest();
     }
 
@@ -380,7 +517,7 @@
             Sla = _slaTier,
             Budget = _budgetCap,
             TermsAccepted = AllTermsAccepted,
-            Signature = _signatureData,
+            Signature = !string.IsNullOrEmpty(_svgPath) ? $"SVG_INK:{_signatureHash}" : _signatureData,
             IsSealed = _isSealed
         };
 
@@ -399,6 +536,13 @@
         CalculateDigest();
     }
 
+    private void UnlockDocument()
+    {
+        _isSealed = false;
+        _actionNotice = null;
+        CalculateDigest();
+    }
+
     private void ResetDocument()
     {
         _isSealed = false;
@@ -406,13 +550,16 @@
         _companyName = "Cyberdyne Systems Corp";
         _signerEmail = "sconnor@cyberdyne.io";
         _signatureData = "Sarah Connor";
+        _selectedPreset = "Executive";
+        _hasManualDrawn = false;
+        _svgPath = string.Empty;
+        _pathBuilder.Clear();
         _acceptAotTerms = true;
         _acceptCryptoTerms = true;
         _acceptTamperProof = true;
+        _actionNotice = null;
         CalculateDigest();
     }
-
-    private string? _actionNotice;
 
     private async Task CopyPayloadJson()
     {
