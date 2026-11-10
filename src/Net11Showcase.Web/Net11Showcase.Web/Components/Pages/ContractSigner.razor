@@ -426,12 +426,23 @@
         CalculateDigest();
     }
 
-    private void OnSignerNameInput(ChangeEventArgs e)
+    private async Task OnSignerNameInput(ChangeEventArgs e)
     {
         _signerName = e.Value?.ToString() ?? "";
         if (!_hasManualDrawn)
         {
             _signatureData = _signerName;
+            if (!string.IsNullOrEmpty(_selectedPreset))
+            {
+                string title = _selectedPreset switch
+                {
+                    "Executive" => "Executive Officer",
+                    "Counsel" => "Esq., Legal Counsel",
+                    "Architect" => "Chief Architect",
+                    _ => "Signatory"
+                };
+                try { await JS.InvokeVoidAsync("contractPad.renderPreset", _signerName, title); } catch { }
+            }
         }
         CalculateDigest();
     }
@@ -443,12 +454,18 @@
         if (firstRender)
         {
             _dotNetRef = DotNetObjectReference.Create(this);
-            try { await JS.InvokeVoidAsync("contractPad.init", "signatureCanvas", _dotNetRef); } catch { }
+            try
+            {
+                await JS.InvokeVoidAsync("contractPad.init", "signatureCanvas", _dotNetRef);
+                var name = string.IsNullOrWhiteSpace(_signerName) ? "Sarah Connor" : _signerName;
+                await JS.InvokeVoidAsync("contractPad.renderPreset", name, "Executive Officer");
+            }
+            catch { }
         }
     }
 
     [JSInvokable]
-    public void OnStrokeDrawn(string dataUrl)
+    public void OnManualStrokeDrawn(string dataUrl)
     {
         _hasManualDrawn = true;
         _signatureData = "Manual Biometric Ink Stroke";
@@ -459,6 +476,9 @@
         CalculateDigest();
         StateHasChanged();
     }
+
+    [JSInvokable]
+    public void OnStrokeDrawn(string dataUrl) => OnManualStrokeDrawn(dataUrl);
 
     private async Task ApplyPresetSignature(string preset)
     {

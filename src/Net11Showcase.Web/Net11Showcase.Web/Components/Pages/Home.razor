@@ -947,33 +947,38 @@
 
                 <!-- Preset Queries -->
                 <div class="flex flex-wrap items-center gap-2 text-xs">
-                    <span class="text-slate-400 text-[10px] font-mono uppercase">Quick Prompts:</span>
+                    <span class="text-slate-400 text-[10px] font-mono uppercase font-bold">Quick Prompts:</span>
                     <button type="button" @onclick='() => SetVectorPrompt("Native AOT runtime latency")'
-                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-mono text-[11px] font-medium">
-                        Native AOT
+                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-mono text-[11px] font-medium transition cursor-pointer">
+                        ⚡ Native AOT
                     </button>
                     <button type="button" @onclick='() => SetVectorPrompt("Blazor server HTML streaming")'
-                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-mono text-[11px] font-medium">
-                        Blazor Streaming
+                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-mono text-[11px] font-medium transition cursor-pointer">
+                        🌐 Blazor Streaming
                     </button>
                     <button type="button" @onclick='() => SetVectorPrompt("EF Core JSON column indexing")'
-                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-mono text-[11px] font-medium">
-                        JSON Columns
+                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-mono text-[11px] font-medium transition cursor-pointer">
+                        🗄️ JSON Columns
                     </button>
                     <button type="button" @onclick='() => SetVectorPrompt("MAUI hybrid device hardware sensors")'
-                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-mono text-[11px] font-medium">
-                        MAUI Sensors
+                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-mono text-[11px] font-medium transition cursor-pointer">
+                        📱 MAUI Sensors
+                    </button>
+                    <button type="button" @onclick='() => SetVectorPrompt("Zero-Trust Post-Quantum Cryptography")'
+                            class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-mono text-[11px] font-medium transition cursor-pointer">
+                        🔐 Zero-Trust PQC
                     </button>
                 </div>
 
                 <!-- Vector Search Query Bar -->
                 <div class="flex gap-2">
-                    <input type="text" @bind="_vectorQuery" @bind:event="oninput"
+                    <input type="text" @bind="_vectorQuery" @onkeydown="HandleVectorKeyDown"
                            placeholder="Enter semantic query (e.g. Zero-Trust, high throughput, mobile)..."
-                           class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+                           class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-sans shadow-xs" />
                     <button type="button" @onclick="ExecuteVectorSearch"
-                            class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition">
-                        Vector Search
+                            class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-md shadow-emerald-600/30 cursor-pointer">
+                        <span>🔍</span>
+                        <span>Vector Search</span>
                     </button>
                 </div>
 
@@ -981,20 +986,23 @@
                 <div class="space-y-3">
                     @foreach (var res in _vectorResults)
                     {
-                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 hover:border-emerald-300 transition shadow-2xs">
                             <div class="flex items-center justify-between">
-                                <h5 class="text-sm font-bold text-slate-900">@res.Title</h5>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-[10px] font-mono text-slate-400">Similarity:</span>
-                                    <span class="px-2 py-0.5 rounded font-mono font-bold text-xs bg-emerald-100 text-emerald-800">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-200 text-slate-700">#@res.EntityId</span>
+                                    <h5 class="text-sm font-bold text-slate-900">@res.Title</h5>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[10px] font-mono text-slate-500">Cosine:</span>
+                                    <span class="px-2.5 py-0.5 rounded font-mono font-bold text-xs bg-emerald-100 text-emerald-800 border border-emerald-200">
                                         @((res.CosineSimilarity * 100).ToString("F1"))%
                                     </span>
                                 </div>
                             </div>
-                            <p class="text-xs text-slate-500">@res.Content</p>
-                            <div class="w-full h-1.5 rounded-full bg-slate-200 overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400"
-                                     style="width: @(res.CosineSimilarity * 100)%"></div>
+                            <p class="text-xs text-slate-600">@res.Content</p>
+                            <div class="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500"
+                                     style="width: @(Math.Clamp(res.CosineSimilarity * 100, 5, 100))%"></div>
                             </div>
                         </div>
                     }
@@ -1010,24 +1018,24 @@
                         </h4>
                         <p class="text-xs text-slate-500">Filters nested JSON attributes and previews generated SQL.</p>
                     </div>
-                    <span class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 font-mono text-xs font-bold">LINQ MaxBy & json_extract</span>
+                    <span class="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-200 font-mono text-xs font-bold">LINQ MaxBy &amp; json_extract</span>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-2 text-xs">
-                    <span class="text-slate-400 text-[10px] font-mono uppercase">Filter JSON Category:</span>
+                    <span class="text-slate-400 text-[10px] font-mono uppercase font-bold">Filter JSON Category:</span>
                     @foreach (var cat in new[] { "All", "Compute", "Security", "Transport", "Database", "Mobile" })
                     {
                         <button type="button" @onclick="() => FilterJsonCategory(cat)"
-                                class="px-3 py-1 rounded-xl border text-xs font-mono transition @(_selectedJsonCategory == cat ? "border-indigo-600 bg-indigo-50 text-indigo-900 font-bold ring-2 ring-indigo-500/20" : "border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50")">
+                                class="px-3 py-1 rounded-xl border text-xs font-mono transition @(_selectedJsonCategory == cat ? "border-indigo-600 bg-indigo-600 text-white font-bold shadow-xs" : "border-slate-300 bg-slate-100 text-slate-700 hover:text-slate-900 hover:bg-slate-200")">
                             @cat
                         </button>
                     }
                 </div>
 
                 <!-- Preview Generated SQL -->
-                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-300 space-y-1">
-                    <span class="text-slate-500 text-[10px] uppercase block">Generated EF Core SQL:</span>
-                    <code class="text-indigo-400">@_generatedSqlPreview</code>
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs space-y-1.5 shadow-sm">
+                    <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider block">Generated EF Core 11 SQL:</span>
+                    <code class="text-emerald-400 font-bold block overflow-x-auto">@_generatedSqlPreview</code>
                 </div>
             </div>
         </div>
@@ -1738,6 +1746,14 @@
     private void ClearStreamLogs() => _streamLogs.Clear();
 
     // Module 4 logic
+    private void HandleVectorKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            ExecuteVectorSearch();
+        }
+    }
+
     private void SetVectorPrompt(string query)
     {
         _vectorQuery = query;
@@ -1746,7 +1762,7 @@
 
     private void ExecuteVectorSearch()
     {
-        _vectorResults = DataService.PerformVectorSearch(_vectorQuery);
+        _vectorResults = DataService.PerformVectorSearch(_vectorQuery, topK: 4);
     }
 
     private void FilterJsonCategory(string cat)

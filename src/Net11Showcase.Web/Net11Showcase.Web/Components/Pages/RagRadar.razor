@@ -54,10 +54,10 @@
 
                 <div class="space-y-2">
                     <div class="flex gap-2">
-                        <input @bind="_promptInput" @bind:event="oninput" @onkeydown="HandleKeyDown" placeholder="Ask about .NET 11 (e.g. 'How does Native AOT achieve 8.2ms startup?')..."
+                        <input @bind="_promptInput" @onkeydown="HandleKeyDown" placeholder="Ask about .NET 11 (e.g. 'How does Native AOT achieve 8.2ms startup?')..."
                                class="flex-1 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 font-sans shadow-xs" />
                         <button type="button" @onclick="SubmitPrompt" disabled="@_isGenerating"
-                                class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 disabled:opacity-60 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-600/30">
+                                class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 disabled:opacity-60 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-600/30 cursor-pointer">
                             @if (_isGenerating)
                             {
                                 <span class="inline-block animate-spin">⏳</span>
@@ -74,15 +74,15 @@
                     <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
                         <span class="text-[11px] text-slate-500 font-medium">Suggestions:</span>
                         <button type="button" @onclick='() => SetSuggestion("How does Native AOT achieve 8.2ms startup?")'
-                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition">
+                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition cursor-pointer">
                             Cold Boot Benchmarks
                         </button>
                         <button type="button" @onclick='() => SetSuggestion("Explain EF Core 11 complex JSON columns")'
-                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition">
+                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition cursor-pointer">
                             EF Core JSON
                         </button>
                         <button type="button" @onclick='() => SetSuggestion("How does PQC Kyber-768 key exchange work?")'
-                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition">
+                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition cursor-pointer">
                             PQC Cryptography
                         </button>
                     </div>
@@ -201,31 +201,42 @@
         EvaluateQueryDirect();
     }
 
-    private void SetSuggestion(string suggestion)
+    private async Task SetSuggestion(string suggestion)
     {
         _promptInput = suggestion;
-        _ = SubmitPrompt();
+        await SubmitPrompt();
     }
 
-    private void HandleKeyDown(KeyboardEventArgs e)
+    private async Task HandleKeyDown(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
         {
-            _ = SubmitPrompt();
+            await SubmitPrompt();
         }
     }
 
     private async Task SubmitPrompt()
     {
         if (_isGenerating) return;
-        _isGenerating = true;
-        _assistantReply = "⏳ Synthesizing semantic context across 512-dimensional vector space...";
-        _tokenCount = 0;
-        StateHasChanged();
+        try
+        {
+            _isGenerating = true;
+            _assistantReply = "⏳ Synthesizing semantic context across 512-dimensional vector space...";
+            _tokenCount = 0;
+            StateHasChanged();
 
-        await Task.Delay(350);
-        EvaluateQueryDirect();
-        _isGenerating = false;
+            await Task.Delay(300);
+            EvaluateQueryDirect();
+        }
+        catch (Exception ex)
+        {
+            _assistantReply = $"Synthesis error: {ex.Message}";
+        }
+        finally
+        {
+            _isGenerating = false;
+            StateHasChanged();
+        }
     }
 
     private void EvaluateQueryDirect()

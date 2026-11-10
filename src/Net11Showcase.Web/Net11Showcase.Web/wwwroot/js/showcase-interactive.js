@@ -6,21 +6,60 @@ window.contractPad = {
     isDrawing: false,
     hasInk: false,
     dotNetRef: null,
+    _boundResize: null,
+    _handlers: null,
 
-    init: function (canvasElement, dotNetHelper) {
-        this.canvas = canvasElement;
+    init: function (canvasOrId, dotNetHelper) {
+        if (typeof canvasOrId === 'string') {
+            this.canvas = document.getElementById(canvasOrId);
+        } else {
+            this.canvas = canvasOrId;
+        }
         this.dotNetRef = dotNetHelper;
-        if (!this.canvas) return;
+        if (!this.canvas) {
+            console.error('contractPad: canvas not found:', canvasOrId);
+            return;
+        }
 
         this.ctx = this.canvas.getContext('2d');
         this.resize();
 
-        window.addEventListener('resize', () => this.resize());
+        if (this._boundResize) {
+            window.removeEventListener('resize', this._boundResize);
+        }
+        this._boundResize = () => this.resize();
+        window.addEventListener('resize', this._boundResize);
 
-        this.canvas.addEventListener('pointerdown', (e) => this.onPointerDown(e));
-        this.canvas.addEventListener('pointermove', (e) => this.onPointerMove(e));
-        this.canvas.addEventListener('pointerup', (e) => this.onPointerUp(e));
-        this.canvas.addEventListener('pointercancel', (e) => this.onPointerUp(e));
+        if (this._handlers) {
+            this.canvas.removeEventListener('pointerdown', this._handlers.down);
+            this.canvas.removeEventListener('pointermove', this._handlers.move);
+            this.canvas.removeEventListener('pointerup', this._handlers.up);
+            this.canvas.removeEventListener('pointercancel', this._handlers.up);
+            this.canvas.removeEventListener('mousedown', this._handlers.down);
+            this.canvas.removeEventListener('mousemove', this._handlers.move);
+            this.canvas.removeEventListener('mouseup', this._handlers.up);
+        }
+
+        this._handlers = {
+            down: (e) => this.onPointerDown(e),
+            move: (e) => this.onPointerMove(e),
+            up: (e) => this.onPointerUp(e)
+        };
+
+        if (window.PointerEvent) {
+            this.canvas.addEventListener('pointerdown', this._handlers.down);
+            this.canvas.addEventListener('pointermove', this._handlers.move);
+            this.canvas.addEventListener('pointerup', this._handlers.up);
+            this.canvas.addEventListener('pointercancel', this._handlers.up);
+        } else {
+            this.canvas.addEventListener('mousedown', this._handlers.down);
+            this.canvas.addEventListener('mousemove', this._handlers.move);
+            this.canvas.addEventListener('mouseup', this._handlers.up);
+        }
+
+        setTimeout(() => {
+            this.resize();
+        }, 50);
     },
 
     resize: function () {
@@ -39,10 +78,11 @@ window.contractPad = {
 
         this.canvas.width = rect.width * dpr;
         this.canvas.height = rect.height * dpr;
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
         this.ctx.scale(dpr, dpr);
         this.ctx.lineCap = 'round';
         this.ctx.lineJoin = 'round';
-        this.ctx.strokeStyle = '#4338ca'; // indigo-700
+        this.ctx.strokeStyle = '#3730a3'; // deep indigo
         this.ctx.lineWidth = 3.2;
 
         if (this.hasInk && temp.width > 0) {
@@ -59,8 +99,10 @@ window.contractPad = {
     },
 
     onPointerDown: function (e) {
-        if (this.canvas.dataset.sealed === 'true') return;
-        this.canvas.setPointerCapture(e.pointerId);
+        if (!this.canvas || this.canvas.dataset.sealed === 'true') return;
+        if (e.pointerId !== undefined) {
+            try { this.canvas.setPointerCapture(e.pointerId); } catch (_) {}
+        }
         this.isDrawing = true;
         this.hasInk = true;
         const p = this.getPos(e);
@@ -71,7 +113,7 @@ window.contractPad = {
     },
 
     onPointerMove: function (e) {
-        if (!this.isDrawing || this.canvas.dataset.sealed === 'true') return;
+        if (!this.isDrawing || !this.canvas || this.canvas.dataset.sealed === 'true') return;
         const p = this.getPos(e);
         this.ctx.lineTo(p.x, p.y);
         this.ctx.stroke();
@@ -80,56 +122,72 @@ window.contractPad = {
     onPointerUp: function (e) {
         if (!this.isDrawing) return;
         this.isDrawing = false;
-        try {
-            this.canvas.releasePointerCapture(e.pointerId);
-        } catch (_) {}
+        if (e && e.pointerId !== undefined && this.canvas) {
+            try { this.canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+        }
 
         if (this.dotNetRef) {
             const dataUrl = this.canvas.toDataURL('image/png');
-            this.dotNetRef.invokeMethodAsync('OnStrokeDrawn', dataUrl);
+            this.dotNetRef.invokeMethodAsync('OnManualStrokeDrawn', dataUrl);
         }
     },
 
     clear: function () {
-        if (!this.canvas) return;
+        if (!this.canvas) {
+            this.canvas = document.getElementById('signatureCanvas');
+            if (this.canvas) this.ctx = this.canvas.getContext('2d');
+        }
+        if (!this.canvas || !this.ctx) return;
         this.hasInk = false;
-        const rect = this.canvas.getBoundingClientRect();
-        this.ctx.clearRect(0, 0, rect.width, rect.height);
+        this.ctx.save();
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.restore();
     },
 
     renderPreset: function (name, roleTitle) {
-        if (!this.canvas) return;
+        if (!this.canvas) {
+            this.canvas = document.getElementById('signatureCanvas');
+            if (this.canvas) this.ctx = this.canvas.getContext('2d');
+        }
+        if (!this.canvas || !this.ctx) return;
         this.hasInk = true;
+
+        this.resize();
+
         const rect = this.canvas.getBoundingClientRect();
-        this.ctx.clearRect(0, 0, rect.width, rect.height);
+
+        // Clear canvas
+        this.ctx.save();
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.restore();
 
         this.ctx.save();
-        // Decorative flourish curve
+        // Flourish swoosh curve
         this.ctx.strokeStyle = '#818cf8';
-        this.ctx.lineWidth = 2;
+        this.ctx.lineWidth = 2.5;
         this.ctx.beginPath();
-        this.ctx.moveTo(rect.width * 0.15, rect.height * 0.72);
-        this.ctx.bezierCurveTo(rect.width * 0.3, rect.height * 0.88, rect.width * 0.7, rect.height * 0.88, rect.width * 0.85, rect.height * 0.72);
+        const startX = rect.width * 0.12;
+        const endX = rect.width * 0.88;
+        const midY = rect.height * 0.68;
+        this.ctx.moveTo(startX, midY);
+        this.ctx.bezierCurveTo(rect.width * 0.35, rect.height * 0.90, rect.width * 0.65, rect.height * 0.90, endX, midY);
         this.ctx.stroke();
 
-        // Main signature cursive
-        this.ctx.font = 'italic bold 32px "Segoe Script", "Brush Script MT", "Dancing Script", cursive, Georgia, serif';
-        this.ctx.fillStyle = '#3730a3';
+        // Elegant calligraphy signature
+        this.ctx.font = 'italic bold 34px "Segoe Script", "Brush Script MT", "Caveat", "Dancing Script", cursive, Georgia, serif';
+        this.ctx.fillStyle = '#312e81';
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
         this.ctx.fillText(name, rect.width / 2, rect.height / 2 - 8);
 
-        // Subtitle badge
+        // Official verification badge subtitle
         this.ctx.font = 'bold 11px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace';
         this.ctx.fillStyle = '#059669';
-        this.ctx.fillText(roleTitle, rect.width / 2, rect.height / 2 + 24);
+        this.ctx.fillText(`✓ ${roleTitle} — Biometrically Certified Stamp`, rect.width / 2, rect.height / 2 + 26);
 
         this.ctx.restore();
-
-        if (this.dotNetRef) {
-            const dataUrl = this.canvas.toDataURL('image/png');
-            this.dotNetRef.invokeMethodAsync('OnStrokeDrawn', dataUrl);
-        }
     }
 };
 
