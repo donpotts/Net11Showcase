@@ -57,7 +57,7 @@ Net11Showcase.sln
 
 src/
 ├── Net11Showcase.Shared/         # Domain models, DTOs, contracts, and benchmark data services
-├── Net11Showcase.Components/     # Reusable Tailwind UI components, Layouts, AppShell, grids, and the Agent Ops module
+├── Net11Showcase.Components/     # BlazorTwUI component library (UI/, Models/), AppShell layouts, grids, and Agent Ops
 ├── Net11Showcase.Data/           # EF Core 11 DbContext (SQLite), JSON columns, vector cosine math
 ├── Net11Showcase.Api/            # Minimal APIs, Scalar OpenAPI UI (/scalar/v1), response streaming
 ├── Net11Showcase.Web/            # Blazor Web App with Auto Render Mode (Server + Client WASM)
@@ -71,9 +71,11 @@ src/
 
 ### 1. 📜 Enterprise Contract Signer & PDF Sealing Studio (`/contract-signer`)
 An enterprise digital agreements workstation featuring:
-- **Interactive Signature Canvas**: Real-time stylus and mouse drawing capture with high-precision stroke smoothing.
+- **Interactive Signature Canvas**: Real-time stylus, mouse, and touch drawing capture with high-precision stroke smoothing.
 - **SHA-256 Cryptographic Seal**: Dynamic mathematical hashing (`e3b0c442...`) guaranteeing document tamper-evidence.
-- **Tamper-Evident Stream Flattening**: Read-only document state locking with embedded metadata verification certificates.
+- **Post-Quantum Key Rotation (NIST FIPS 203 ML-KEM-768)**: Quantum-resistant Kyber key exchange mechanism and dynamic rotation.
+- **Tamper-Evident Stream Flattening & PDF Download**: In-memory binary PDF generation with embedded metadata verification certificates, read-only document locking, and immediate browser download.
+- **BlazorTwUI Integration**: Powered by `<TwButton>`, `<TwAlert>`, and `<TwBadge>` for smooth loading states and semantic status alerts.
 
 ### 2. 💳 Fintech & Cryptography Cockpit (`/fintech-cockpit`)
 An enterprise-grade financial workstation running directly in Blazor WebAssembly:
@@ -88,13 +90,15 @@ Interactive hardware diagnostics and kinetic sensor emulation:
 - **Multi-Version Benchmark Telemetry**: Cross-version comparison table detailing cold boot, throughput, memory, and publish footprint from .NET 8 through .NET 11 GA.
 
 ### 4. 🎯 RAG Semantic Radar & AI Vector Retrieval (`/rag-radar`)
-A zero-dependency semantic vector search lab:
+A zero-dependency semantic vector search and RAG synthesis lab:
 - **Deterministic Feature Hashing Embedder**: Signed feature hashing (`HashingEmbedder`) that projects natural language text into high-dimensional vector spaces without external models.
 - **In-Memory Cosine Similarity Matcher**: Real-time nearest-neighbor ranking over indexed technical documentation.
-- **Live Token Streaming Studio**: Interactive token streaming simulator with response latency, token count, and citation grounding metrics.
+- **EF Core 11 Cosine Distance Search**: SQLite database queries with custom cosine vector functions.
+- **Live Token Streaming & RAG Generation Studio**: Interactive token streaming simulator with response latency, token count, grounded citation references, and `<TwStatCard>` KPI telemetry.
 
 ### 5. ⚡ Blazor .NET 11 GA Core Showcase (`/`)
 - **Rendering Modes Matrix**: Interactive switching between **Static SSR**, **Interactive Server (SignalR)**, **Interactive WASM**, **Auto Mode (SSR -> WASM)**, and **Streaming Rendering**.
+- **8 Pillars Architecture Matrix (Tab 8)**: Overview of all major .NET 11 innovations with live zero-allocation benchmark actions.
 - **Enhanced QuickGrid**: Instant client-side search filtering, multi-column sorting, and interactive row click inspection.
 - **Forms & Validation**: Async validation simulation and dynamic schema binding.
 
@@ -114,6 +118,42 @@ Open **/agent-ops** for a human-in-the-loop agent workspace:
 - **Approval gates block**: High-risk tool calls are paused until approved or rejected with reasons.
 - **Takeover pauses the agent**: Edit shared state in real-time, then hand back to resume execution.
 - **Audit trail**: Every step is logged and exportable as JSON.
+
+### 9. 🚀 .NET 11 GA & C# 15 Architectural Roadmap Lab (`/net11-features`)
+A dedicated deep-dive lab covering the entire official **.NET 11 IS HERE** roadmap:
+- **The 8 Architectural Pillars**:
+  1. **C# 15**: Union types, Closed hierarchies, Extension indexers, Collection expression arguments, Labeled break and continue.
+  2. **ASP.NET Core**: Async Minimal API validation, OpenAPI 3.2 by default, Native OpenTelemetry tracing, SignalR invocation cancellation, `[ShortCircuit]` attribute.
+  3. **EF Core 11**: FullOuterJoin support, MinByAsync / MaxByAsync, Complex-type keys and indexes, Better SQL for joins, JSON path existence checks.
+  4. **Runtime**: Runtime-native async, JIT compiler improvements, Faster NativeAOT interface calls, In-process crash reports, Hardware FP16 support.
+  5. **Libraries**: System.Text.Json union support, JSON Lines output, Zstandard compression, Process run-and-capture APIs, MemoryCache OTel metrics.
+  6. **SDK**: Smaller Linux/macOS installers, NativeAOT CLI entry point, New dotnet test run controls, Multi-arch builds with Podman, MSBuild server by default.
+  7. **Windows Forms**: Modern visual styles, Toggle switches, SuspendPainting API, Built-in kiosk mode, Deferred form reveal.
+  8. **.NET MAUI**: CoreCLR by default, NativeAOT publishing option, On-device testing templates, Themed splash screens, iOS notification permissions.
+- **Full-Screen Infographic Modal**: High-definition `.NET 11 IS HERE` visual architecture modal powered by `<TwModal>`.
+- **Live C# 15 Discriminated Union Benchmark**: Interactive comparison of zero-alloc algebraic unions (`Result<T, E>`) vs traditional exceptions (-100% memory, 0 allocations, 35x+ faster).
+- **Live Hardware SIMD Vector Acceleration Lab**: Microsecond hardware vector operations (`System.Runtime.Intrinsics`) vs scalar loops with hardware speedup and GFLOPS calculation.
+- **BlazorTwUI `<TwCodeBlock>`**: Code examples rendered with syntax themes, header tabs, and one-click copy feedback.
+
+---
+
+## 🧩 BlazorTwUI Component System
+
+The suite incorporates reusable design system components adapted from [BlazorTwUI](https://github.com/donpotts/BlazorTwUI), located in `src/Net11Showcase.Components/UI/` and `src/Net11Showcase.Components/Models/`:
+
+- **`<TwBadge>`**: Semantic pills with dot indicators, custom color overrides, and sizes.
+- **`<TwButton>`**: High-impact button controls with loading spinners, icon placement, and semantic variants (`Primary`, `Secondary`, `Success`, `Warning`, `Danger`, `Ghost`).
+- **`<TwCard>`**: Responsive cards with customizable padding, borders, shadows, and header slots.
+- **`<TwStatCard>`**: KPI tiles featuring metric values, trend pill badges, icon containers, and subtext descriptions.
+- **`<TwAlert>`**: Notification callouts with semantic themes, status icons, and dismissible triggers.
+- **`<TwModal>`**: Accessible dialog modals with customizable headers, body slots, action footers, and backdrop dismiss.
+- **`<TwCodeBlock>`**: Code display with syntax styling, header filenames, language indicators, and one-click copy feedback.
+- **`<TwCodeDiff>`**: Visual side-by-side or inline code comparison visualization.
+- **`<TwTabs>`**: Accessible tab navigation bars with horizontal/vertical layouts and pill/underline variants.
+- **`<TwProgressBar>`**: Animated or determinate progress indicators with value labeling.
+- **`<TwPill>`**: Lightweight category tags and metric labels.
+- **`<TwKbd>`**: Keyboard shortcut visual indicators.
+- **`TwStyleEngine` & `TwClassBuilder`**: Multi-slot Tailwind class synthesis engine eliminating style collisions.
 
 ---
 
@@ -165,7 +205,7 @@ Double-click `launch-showcase.cmd` (or run in PowerShell):
 # 1. Build complete solution
 dotnet build Net11Showcase.slnx
 
-# 2. Run unit & integration test suite (29 tests)
+# 2. Run unit & integration test suite (30 tests)
 dotnet test Net11Showcase.slnx
 
 # 3. Launch Web Host directly
