@@ -45,6 +45,17 @@
                 </button>
             </div>
         </div>
+
+        @if (!string.IsNullOrEmpty(_lastRotationNotice))
+        {
+            <div class="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs font-mono flex items-center justify-between shadow-xs">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span>@_lastRotationNotice</span>
+                </div>
+                <button type="button" @onclick='() => _lastRotationNotice = null' class="font-bold text-slate-500 hover:text-slate-900 text-xs">✕</button>
+            </div>
+        }
     </div>
 
     <!-- 4 High-Impact KPI Stat Cards -->
@@ -70,10 +81,13 @@
                 <span class="text-emerald-600 font-mono font-bold">100% SECURE</span>
             </div>
             <div class="text-2xl font-black text-slate-900">ML-KEM-768</div>
-            <div class="text-[11px] text-slate-500">NIST FIPS 203 Lattice Encryption</div>
+            <div class="text-[11px] text-slate-500 font-mono flex items-center justify-between">
+                <span>Epoch #@_keyEpoch (NIST FIPS 203)</span>
+                <span class="text-emerald-700 font-bold">#@_pqcPubKey[..8]</span>
+            </div>
             <div class="flex items-center gap-2 pt-2 text-[10px] font-mono text-slate-500">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Latency: 0.38 ms</span>
+                <span>Latency: 0.38 ms • Active Key: @_pqcPubKey[..12]...</span>
             </div>
         </div>
 
@@ -200,6 +214,8 @@
     private string _pqcPubKey = "e481b7a0d2f91c841029384756102938475610293847a9b0";
     private string _pqcSecret = "1928374650a9b8c7d6e5f410293847561029384756102938";
     private string _sampleNachaRecord = "622011000015123456789000001850000ACME001     Acme Global Dynamics      0011000010000001";
+    private int _keyEpoch = 1;
+    private string? _lastRotationNotice;
 
     private readonly int[] _settlementTrend = [45, 60, 52, 78, 65, 88, 95];
     private readonly int[] _latencyTrend = [80, 65, 45, 38, 30, 25, 20];
@@ -244,6 +260,7 @@
 
     private void RotateVaultKeys()
     {
+        _keyEpoch++;
         var bytes = new byte[24];
         RandomNumberGenerator.Fill(bytes);
         _pqcPubKey = Convert.ToHexString(bytes).ToLowerInvariant();
@@ -251,6 +268,8 @@
         var secretBytes = new byte[24];
         RandomNumberGenerator.Fill(secretBytes);
         _pqcSecret = Convert.ToHexString(secretBytes).ToLowerInvariant();
+
+        _lastRotationNotice = $"✓ Post-quantum Kyber-768 key pair rotated (Epoch #{_keyEpoch}) at {DateTime.UtcNow:HH:mm:ss} UTC. Active fingerprint: #{_pqcPubKey[..8]}";
     }
 
     private class TransactionRecord

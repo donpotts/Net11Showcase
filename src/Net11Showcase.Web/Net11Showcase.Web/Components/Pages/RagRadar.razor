@@ -56,9 +56,17 @@
                     <div class="flex gap-2">
                         <input @bind="_promptInput" @bind:event="oninput" @onkeydown="HandleKeyDown" placeholder="Ask about .NET 11 (e.g. 'How does Native AOT achieve 8.2ms startup?')..."
                                class="flex-1 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 font-sans shadow-xs" />
-                        <button type="button" @onclick="SubmitPrompt"
-                                class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-600/30">
-                            <span>🚀 Generate</span>
+                        <button type="button" @onclick="SubmitPrompt" disabled="@_isGenerating"
+                                class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 disabled:opacity-60 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-600/30">
+                            @if (_isGenerating)
+                            {
+                                <span class="inline-block animate-spin">⏳</span>
+                                <span>Synthesizing...</span>
+                            }
+                            else
+                            {
+                                <span>🚀 Generate</span>
+                            }
                         </button>
                     </div>
 
@@ -184,29 +192,43 @@
     private string _assistantReply = "In .NET 11 GA, Native AOT compiles C# code directly into architecture-specific machine code (win-x64 / arm64) ahead of time. By eliminating the runtime JIT compiler, stripping unused metadata through advanced IL linking, and utilizing pre-initialized data structures, cold boot startup drops to 8.2 ms with an ultra-compact 14.8 MB working set.";
     private int _tokenCount = 148;
     private int _inferenceLatency = 42;
+    private bool _isGenerating = false;
 
     private List<MatchedDocItem> _matchedDocs = new();
 
     protected override void OnInitialized()
     {
-        SubmitPrompt();
+        EvaluateQueryDirect();
     }
 
     private void SetSuggestion(string suggestion)
     {
         _promptInput = suggestion;
-        SubmitPrompt();
+        _ = SubmitPrompt();
     }
 
     private void HandleKeyDown(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
         {
-            SubmitPrompt();
+            _ = SubmitPrompt();
         }
     }
 
-    private void SubmitPrompt()
+    private async Task SubmitPrompt()
+    {
+        if (_isGenerating) return;
+        _isGenerating = true;
+        _assistantReply = "⏳ Synthesizing semantic context across 512-dimensional vector space...";
+        _tokenCount = 0;
+        StateHasChanged();
+
+        await Task.Delay(350);
+        EvaluateQueryDirect();
+        _isGenerating = false;
+    }
+
+    private void EvaluateQueryDirect()
     {
         var query = _promptInput.ToLowerInvariant();
         var rand = new Random();
