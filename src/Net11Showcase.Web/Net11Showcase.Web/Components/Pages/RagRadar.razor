@@ -46,16 +46,16 @@
         <!-- Left: Prompt Composer & Chat Response Stream -->
         <div class="lg:col-span-2 space-y-4">
             <!-- Prompt Composer Card -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <h3 class="text-base font-bold text-slate-900">Semantic Architecture Search &amp; Prompt</h3>
-                    <span class="text-xs font-mono text-slate-400">Deterministic Hashing</span>
+                    <span class="text-xs font-mono text-slate-500">Deterministic Hashing</span>
                 </div>
 
                 <div class="space-y-2">
                     <div class="flex gap-2">
                         <input @bind="_promptInput" @bind:event="oninput" @onkeydown="HandleKeyDown" placeholder="Ask about .NET 11 (e.g. 'How does Native AOT achieve 8.2ms startup?')..."
-                               class="flex-1 px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 font-sans" />
+                               class="flex-1 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 font-sans shadow-xs" />
                         <button type="button" @onclick="SubmitPrompt"
                                 class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-amber-600/30">
                             <span>🚀 Generate</span>
@@ -64,17 +64,17 @@
 
                     <!-- Suggestion Chips -->
                     <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
-                        <span class="text-[11px] text-slate-500">Suggestions:</span>
+                        <span class="text-[11px] text-slate-500 font-medium">Suggestions:</span>
                         <button type="button" @onclick='() => SetSuggestion("How does Native AOT achieve 8.2ms startup?")'
-                                class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] border border-slate-700 transition">
+                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition">
                             Cold Boot Benchmarks
                         </button>
                         <button type="button" @onclick='() => SetSuggestion("Explain EF Core 11 complex JSON columns")'
-                                class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] border border-slate-700 transition">
+                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition">
                             EF Core JSON
                         </button>
                         <button type="button" @onclick='() => SetSuggestion("How does PQC Kyber-768 key exchange work?")'
-                                class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] border border-slate-700 transition">
+                                class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] border border-slate-200 font-medium transition">
                             PQC Cryptography
                         </button>
                     </div>
@@ -85,19 +85,19 @@
             <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                     <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         <h3 class="text-base font-bold text-slate-900">Streaming AI Response</h3>
                     </div>
-                    <div class="flex items-center gap-3 text-xs font-mono text-slate-400">
-                        <span>Tokens: <strong class="text-white">@_tokenCount</strong></span>
-                        <span>Latency: <strong class="text-amber-400">@_inferenceLatency ms</strong></span>
+                    <div class="flex items-center gap-3 text-xs font-mono text-slate-500">
+                        <span>Tokens: <strong class="text-slate-900">@_tokenCount</strong></span>
+                        <span>Latency: <strong class="text-amber-600 font-bold">@_inferenceLatency ms</strong></span>
                     </div>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-600 leading-relaxed font-sans min-h-[140px]">
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans min-h-[140px]">
                     @if (string.IsNullOrWhiteSpace(_assistantReply))
                     {
-                        <span class="text-slate-600 italic">Select a suggestion or type an architecture prompt above to trigger real-time semantic retrieval and response synthesis...</span>
+                        <span class="text-slate-500 italic">Select a suggestion or type an architecture prompt above to trigger real-time semantic retrieval and response synthesis...</span>
                     }
                     else
                     {
@@ -111,16 +111,16 @@
                 @if (_matchedDocs.Any())
                 {
                     <div class="space-y-2 pt-2 border-t border-slate-200">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Grounding Document Vectors</span>
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Grounding Document Vectors</span>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             @foreach (var doc in _matchedDocs)
                             {
-                                <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-between text-xs">
+                                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
                                     <div class="truncate pr-2">
-                                        <span class="font-bold text-white block truncate">@doc.Title</span>
-                                        <span class="text-[10px] text-slate-400">@doc.DocId</span>
+                                        <span class="font-bold text-slate-900 block truncate">@doc.Title</span>
+                                        <span class="text-[10px] text-slate-500">@doc.DocId</span>
                                     </div>
-                                    <span class="font-mono text-emerald-400 font-bold shrink-0">@((doc.CosineScore * 100).ToString("F1"))%</span>
+                                    <span class="font-mono text-emerald-700 font-bold shrink-0">@((doc.CosineScore * 100).ToString("F1"))%</span>
                                 </div>
                             }
                         </div>
@@ -131,16 +131,16 @@
 
         <!-- Right Column: Vector Radar Canvas & Dimensional Insights -->
         <div class="space-y-4">
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Vector Embeddings Radar</h4>
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-3">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Vector Embeddings Radar</h4>
                 <div class="h-48 w-full rounded-2xl bg-slate-50 p-2 relative overflow-hidden flex items-center justify-center border border-slate-200">
                     <svg class="w-full h-full" viewBox="0 0 200 120">
                         <!-- Concentric Radar Rings -->
-                        <circle cx="100" cy="60" r="50" fill="none" stroke="#334155" stroke-dasharray="2 2" />
-                        <circle cx="100" cy="60" r="35" fill="none" stroke="#475569" stroke-dasharray="3 3" />
+                        <circle cx="100" cy="60" r="50" fill="none" stroke="#cbd5e1" stroke-dasharray="2 2" />
+                        <circle cx="100" cy="60" r="35" fill="none" stroke="#94a3b8" stroke-dasharray="3 3" />
                         <circle cx="100" cy="60" r="18" fill="none" stroke="#64748b" />
-                        <line x1="100" y1="10" x2="100" y2="110" stroke="#1e293b" />
-                        <line x1="20" y1="60" x2="180" y2="60" stroke="#1e293b" />
+                        <line x1="100" y1="10" x2="100" y2="110" stroke="#cbd5e1" />
+                        <line x1="20" y1="60" x2="180" y2="60" stroke="#cbd5e1" />
 
                         <!-- Active Vector Nodes -->
                         <circle cx="100" cy="60" r="5" fill="#f59e0b" class="animate-ping" />
@@ -152,26 +152,26 @@
                     </svg>
                     <span class="absolute bottom-2 right-3 text-[9px] font-mono text-slate-500">512-dim Metric</span>
                 </div>
-                <div class="text-[11px] text-slate-400 flex items-center justify-between">
-                    <span>Algorithm: <strong>Signed Feature Hash</strong></span>
-                    <span class="text-emerald-400 font-mono">Zero Latency</span>
+                <div class="text-[11px] text-slate-500 flex items-center justify-between">
+                    <span>Algorithm: <strong class="text-slate-800">Signed Feature Hash</strong></span>
+                    <span class="text-emerald-700 font-mono font-bold">Zero Latency</span>
                 </div>
             </div>
 
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Embedding Vector Specs</h4>
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-3">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Embedding Vector Specs</h4>
                 <div class="space-y-2 text-xs font-mono">
                     <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                        <span class="text-slate-500 block text-[9px] uppercase">Dimensionality</span>
-                        <span class="font-bold text-white">512 Elements (Float32)</span>
+                        <span class="text-slate-500 block text-[9px] uppercase font-bold">Dimensionality</span>
+                        <span class="font-bold text-slate-900">512 Elements (Float32)</span>
                     </div>
                     <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                        <span class="text-slate-500 block text-[9px] uppercase">Cosine Similarity Formula</span>
-                        <span class="text-emerald-400 text-[10px]">cos(θ) = (A · B) / (||A|| ||B||)</span>
+                        <span class="text-slate-500 block text-[9px] uppercase font-bold">Cosine Similarity Formula</span>
+                        <span class="text-emerald-700 font-bold text-[10px]">cos(θ) = (A · B) / (||A|| ||B||)</span>
                     </div>
                     <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                        <span class="text-slate-500 block text-[9px] uppercase">Index Memory Footprint</span>
-                        <span class="font-bold text-white">&lt; 128 KB (In-Memory)</span>
+                        <span class="text-slate-500 block text-[9px] uppercase font-bold">Index Memory Footprint</span>
+                        <span class="font-bold text-slate-900">&lt; 128 KB (In-Memory)</span>
                     </div>
                 </div>
             </div>

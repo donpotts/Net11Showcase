@@ -1,13 +1,33 @@
-﻿@page "/counter"
-@rendermode InteractiveAuto
+@page "/counter"
+@rendermode InteractiveServer
 
-<PageTitle>Counter</PageTitle>
+<PageTitle>Reactive State Counter — .NET 11 Showcase</PageTitle>
 
-<h1>Counter</h1>
+<div class="space-y-6 max-w-2xl mx-auto">
+    <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 text-slate-900 shadow-sm space-y-4 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+            ⚡ BLAZOR INTERACTIVE SERVER STATE
+        </div>
+        <h1 class="text-3xl font-black text-slate-900 tracking-tight">Reactive State Counter</h1>
+        <p class="text-xs sm:text-sm text-slate-600">
+            Zero-latency bi-directional SignalR WebSocket circuit state management.
+        </p>
 
-<p role="status">Current count: @currentCount</p>
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col items-center justify-center space-y-2">
+            <span class="text-xs font-mono text-slate-500 uppercase font-bold">Current Metric Count</span>
+            <div class="text-6xl font-black text-indigo-600 font-mono" role="status">@currentCount</div>
+        </div>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+        <div class="flex items-center justify-center gap-3 pt-2">
+            <button class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md shadow-indigo-600/30 transition flex items-center gap-2" @onclick="IncrementCount">
+                <span>➕</span> Increment Count
+            </button>
+            <button class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-300 transition" @onclick="ResetCount">
+                ↺ Reset
+            </button>
+        </div>
+    </div>
+</div>
 
 @code {
     private int currentCount = 0;
@@ -15,5 +35,10 @@
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    private void ResetCount()
+    {
+        currentCount = 0;
     }
 }

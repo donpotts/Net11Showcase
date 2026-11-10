@@ -30,20 +30,31 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 // Add services to the container.
 builder.Services.AddSingleton<ShowcaseDataService>();
 builder.Services.AddScoped<Net11Showcase.Components.AgentOps.IAgentTransport, Net11Showcase.Components.AgentOps.SimulatedAgentTransport>();
+
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents()
+    .AddInteractiveServerComponents(options =>
+    {
+        options.DetailedErrors = true;
+    })
     .AddInteractiveWebAssemblyComponents();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+// In standalone local loopback mode, avoid HSTS and HTTPS redirection so HTTP WebSockets (ws://) connect without browser blocking
+var isHttpsConfigured = builder.Configuration["urls"]?.Contains("https://", StringComparison.OrdinalIgnoreCase) == true;
+if (isHttpsConfigured && !app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     app.UseHsts();
+    app.UseHttpsRedirection();
 }
+else
+{
+    app.UseDeveloperExceptionPage();
+}
+
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
-app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.MapStaticAssets();

@@ -50,11 +50,11 @@
     <!-- 4 High-Impact KPI Stat Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-400">
+            <div class="flex items-center justify-between text-xs text-slate-500">
                 <span class="font-bold">Total Settled Volume</span>
-                <span class="text-emerald-400 font-mono font-bold">+24.5%</span>
+                <span class="text-emerald-600 font-mono font-bold">+24.5%</span>
             </div>
-            <div class="text-2xl font-black text-white">$@_settledTotal.ToString("N2")</div>
+            <div class="text-2xl font-black text-slate-900">$@_settledTotal.ToString("N2")</div>
             <div class="text-[11px] text-slate-500">Same-Day ACH &amp; Real-time Rails</div>
             <div class="h-6 w-full flex items-end gap-1 pt-2">
                 @foreach (var val in _settlementTrend)
@@ -65,24 +65,24 @@
         </div>
 
         <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-400">
+            <div class="flex items-center justify-between text-xs text-slate-500">
                 <span class="font-bold">PQC Vault Status</span>
-                <span class="text-emerald-400 font-mono font-bold">100% SECURE</span>
+                <span class="text-emerald-600 font-mono font-bold">100% SECURE</span>
             </div>
-            <div class="text-2xl font-black text-white">ML-KEM-768</div>
+            <div class="text-2xl font-black text-slate-900">ML-KEM-768</div>
             <div class="text-[11px] text-slate-500">NIST FIPS 203 Lattice Encryption</div>
-            <div class="flex items-center gap-2 pt-2 text-[10px] font-mono text-slate-400">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div class="flex items-center gap-2 pt-2 text-[10px] font-mono text-slate-500">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Latency: 0.38 ms</span>
             </div>
         </div>
 
         <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-400">
+            <div class="flex items-center justify-between text-xs text-slate-500">
                 <span class="font-bold">EF Core 11 JSON Latency</span>
-                <span class="text-indigo-400 font-mono font-bold">&lt; 1 ms</span>
+                <span class="text-indigo-600 font-mono font-bold">&lt; 1 ms</span>
             </div>
-            <div class="text-2xl font-black text-white">0.62 ms</div>
+            <div class="text-2xl font-black text-slate-900">0.62 ms</div>
             <div class="text-[11px] text-slate-500">Complex property SQL JSON indexing</div>
             <div class="h-6 w-full flex items-end gap-1 pt-2">
                 @foreach (var val in _latencyTrend)
@@ -93,14 +93,14 @@
         </div>
 
         <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
-            <div class="flex items-center justify-between text-xs text-slate-400">
+            <div class="flex items-center justify-between text-xs text-slate-500">
                 <span class="font-bold">Batches in Flight</span>
-                <span class="text-amber-400 font-mono font-bold">@_batchesInFlight Active</span>
+                <span class="text-amber-600 font-mono font-bold">@_batchesInFlight Active</span>
             </div>
-            <div class="text-2xl font-black text-white">@_batchesInFlight</div>
+            <div class="text-2xl font-black text-slate-900">@_batchesInFlight</div>
             <div class="text-[11px] text-slate-500">Fixed-width 94-char NACHA engine</div>
-            <div class="flex items-center gap-2 pt-2 text-[10px] font-mono text-slate-400">
-                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <div class="flex items-center gap-2 pt-2 text-[10px] font-mono text-slate-500">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                 <span>Zero batch errors</span>
             </div>
         </div>
@@ -113,18 +113,18 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
                 <div>
                     <h3 class="text-base font-bold text-slate-900">Enterprise Settlement Ledger</h3>
-                    <p class="text-xs text-slate-400">Real-time EF Core 11 JSON document queries over corporate accounts</p>
+                    <p class="text-xs text-slate-500">Real-time EF Core 11 JSON document queries over corporate accounts</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <input @bind="_searchFilter" @bind:event="oninput" placeholder="Filter company or routing..."
-                           class="px-3 py-1.5 rounded-xl bg-slate-800 text-xs text-white border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono" />
+                           class="px-3.5 py-1.5 rounded-xl bg-slate-50 text-xs text-slate-900 border border-slate-300 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono shadow-xs" />
                 </div>
             </div>
 
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs">
                     <thead>
-                        <tr class="border-b border-slate-200 text-slate-400 uppercase text-[10px] font-bold">
+                        <tr class="border-b border-slate-200 bg-slate-50/80 text-slate-500 uppercase text-[10px] font-bold">
                             <th class="py-2.5 px-3">Batch / Ref</th>
                             <th class="py-2.5 px-3">Corporate Customer</th>
                             <th class="py-2.5 px-3">Profile Region</th>
@@ -133,15 +133,15 @@
                             <th class="py-2.5 px-3">Status</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-800/60 font-mono">
+                    <tbody class="divide-y divide-slate-100 font-mono">
                         @foreach (var tx in FilteredTransactions)
                         {
-                            <tr class="hover:bg-slate-800/40 transition">
-                                <td class="py-3 px-3 font-bold text-indigo-400">@tx.BatchId</td>
-                                <td class="py-3 px-3 font-sans font-medium text-slate-200">@tx.CustomerName</td>
-                                <td class="py-3 px-3 text-slate-400">@tx.Region</td>
-                                <td class="py-3 px-3 text-white font-bold">$@tx.Amount.ToString("N2")</td>
-                                <td class="py-3 px-3 text-emerald-400 text-[11px]">@tx.CipherMode</td>
+                            <tr class="hover:bg-slate-50/80 transition">
+                                <td class="py-3 px-3 font-bold text-indigo-600">@tx.BatchId</td>
+                                <td class="py-3 px-3 font-sans font-medium text-slate-800">@tx.CustomerName</td>
+                                <td class="py-3 px-3 text-slate-500">@tx.Region</td>
+                                <td class="py-3 px-3 text-slate-900 font-bold">$@tx.Amount.ToString("N2")</td>
+                                <td class="py-3 px-3 text-emerald-700 text-[11px] font-bold">@tx.CipherMode</td>
                                 <td class="py-3 px-3">
                                     <span class="px-2 py-0.5 rounded-full text-[9px] font-bold @(tx.Status == "SETTLED" ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "bg-amber-50 text-amber-700 border border-amber-200")">
                                         @tx.Status
@@ -156,37 +156,37 @@
 
         <!-- PQC Cryptographic Vault Inspector -->
         <div class="space-y-4">
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Post-Quantum Vault Security</h4>
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-3">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Post-Quantum Vault Security</h4>
                 <div class="space-y-2 text-xs font-mono">
                     <div>
                         <span class="text-slate-500 block text-[10px] uppercase font-bold">Kyber-768 Public Key (Hex)</span>
-                        <div class="p-2.5 rounded-xl bg-indigo-50 text-indigo-800 border border-slate-200 truncate text-[11px]">
+                        <div class="p-2.5 rounded-xl bg-indigo-50 text-indigo-800 border border-indigo-200 truncate text-[11px]">
                             @_pqcPubKey
                         </div>
                     </div>
                     <div>
                         <span class="text-slate-500 block text-[10px] uppercase font-bold">Lattice Shared Secret (Hex)</span>
-                        <div class="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-slate-200 truncate text-[11px]">
+                        <div class="p-2.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 truncate text-[11px]">
                             @_pqcSecret
                         </div>
                     </div>
-                    <div class="p-3 rounded-xl bg-indigo-950/40 border border-indigo-800/60 text-[11px] text-slate-300">
+                    <div class="p-3 rounded-xl bg-indigo-50 border border-indigo-200 text-[11px] text-indigo-900 font-sans">
                         🛡️ <strong>Zero Attack Surface:</strong> Protected against quantum Grover &amp; Shor algorithmic factorization.
                     </div>
                 </div>
             </div>
 
             <!-- NACHA 94-Character Line Inspector -->
-            <div class="p-6 rounded-3xl bg-slate-900 border border-slate-200 space-y-3">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">NACHA 94-Character Fixed-Width Record</h4>
-                <p class="text-xs text-slate-400">Simulated standard banking entry record:</p>
-                <div class="p-3 rounded-xl bg-amber-50 text-amber-900 font-mono text-[10px] break-all border border-slate-200">
+            <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-3">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">NACHA 94-Character Fixed-Width Record</h4>
+                <p class="text-xs text-slate-500">Simulated standard banking entry record:</p>
+                <div class="p-3 rounded-xl bg-amber-50 text-amber-900 font-mono text-[10px] break-all border border-amber-200">
                     @_sampleNachaRecord
                 </div>
-                <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-200">
+                <div class="flex items-center justify-between text-xs text-slate-600 pt-2 border-t border-slate-200">
                     <span>Length: <strong>94 chars</strong></span>
-                    <span class="text-emerald-400 font-bold">✓ CRC-32 Valid</span>
+                    <span class="text-emerald-700 font-bold">✓ CRC-32 Valid</span>
                 </div>
             </div>
         </div>
