@@ -1355,27 +1355,166 @@
                     </a>
                 </div>
 
-                <!-- 4 Live Innovation Metric Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs font-mono">
-                    <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-1">
-                        <span class="text-[10px] text-indigo-700 font-bold block uppercase">Zero-Alloc params span</span>
-                        <div class="text-xl font-bold text-indigo-900">0.00 B Heap</div>
-                        <div class="text-[11px] text-slate-600">Zero Gen0 GC pressure vs 4.8MB heap arrays</div>
+                <!-- 5 Live Innovation Metric Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs font-mono">
+                    <div class="p-3.5 rounded-2xl bg-purple-50 border border-purple-200 space-y-1">
+                        <span class="text-[10px] text-purple-700 font-bold block uppercase">C# 15 Unions</span>
+                        <div class="text-lg font-bold text-purple-900">0.00 B Heap</div>
+                        <div class="text-[10px] text-slate-600">Closed Value Structs</div>
                     </div>
-                    <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1">
-                        <span class="text-[10px] text-emerald-700 font-bold block uppercase">SIMD Hardware Acceleration</span>
-                        <div class="text-xl font-bold text-emerald-900">512-Bit AVX-512</div>
-                        <div class="text-[11px] text-slate-600">Up to 8.4x speedup over scalar loops</div>
+                    <div class="p-3.5 rounded-2xl bg-indigo-50 border border-indigo-200 space-y-1">
+                        <span class="text-[10px] text-indigo-700 font-bold block uppercase">params span</span>
+                        <div class="text-lg font-bold text-indigo-900">0.00 B Stack</div>
+                        <div class="text-[10px] text-slate-600">Zero GC Gen0 pressure</div>
                     </div>
-                    <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-1">
-                        <span class="text-[10px] text-purple-700 font-bold block uppercase">Post-Quantum Lattice</span>
-                        <div class="text-xl font-bold text-purple-900">ML-KEM-768</div>
-                        <div class="text-[11px] text-slate-600">NIST FIPS 203 Quantum Shielding</div>
+                    <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1">
+                        <span class="text-[10px] text-emerald-700 font-bold block uppercase">SIMD Vectors</span>
+                        <div class="text-lg font-bold text-emerald-900">512-Bit AVX</div>
+                        <div class="text-[10px] text-slate-600">Up to 8.4x speedup</div>
                     </div>
-                    <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-1">
-                        <span class="text-[10px] text-blue-700 font-bold block uppercase">Dual-Tier HybridCache</span>
-                        <div class="text-xl font-bold text-blue-900">&lt; 0.05 ms L1</div>
-                        <div class="text-[11px] text-slate-600">Single-flight stampede protection</div>
+                    <div class="p-3.5 rounded-2xl bg-purple-50 border border-purple-200 space-y-1">
+                        <span class="text-[10px] text-purple-700 font-bold block uppercase">PQC Lattice</span>
+                        <div class="text-lg font-bold text-purple-900">ML-KEM-768</div>
+                        <div class="text-[10px] text-slate-600">NIST FIPS 203 Shield</div>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-blue-50 border border-blue-200 space-y-1 col-span-2 sm:col-span-1">
+                        <span class="text-[10px] text-blue-700 font-bold block uppercase">HybridCache</span>
+                        <div class="text-lg font-bold text-blue-900">&lt; 0.05 ms</div>
+                        <div class="text-[10px] text-slate-600">Stampede Protected</div>
+                    </div>
+                </div>
+
+                <!-- 8 Flagship Infographic Feature Cards Matrix -->
+                <div class="space-y-3 pt-2">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                            .NET 11 Official Feature Matrix (8 Flagship Pillars)
+                        </h4>
+                        <a href="net11-features" class="text-xs font-bold text-purple-700 hover:text-purple-900 font-mono">
+                            Interactive Code Diffs &rarr;
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                        <!-- 1. C# 15 -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="font-bold text-slate-900 text-sm">🧬 C# 15</span>
+                                <span class="text-[10px] font-mono text-purple-700 font-bold">5 Features</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Union types</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Closed hierarchies</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Extension indexers</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Collection expr</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Labeled break/cont</span>
+                            </div>
+                        </div>
+
+                        <!-- 2. ASP.NET Core -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="font-bold text-slate-900 text-sm">🌐 ASP.NET Core</span>
+                                <span class="text-[10px] font-mono text-indigo-700 font-bold">5 Features</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Async validation</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">OpenAPI 3.2 default</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Native OTel tracing</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">SignalR cancel</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">[ShortCircuit] attr</span>
+                            </div>
+                        </div>
+
+                        <!-- 3. EF Core -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="font-bold text-slate-900 text-sm">🗄️ EF Core</span>
+                                <span class="text-[10px] font-mono text-emerald-700 font-bold">5 Features</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">FullJoin support</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">MinBy / MaxByAsync</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Complex keys &amp; idx</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Better join SQL</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">JSON path exists</span>
+                            </div>
+                        </div>
+
+                        <!-- 4. Runtime -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="font-bold text-slate-900 text-sm">⚙️ Runtime</span>
+                                <span class="text-[10px] font-mono text-pink-700 font-bold">5 Features</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Native async</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">JIT improvements</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Fast AOT dispatch</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">In-process crash</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Hardware FP16</span>
+                            </div>
+                        </div>
+
+                        <!-- 5. Libraries -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="font-bold text-slate-900 text-sm">📦 Libraries</span>
+                                <span class="text-[10px] font-mono text-blue-700 font-bold">5 Features</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">JSON union support</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">JSON Lines (NDJSON)</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Zstandard compress</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Process run/capture</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">MemoryCache OTel</span>
+                            </div>
+                        </div>
+
+                        <!-- 6. SDK -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="font-bold text-slate-900 text-sm">🛠️ SDK</span>
+                                <span class="text-[10px] font-mono text-cyan-700 font-bold">5 Features</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Smaller installers</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">NativeAOT CLI</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">dotnet test controls</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Podman multi-arch</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">MSBuild server default</span>
+                            </div>
+                        </div>
+
+                        <!-- 7. Windows Forms -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="font-bold text-slate-900 text-sm">🖥️ Windows Forms</span>
+                                <span class="text-[10px] font-mono text-amber-700 font-bold">5 Features</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Modern visual styles</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Toggle switches</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">SuspendPainting API</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Built-in kiosk mode</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Deferred form reveal</span>
+                            </div>
+                        </div>
+
+                        <!-- 8. .NET MAUI -->
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="font-bold text-slate-900 text-sm">📱 .NET MAUI</span>
+                                <span class="text-[10px] font-mono text-teal-700 font-bold">5 Features</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">CoreCLR by default</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">NativeAOT mobile</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">On-device templates</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">Themed splash</span>
+                                <span style="background: linear-gradient(135deg, #7e22ce 0%, #4338ca 100%); color: #ffffff;" class="px-2.5 py-1 rounded-full font-mono text-[10px] font-bold shadow-xs inline-block">iOS notifications</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

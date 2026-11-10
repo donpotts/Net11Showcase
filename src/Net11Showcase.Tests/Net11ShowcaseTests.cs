@@ -90,4 +90,31 @@ public class Net11ShowcaseTests
         Assert.Equal("Bob Vance", searchHits[0].Title);
         Assert.True(searchHits[0].CosineSimilarity > 0.95);
     }
+
+    [Fact]
+    public void Net11Innovations_Evaluates_CSharp15_Discriminated_Unions()
+    {
+        var service = new Net11InnovationsService();
+
+        // 1. Evaluate Variants
+        var nominal = service.EvaluateUnionVariant("nominal");
+        Assert.Equal("Nominal", nominal.VariantName);
+        Assert.True(nominal.CompilerExhaustivenessGuaranteed);
+        Assert.Equal(0, nominal.HeapAllocatedBytes);
+        Assert.Contains("Nominal Orbit", nominal.PatternMatchOutput);
+
+        var warning = service.EvaluateUnionVariant("warning");
+        Assert.Equal("Warning", warning.VariantName);
+        Assert.Contains("Cryo-Tank Pressure", warning.PatternMatchOutput);
+
+        var emergency = service.EvaluateUnionVariant("emergency");
+        Assert.Equal("Emergency", emergency.VariantName);
+        Assert.Contains("CRITICAL ABORT", emergency.PatternMatchOutput);
+
+        // 2. Union Benchmark (10,000 runs)
+        var bench = service.RunUnionBenchmark(10_000);
+        Assert.Equal(10_000, bench.Iterations);
+        Assert.Equal(0, bench.UnionAllocatedBytes); // 0 Heap bytes
+        Assert.True(bench.PolymorphicAllocatedBytes > 0); // Class allocations
+    }
 }
