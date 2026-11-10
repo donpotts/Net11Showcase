@@ -283,6 +283,13 @@
                                     📥 Download Flattened PDF
                                 </button>
                             </div>
+                            @if (!string.IsNullOrEmpty(_actionNotice))
+                            {
+                                <div class="p-2 rounded-xl bg-emerald-100 text-emerald-900 font-mono text-[11px] flex items-center justify-between border border-emerald-300">
+                                    <span>✓ @_actionNotice</span>
+                                    <button type="button" @onclick='() => _actionNotice = null' class="font-bold hover:text-black">✕</button>
+                                </div>
+                            }
                         </div>
                     }
                 </div>
@@ -405,6 +412,8 @@
         CalculateDigest();
     }
 
+    private string? _actionNotice;
+
     private async Task CopyPayloadJson()
     {
         var audit = new
@@ -423,12 +432,16 @@
         try
         {
             await JS.InvokeVoidAsync("navigator.clipboard.writeText", json);
+            _actionNotice = "Sealed audit JSON copied to clipboard!";
         }
-        catch { }
+        catch
+        {
+            _actionNotice = "Sealed audit JSON ready (clipboard permissions restricted).";
+        }
     }
 
     private void SimulatePdfDownload()
     {
-        // Triggers UI feedback
+        _actionNotice = $"Flattened PDF generated ({_payloadBytes} bytes, SHA-256: {_sha256Digest[..12]}...). Download stream ready.";
     }
 }
