@@ -29,6 +29,7 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 
 // Add services to the container.
 builder.Services.AddSingleton<ShowcaseDataService>();
+builder.Services.AddSingleton<Net11InnovationsService>();
 builder.Services.AddScoped<Net11Showcase.Components.AgentOps.IAgentTransport, Net11Showcase.Components.AgentOps.SimulatedAgentTransport>();
 
 builder.Services.AddRazorComponents()
