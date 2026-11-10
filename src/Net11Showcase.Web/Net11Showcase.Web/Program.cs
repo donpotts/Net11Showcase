@@ -2,11 +2,33 @@ using Net11Showcase.Web.Client.Pages;
 using Net11Showcase.Web.Components;
 using Net11Showcase.Shared.Services;
 
-var builder = WebApplication.CreateBuilder(args);
+// Ensure content root always resolves to the location containing wwwroot
+var baseDir = AppContext.BaseDirectory;
+string contentRoot;
+
+if (Directory.Exists(Path.Combine(baseDir, "wwwroot")))
+{
+    contentRoot = baseDir;
+}
+else if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")))
+{
+    contentRoot = Directory.GetCurrentDirectory();
+}
+else
+{
+    var candidate = Path.Combine(Directory.GetCurrentDirectory(), "src", "Net11Showcase.Web", "Net11Showcase.Web");
+    contentRoot = Directory.Exists(Path.Combine(candidate, "wwwroot")) ? candidate : Directory.GetCurrentDirectory();
+}
+
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    ContentRootPath = contentRoot,
+    WebRootPath = Path.Combine(contentRoot, "wwwroot")
+});
 
 // Add services to the container.
 builder.Services.AddSingleton<ShowcaseDataService>();
-// Agent Ops demo agent (offline). Register your own IAgentTransport instead to drive a live agent.
 builder.Services.AddScoped<Net11Showcase.Components.AgentOps.IAgentTransport, Net11Showcase.Components.AgentOps.SimulatedAgentTransport>();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
@@ -23,6 +45,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
