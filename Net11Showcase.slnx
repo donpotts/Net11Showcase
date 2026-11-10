@@ -1,4 +1,8 @@
 <Solution>
+  <Folder Name="/src/Net11Showcase.Web/">
+    <Project Path="src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj" />
+    <Project Path="src/Net11Showcase.Web/Net11Showcase.Web.Client/Net11Showcase.Web.Client.csproj" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/Net11Showcase.Api/Net11Showcase.Api.csproj" />
     <Project Path="src/Net11Showcase.Components/Net11Showcase.Components.csproj" />
@@ -6,9 +10,5 @@
     <Project Path="src/Net11Showcase.Maui/Net11Showcase.Maui.csproj" />
     <Project Path="src/Net11Showcase.Shared/Net11Showcase.Shared.csproj" />
     <Project Path="src/Net11Showcase.Tests/Net11Showcase.Tests.csproj" />
-  </Folder>
-  <Folder Name="/src/Net11Showcase.Web/">
-    <Project Path="src/Net11Showcase.Web/Net11Showcase.Web.Client/Net11Showcase.Web.Client.csproj" />
-    <Project Path="src/Net11Showcase.Web/Net11Showcase.Web/Net11Showcase.Web.csproj" />
   </Folder>
 </Solution>

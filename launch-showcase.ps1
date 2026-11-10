@@ -3,10 +3,11 @@
     Net11Showcase -- Standalone .NET 11 Showcase Suite Launcher
 .DESCRIPTION
     1. Scans and allocates an unoccupied port (5150-5250) to prevent port collisions.
-    2. Boots the Net11Showcase.Web host process.
-    3. Runs active pre-flight health polling loop until HTTP 200 is verified.
-    4. Opens the browser UI only after the server is 100% online.
-    5. Clean process termination on exit.
+    2. Ensures the standalone binary exists (or compiles it to dist\web if first run).
+    3. Boots the Net11Showcase.Web host process.
+    4. Runs active pre-flight health polling loop until HTTP 200 is verified.
+    5. Opens the browser UI only after the server is 100% online.
+    6. Clean process termination on exit.
 #>
 
 param(
@@ -55,8 +56,8 @@ if (-not $allocatedPort) {
 Write-Host "   -> Allocated Free Port: $allocatedPort" -ForegroundColor Green
 $targetUrl = "http://127.0.0.1:$allocatedPort"
 
-# 2. Start Web Host
-Write-Host "[2/3] Launching Net11Showcase.Web host on $targetUrl..." -ForegroundColor Gray
+# 2. Locate or Build Standalone Binary
+Write-Host "[2/3] Preparing Net11Showcase.Web host binary..." -ForegroundColor Gray
 $projectPath = Join-Path $ScriptDir "src\Net11Showcase.Web\Net11Showcase.Web\Net11Showcase.Web.csproj"
 $exePath = if (Test-Path (Join-Path $ScriptDir "Net11Showcase.Web.exe")) {
     Join-Path $ScriptDir "Net11Showcase.Web.exe"
@@ -66,18 +67,23 @@ $exePath = if (Test-Path (Join-Path $ScriptDir "Net11Showcase.Web.exe")) {
     $null
 }
 
-$psi = New-Object System.Diagnostics.ProcessStartInfo
-if ($exePath) {
-    Write-Host "   -> Using standalone binary: $exePath" -ForegroundColor Green
-    $psi.FileName = $exePath
-    $psi.Arguments = "--urls `"$targetUrl`""
-    $psi.WorkingDirectory = Split-Path -Parent $exePath
-} else {
-    Write-Host "   -> Using dotnet run from source: $projectPath" -ForegroundColor Gray
-    $psi.FileName = "dotnet"
-    $psi.Arguments = "run --project `"$projectPath`" --urls `"$targetUrl`""
-    $psi.WorkingDirectory = $ScriptDir
+if (-not $exePath) {
+    Write-Host "   -> Pre-compiled binary not found. Compiling Release distribution now (takes ~10s)..." -ForegroundColor Yellow
+    $distPath = Join-Path $ScriptDir "dist\web"
+    & dotnet publish $projectPath -c Release -o $distPath --nologo
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "CRITICAL: Failed to build project. Please ensure .NET 11 SDK (11.0.100+) is installed."
+        exit 1
+    }
+    $exePath = Join-Path $distPath "Net11Showcase.Web.exe"
 }
+
+Write-Host "   -> Using standalone binary: $exePath" -ForegroundColor Green
+
+$psi = New-Object System.Diagnostics.ProcessStartInfo
+$psi.FileName = $exePath
+$psi.Arguments = "--urls `"$targetUrl`""
+$psi.WorkingDirectory = Split-Path -Parent $exePath
 $psi.UseShellExecute = $false
 $psi.CreateNoWindow = $true
 $serverProcess = [System.Diagnostics.Process]::Start($psi)
@@ -86,7 +92,7 @@ $serverProcess = [System.Diagnostics.Process]::Start($psi)
 Write-Host "[3/3] Executing Pre-Flight Health Probe on $targetUrl..." -ForegroundColor Yellow
 
 $probeSuccess = $false
-$maxAttempts = 35
+$maxAttempts = 50
 $probeStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 
 for ($i = 1; $i -le $maxAttempts; $i++) {
